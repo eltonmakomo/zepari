@@ -52,7 +52,7 @@ function PublicationPage() {
               <div className="mt-6"><ThemeTags ids={p.themes} /></div>
             </div>
             <aside className="lg:col-span-4">
-              <div className="border bg-card p-6 shadow-card">
+              <div className="rounded-sm border bg-card p-6 shadow-card">
                 {unlocked ? (
                   <>
                     {owns && <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-success"><CheckCircle2 className="h-4 w-4" /> In your library</p>}
@@ -84,14 +84,14 @@ function PublicationPage() {
               <div id="full-text">
                 <h2>Policy recommendations</h2>
                 <ul>{p.recommendations.map((r) => <li key={r}>{r}</li>)}</ul>
-                {owns && <p className="bg-paper p-5 text-sm">Full text unlocked. Download the complete PDF for all chapters, tables and annexes.</p>}
+                {owns && <p className="rounded-sm bg-paper p-5 text-sm">Full text unlocked. Download the complete PDF for all chapters, tables and annexes.</p>}
               </div>
             ) : (
               <div className="mt-12 not-prose"><Paywall slug={p.slug} access={p.access} kind="publication" /></div>
             )}
           </div>
           <aside className="lg:col-span-4">
-            <div className="space-y-4 bg-paper p-6 text-sm">
+            <div className="space-y-4 rounded-sm bg-paper p-6 text-sm">
               <p className="eyebrow">Cite this</p>
               <p className="text-muted-foreground">{p.authors.map(authorName).join(", ")} ({p.date.slice(0, 4)}). <em>{p.title}</em>. Harare: ZEPARI.</p>
               <button onClick={() => navigator.clipboard.writeText(`${p.authors.map(authorName).join(", ")} (${p.date.slice(0, 4)}). ${p.title}. Harare: ZEPARI.`).then(() => toast.success("Citation copied"))} className="font-semibold text-accent hover:underline">Copy citation</button>

@@ -7,7 +7,7 @@ export function ThemeTags({ ids }: { ids: ThemeId[] }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {ids.map((id) => (
-        <Link key={id} to="/research/$theme" params={{ theme: id }} className="bg-muted px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground hover:bg-gold/30">
+        <Link key={id} to="/research/$theme" params={{ theme: id }} className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground hover:bg-gold/30">
           {getTheme(id).short}
         </Link>
       ))}
@@ -17,9 +17,9 @@ export function ThemeTags({ ids }: { ids: ThemeId[] }) {
 
 export function AccessBadge({ mode, price }: { mode: "free" | "paid"; price?: number | undefined }) {
   return mode === "paid" ? (
-    <span className="inline-flex items-center gap-1 bg-gold/25 px-2 py-0.5 text-[11px] font-semibold text-ink"><Lock className="h-3 w-3" /> US${price}</span>
+    <span className="inline-flex items-center gap-1 rounded-full bg-gold/25 px-2 py-0.5 text-[11px] font-semibold text-ink"><Lock className="h-3 w-3" /> US${price}</span>
   ) : (
-    <span className="bg-success/15 px-2 py-0.5 text-[11px] font-semibold text-success">Free</span>
+    <span className="rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold text-success">Free</span>
   );
 }
 
@@ -37,7 +37,7 @@ export function PublicationCard({ p, layout = "vertical" }: { p: Publication; la
   if (layout === "row")
     return (
       <article className="group grid gap-5 border-b py-6 sm:grid-cols-[96px_1fr]">
-        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden sm:block" tabIndex={-1}>{p.cover ? <Cover p={p} /> : <div className="pattern-dzimbahwe grid h-full place-items-center bg-ink font-display text-2xl text-gold">Z</div>}</Link>
+        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden rounded-sm sm:block" tabIndex={-1}>{p.cover ? <Cover p={p} /> : <div className="pattern-dzimbahwe grid h-full place-items-center bg-ink font-display text-2xl text-gold">Z</div>}</Link>
         <div>
           <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <span className="font-semibold uppercase tracking-wider text-accent">{p.type}</span>
@@ -52,7 +52,7 @@ export function PublicationCard({ p, layout = "vertical" }: { p: Publication; la
     );
   return (
     <article className="group flex flex-col">
-      <Link to="/publications/$slug" params={{ slug: p.slug }} className="block aspect-[4/5] overflow-hidden shadow-card">
+      <Link to="/publications/$slug" params={{ slug: p.slug }} className="block aspect-[4/5] overflow-hidden rounded-sm shadow-card">
         <Cover p={p} />
       </Link>
       <div className="mt-4 flex items-center gap-3 text-xs text-muted-foreground">
@@ -69,7 +69,7 @@ export function ArticleCard({ a, large }: { a: Article; large?: boolean }) {
   return (
     <article className="group">
       {a.image && (
-        <Link to="/insights/$slug" params={{ slug: a.slug }} className={`mb-4 block overflow-hidden ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`} tabIndex={-1}>
+        <Link to="/insights/$slug" params={{ slug: a.slug }} className={`mb-4 block overflow-hidden rounded-sm ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`} tabIndex={-1}>
           <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
         </Link>
       )}
@@ -110,9 +110,9 @@ export function MediaCard({ m }: { m: MediaItem }) {
   const external = href.startsWith("http");
   return (
     <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group block">
-      <div className="relative aspect-video overflow-hidden bg-ink">
+      <div className="relative aspect-video overflow-hidden rounded-sm bg-ink">
         {thumb ? <img src={thumb} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:scale-105" /> : <div className="pattern-dzimbahwe h-full w-full" />}
-        <span className="absolute bottom-3 left-3 grid h-11 w-11 place-items-center bg-gold text-ink"><Play className="h-4 w-4" /></span>
+        <span className="absolute bottom-3 left-3 grid h-11 w-11 place-items-center rounded-full bg-gold text-ink"><Play className="h-4 w-4" /></span>
       </div>
       <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="font-semibold uppercase tracking-wider text-accent">{m.kind}</span><Calendar className="h-3 w-3" />{fmtDate(m.date)}</div>
       <h3 className="mt-1 text-lg leading-snug group-hover:text-accent">{m.title}</h3>

@@ -17,7 +17,7 @@ function Account() {
       <PageHeader eyebrow="Account" title="My library" intro="Everything you've purchased, available to read and download at any time." />
       <section className="container-z py-16">
         {list.length === 0 ? (
-          <div className="bg-paper p-12 text-center">
+          <div className="rounded-sm bg-paper p-12 text-center">
             <p className="font-display text-2xl">Your library is empty.</p>
             <p className="mt-2 text-muted-foreground">Purchased publications will appear here.</p>
             <Link to="/publications" search={{ access: "paid" }} className="mt-6 inline-flex rounded bg-ink px-6 py-3 font-semibold text-ink-foreground">Browse premium research</Link>

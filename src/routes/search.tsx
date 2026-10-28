@@ -18,7 +18,7 @@ function SearchPage() {
   return (
     <section className="container-z py-16">
       <h1 className="text-4xl">Search</h1>
-      <div className="mt-6 flex max-w-2xl items-center border bg-card px-4">
+      <div className="mt-6 flex max-w-2xl items-center rounded border bg-card px-4">
         <SearchIcon className="h-5 w-5 text-muted-foreground" />
         <input autoFocus aria-label="Search" value={q} onChange={(e) => navigate({ search: { q: e.target.value }, replace: true })} placeholder="Try 'banking', 'devolution', 'poverty'…" className="w-full bg-transparent px-3 py-4 text-lg outline-none" />
       </div>

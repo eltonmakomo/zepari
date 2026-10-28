@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about/governance")({
         {people.filter((p) => p.group === "board").map((p) => <PersonCard key={p.slug} p={p} />)}
       </section>
       <section className="container-z">
-        <div className="grid gap-8 bg-paper p-10 md:grid-cols-3">
+        <div className="grid gap-8 rounded-sm bg-paper p-10 md:grid-cols-3">
           {[["Independence", "Research agendas and findings are set by ZEPARI's researchers and peer review, not funders."], ["Accountability", "Audited accounts and annual reporting to the Board of Trustees."], ["Quality", "Technical validation workshops and peer review before publication."]].map(([t, d]) => (
             <div key={t}><h3 className="text-xl">{t}</h3><p className="mt-2 text-sm text-muted-foreground">{d}</p></div>
           ))}

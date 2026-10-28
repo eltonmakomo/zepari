@@ -34,7 +34,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
     <div className={`flex items-center gap-2 ${className}`}>
       {items.map(({ href, label, Icon }) => (
         <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={`ZEPARI on ${label}`}
-          className="grid h-9 w-9 place-items-center border border-current/20 transition hover:border-gold hover:text-gold">
+          className="grid h-9 w-9 place-items-center rounded-full border border-current/20 transition hover:border-gold hover:text-gold">
           <Icon className="h-4 w-4" />
         </a>
       ))}
@@ -44,7 +44,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 
 function Logo({ light }: { light?: boolean }) {
   return (
-    <Link to="/" className="flex items-center bg-card px-2.5 py-1 shadow-sm" aria-label="ZEPARI home">
+    <Link to="/" className="flex items-center rounded-xl bg-card px-2.5 py-1 shadow-sm" aria-label="ZEPARI home">
       <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto md:h-10" />
     </Link>
   );
@@ -61,20 +61,20 @@ export function SiteHeader() {
   };
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="glass container-z flex h-16 items-center justify-between gap-6">
+      <div className="glass container-z flex h-16 items-center justify-between gap-6 rounded-2xl">
 
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
             <div key={n.to} className="group relative">
               <Link to={n.to} activeOptions={{ exact: false }}
-                className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground data-[status=active]:text-accent">
+                className="whitespace-nowrap rounded px-2.5 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground data-[status=active]:text-accent">
                 {n.label}
               </Link>
               {"sub" in n && (
-                <div className="invisible absolute left-0 top-full min-w-48 translate-y-1 border bg-card p-2 opacity-0 shadow-card transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="invisible absolute left-0 top-full min-w-48 translate-y-1 rounded border bg-card p-2 opacity-0 shadow-card transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                   {n.sub.map((s) => (
-                    <Link key={s.to} to={s.to} activeOptions={{ exact: true }} className="block px-3 py-2 text-sm hover:bg-muted">{s.label}</Link>
+                    <Link key={s.to} to={s.to} activeOptions={{ exact: true }} className="block rounded px-3 py-2 text-sm hover:bg-muted">{s.label}</Link>
                   ))}
                 </div>
               )}
@@ -82,7 +82,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <form onSubmit={submit} role="search" className="hidden items-center border bg-card px-3 xl:flex">
+          <form onSubmit={submit} role="search" className="hidden items-center rounded-full border bg-card px-3 xl:flex">
             <Search className="h-4 w-4 text-muted-foreground" />
             <label className="sr-only" htmlFor="site-search">Search ZEPARI</label>
             <input id="site-search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-32 bg-transparent px-2 py-2 text-sm outline-none" />
@@ -96,7 +96,7 @@ export function SiteHeader() {
       {open && (
         <div className="border-t bg-background lg:hidden">
           <div className="container-z space-y-1 py-4">
-            <form onSubmit={submit} role="search" className="mb-3 flex items-center border bg-card px-3">
+            <form onSubmit={submit} role="search" className="mb-3 flex items-center rounded border bg-card px-3">
               <Search className="h-4 w-4 text-muted-foreground" />
               <input aria-label="Search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-full bg-transparent px-2 py-3 outline-none" />
             </form>
@@ -170,7 +170,7 @@ export function PageHeader({ eyebrow, title, intro, children }: { eyebrow: strin
     <section className="bg-ink relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
       <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
       <div className="container-z relative animate-rise py-16 md:py-24">
-        <span className="glass-dark inline-flex px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
+        <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
         <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
         {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/75">{intro}</p>}
         {children}
