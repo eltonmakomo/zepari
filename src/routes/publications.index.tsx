@@ -39,7 +39,7 @@ function Archive() {
     .filter((p) => !q || [p.title, p.abstract, p.authors.map(authorName).join(" ")].join(" ").toLowerCase().includes(q))
     .sort(byDateDesc);
 
-  const sel = "w-full rounded border bg-card px-3 py-2.5 text-sm";
+  const sel = "w-full border bg-card px-3 py-2.5 text-sm";
   const active = Object.values(s).some(Boolean);
 
   return (
@@ -48,7 +48,7 @@ function Archive() {
       <section className="container-z grid gap-12 py-16 lg:grid-cols-12">
         <aside className="lg:col-span-3" aria-label="Filters">
           <div className="space-y-5 lg:sticky lg:top-28">
-            <div className="flex items-center rounded border bg-card px-3">
+            <div className="flex items-center border bg-card px-3">
               <Search className="h-4 w-4 text-muted-foreground" />
               <label htmlFor="kw" className="sr-only">Keyword</label>
               <input id="kw" value={s.q ?? ""} onChange={(e) => set({ q: e.target.value || undefined })} placeholder="Keyword, title or author" className="w-full bg-transparent px-2 py-2.5 text-sm outline-none" />
