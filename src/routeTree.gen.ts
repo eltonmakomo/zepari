@@ -10,15 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 import { Route as AboutTeamRouteImport } from './routes/about.team'
+import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
+import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
+import { Route as PublicationsIndexRouteImport } from './routes/publications.index'
+import { Route as PublicationsSlugRouteImport } from './routes/publications.$slug'
 import { Route as ResearchIndexRouteImport } from './routes/research.index'
 import { Route as ResearchThemeRouteImport } from './routes/research.$theme'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
@@ -36,6 +46,26 @@ const AboutTeamRoute = AboutTeamRouteImport.update({
   path: '/about/team',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutSlugRoute = CheckoutSlugRouteImport.update({
+  id: '/checkout/$slug',
+  path: '/checkout/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
+  id: '/checkout/success',
+  path: '/checkout/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsIndexRoute = PublicationsIndexRouteImport.update({
+  id: '/publications/',
+  path: '/publications/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsSlugRoute = PublicationsSlugRouteImport.update({
+  id: '/publications/$slug',
+  path: '/publications/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchIndexRoute = ResearchIndexRouteImport.update({
   id: '/research/',
   path: '/research/',
@@ -49,62 +79,97 @@ const ResearchThemeRoute = ResearchThemeRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
+  '/checkout/$slug': typeof CheckoutSlugRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about/': typeof AboutIndexRoute
+  '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
+  '/checkout/$slug': typeof CheckoutSlugRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about': typeof AboutIndexRoute
+  '/publications': typeof PublicationsIndexRoute
   '/research': typeof ResearchIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
+  '/checkout/$slug': typeof CheckoutSlugRoute
+  '/checkout/success': typeof CheckoutSuccessRoute
+  '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about/': typeof AboutIndexRoute
+  '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/account'
     | '/about/governance'
     | '/about/team'
+    | '/checkout/$slug'
+    | '/checkout/success'
+    | '/publications/$slug'
     | '/research/$theme'
     | '/about/'
+    | '/publications/'
     | '/research/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/account'
     | '/about/governance'
     | '/about/team'
+    | '/checkout/$slug'
+    | '/checkout/success'
+    | '/publications/$slug'
     | '/research/$theme'
     | '/about'
+    | '/publications'
     | '/research'
   id:
     | '__root__'
     | '/'
+    | '/account'
     | '/about/governance'
     | '/about/team'
+    | '/checkout/$slug'
+    | '/checkout/success'
+    | '/publications/$slug'
     | '/research/$theme'
     | '/about/'
+    | '/publications/'
     | '/research/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutTeamRoute: typeof AboutTeamRoute
+  CheckoutSlugRoute: typeof CheckoutSlugRoute
+  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+  PublicationsSlugRoute: typeof PublicationsSlugRoute
   ResearchThemeRoute: typeof ResearchThemeRoute
   AboutIndexRoute: typeof AboutIndexRoute
+  PublicationsIndexRoute: typeof PublicationsIndexRoute
   ResearchIndexRoute: typeof ResearchIndexRoute
 }
 
@@ -115,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/': {
@@ -138,6 +210,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout/$slug': {
+      id: '/checkout/$slug'
+      path: '/checkout/$slug'
+      fullPath: '/checkout/$slug'
+      preLoaderRoute: typeof CheckoutSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/success': {
+      id: '/checkout/success'
+      path: '/checkout/success'
+      fullPath: '/checkout/success'
+      preLoaderRoute: typeof CheckoutSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications/': {
+      id: '/publications/'
+      path: '/publications'
+      fullPath: '/publications/'
+      preLoaderRoute: typeof PublicationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications/$slug': {
+      id: '/publications/$slug'
+      path: '/publications/$slug'
+      fullPath: '/publications/$slug'
+      preLoaderRoute: typeof PublicationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research/': {
       id: '/research/'
       path: '/research'
@@ -157,10 +257,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutTeamRoute: AboutTeamRoute,
+  CheckoutSlugRoute: CheckoutSlugRoute,
+  CheckoutSuccessRoute: CheckoutSuccessRoute,
+  PublicationsSlugRoute: PublicationsSlugRoute,
   ResearchThemeRoute: ResearchThemeRoute,
   AboutIndexRoute: AboutIndexRoute,
+  PublicationsIndexRoute: PublicationsIndexRoute,
   ResearchIndexRoute: ResearchIndexRoute,
 }
 export const routeTree = rootRouteImport
