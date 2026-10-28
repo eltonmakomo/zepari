@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All site content (people, themes, publications, articles, events, media) lives as typed records in `src/content/` and links by slug/id; pages derive related content via `src/content/queries.ts` so nothing is entered twice. Why: CMS-ready single source of truth.
+- Paid items must never carry a public file URL; entitlement logic is isolated in `src/lib/purchases.ts` (currently a demo adapter) so it can be swapped for server-verified payments. Why: protected files must not leak.
