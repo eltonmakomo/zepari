@@ -34,7 +34,6 @@ function Home() {
         <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
         <div className="container-z relative grid items-center gap-12 pb-24 pt-14 lg:grid-cols-12 lg:pt-24">
           <div className="animate-rise lg:col-span-6">
-            <span className="glass-dark inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold"><span className="h-1.5 w-1.5 bg-gold" /> Independent think tank · Since 2003</span>
             <h1 className="mt-7 text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
               Evidence that shapes <span className="text-gold">Zimbabwe's</span> economic future.
             </h1>
