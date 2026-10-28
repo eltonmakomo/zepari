@@ -26,7 +26,7 @@ function Media() {
         <SocialLinks className="mt-8" />
       </PageHeader>
       <section className="container-z py-16">
-        <div className="aspect-video overflow-hidden bg-ink">
+        <div className="aspect-video overflow-hidden rounded-sm bg-ink">
           <iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${lead.youtubeId}`} title={lead.title} allowFullScreen loading="lazy" />
         </div>
         <p className="mt-4 font-display text-2xl">{lead.title}</p>

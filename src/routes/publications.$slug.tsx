@@ -91,7 +91,7 @@ function PublicationPage() {
             )}
           </div>
           <aside className="lg:col-span-4">
-            <div className="space-y-4 bg-paper p-6 text-sm">
+            <div className="space-y-4 rounded-sm bg-paper p-6 text-sm">
               <p className="eyebrow">Cite this</p>
               <p className="text-muted-foreground">{p.authors.map(authorName).join(", ")} ({p.date.slice(0, 4)}). <em>{p.title}</em>. Harare: ZEPARI.</p>
               <button onClick={() => navigator.clipboard.writeText(`${p.authors.map(authorName).join(", ")} (${p.date.slice(0, 4)}). ${p.title}. Harare: ZEPARI.`).then(() => toast.success("Citation copied"))} className="font-semibold text-accent hover:underline">Copy citation</button>

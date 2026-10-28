@@ -4,7 +4,7 @@ export function PersonCard({ p }: { p: Person }) {
   const initials = p.name.replace(/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s*/, "").split(" ").map((s) => s[0]).join("").slice(0, 2);
   return (
     <article id={p.slug} className="group">
-      <div className="aspect-[4/5] overflow-hidden bg-paper">
+      <div className="aspect-[4/5] overflow-hidden rounded-sm bg-paper">
         {p.photo ? (
           <img src={p.photo} alt={p.name} loading="lazy" className="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" />
         ) : (
