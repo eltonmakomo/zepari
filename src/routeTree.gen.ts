@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutIndexRouteImport } from './routes/about.index'
+import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
+import { Route as AboutTeamRouteImport } from './routes/about.team'
+import { Route as ResearchIndexRouteImport } from './routes/research.index'
+import { Route as ResearchThemeRouteImport } from './routes/research.$theme'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
+  id: '/about/governance',
+  path: '/about/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutTeamRoute = AboutTeamRouteImport.update({
+  id: '/about/team',
+  path: '/about/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchIndexRoute = ResearchIndexRouteImport.update({
+  id: '/research/',
+  path: '/research/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchThemeRoute = ResearchThemeRouteImport.update({
+  id: '/research/$theme',
+  path: '/research/$theme',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/team': typeof AboutTeamRoute
+  '/research/$theme': typeof ResearchThemeRoute
+  '/about/': typeof AboutIndexRoute
+  '/research/': typeof ResearchIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/team': typeof AboutTeamRoute
+  '/research/$theme': typeof ResearchThemeRoute
+  '/about': typeof AboutIndexRoute
+  '/research': typeof ResearchIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/team': typeof AboutTeamRoute
+  '/research/$theme': typeof ResearchThemeRoute
+  '/about/': typeof AboutIndexRoute
+  '/research/': typeof ResearchIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about/governance'
+    | '/about/team'
+    | '/research/$theme'
+    | '/about/'
+    | '/research/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about/governance'
+    | '/about/team'
+    | '/research/$theme'
+    | '/about'
+    | '/research'
+  id:
+    | '__root__'
+    | '/'
+    | '/about/governance'
+    | '/about/team'
+    | '/research/$theme'
+    | '/about/'
+    | '/research/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutGovernanceRoute: typeof AboutGovernanceRoute
+  AboutTeamRoute: typeof AboutTeamRoute
+  ResearchThemeRoute: typeof ResearchThemeRoute
+  AboutIndexRoute: typeof AboutIndexRoute
+  ResearchIndexRoute: typeof ResearchIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/governance': {
+      id: '/about/governance'
+      path: '/about/governance'
+      fullPath: '/about/governance'
+      preLoaderRoute: typeof AboutGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/team': {
+      id: '/about/team'
+      path: '/about/team'
+      fullPath: '/about/team'
+      preLoaderRoute: typeof AboutTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research/': {
+      id: '/research/'
+      path: '/research'
+      fullPath: '/research/'
+      preLoaderRoute: typeof ResearchIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research/$theme': {
+      id: '/research/$theme'
+      path: '/research/$theme'
+      fullPath: '/research/$theme'
+      preLoaderRoute: typeof ResearchThemeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutGovernanceRoute: AboutGovernanceRoute,
+  AboutTeamRoute: AboutTeamRoute,
+  ResearchThemeRoute: ResearchThemeRoute,
+  AboutIndexRoute: AboutIndexRoute,
+  ResearchIndexRoute: ResearchIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
