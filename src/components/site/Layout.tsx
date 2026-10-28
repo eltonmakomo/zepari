@@ -75,7 +75,7 @@ export function SiteHeader() {
           {nav.map((n) => (
             <div key={n.to} className="group relative">
               <Link to={n.to} activeOptions={{ exact: false }}
-                className="rounded px-3 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground data-[status=active]:text-accent">
+                className="whitespace-nowrap rounded px-2.5 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground data-[status=active]:text-accent">
                 {n.label}
               </Link>
               {"sub" in n && (
@@ -89,12 +89,12 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <form onSubmit={submit} role="search" className="hidden items-center rounded-full border bg-card px-3 md:flex">
+          <form onSubmit={submit} role="search" className="hidden items-center rounded-full border bg-card px-3 xl:flex">
             <Search className="h-4 w-4 text-muted-foreground" />
             <label className="sr-only" htmlFor="site-search">Search ZEPARI</label>
-            <input id="site-search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-36 bg-transparent px-2 py-2 text-sm outline-none xl:w-44" />
+            <input id="site-search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-32 bg-transparent px-2 py-2 text-sm outline-none" />
           </form>
-          <Link to="/account" className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition hover:bg-primary sm:inline-flex">My library</Link>
+          <Link to="/account" className="hidden whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition hover:bg-primary sm:inline-flex">My library</Link>
           <button className="grid h-10 w-10 place-items-center lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
             {open ? <X /> : <Menu />}
           </button>

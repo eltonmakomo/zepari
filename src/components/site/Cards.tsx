@@ -37,7 +37,7 @@ export function PublicationCard({ p, layout = "vertical" }: { p: Publication; la
   if (layout === "row")
     return (
       <article className="group grid gap-5 border-b py-6 sm:grid-cols-[96px_1fr]">
-        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden rounded-sm sm:block" tabIndex={-1}><Cover p={p} /></Link>
+        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden rounded-sm sm:block" tabIndex={-1}>{p.cover ? <Cover p={p} /> : <div className="pattern-dzimbahwe grid h-full place-items-center bg-ink font-display text-2xl text-gold">Z</div>}</Link>
         <div>
           <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <span className="font-semibold uppercase tracking-wider text-accent">{p.type}</span>
