@@ -62,7 +62,7 @@ function Checkout() {
             <legend className="eyebrow mb-4">1 · Choose access</legend>
             <div className="space-y-3">
               {tiers.map((t) => (
-                <label key={t.id} className={`flex cursor-pointer items-center justify-between rounded-sm border p-5 ${tier === t.id ? "border-ink ring-1 ring-ink" : ""}`}>
+                <label key={t.id} className={`flex cursor-pointer items-center justify-between border p-5 ${tier === t.id ? "border-ink ring-1 ring-ink" : ""}`}>
                   <span className="flex items-center gap-3"><input type="radio" name="tier" checked={tier === t.id} onChange={() => setTier(t.id)} className="accent-[var(--accent)]" /><span><span className="block font-semibold">{t.label}</span><span className="text-sm text-muted-foreground">{t.note}</span></span></span>
                   <span className="font-display text-2xl">US${t.priceUSD}</span>
                 </label>
@@ -72,15 +72,15 @@ function Checkout() {
           <fieldset>
             <legend className="eyebrow mb-4">2 · Your details</legend>
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block text-sm"><span className="mb-1 block font-medium">Full name</span><input value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} className="w-full rounded border bg-card px-3 py-3" /></label>
-              <label className="block text-sm"><span className="mb-1 block font-medium">Email (for receipt & library access)</span><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} className="w-full rounded border bg-card px-3 py-3" /></label>
+              <label className="block text-sm"><span className="mb-1 block font-medium">Full name</span><input value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} className="w-full border bg-card px-3 py-3" /></label>
+              <label className="block text-sm"><span className="mb-1 block font-medium">Email (for receipt & library access)</span><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} className="w-full border bg-card px-3 py-3" /></label>
             </div>
           </fieldset>
           <fieldset>
             <legend className="eyebrow mb-4">3 · Payment method</legend>
             <div className="grid gap-3 sm:grid-cols-2">
               {methods.map(({ id, label, note, Icon }) => (
-                <label key={id} className={`flex cursor-pointer items-center gap-3 rounded-sm border p-4 ${method === id ? "border-ink ring-1 ring-ink" : ""}`}>
+                <label key={id} className={`flex cursor-pointer items-center gap-3 border p-4 ${method === id ? "border-ink ring-1 ring-ink" : ""}`}>
                   <input type="radio" name="method" checked={method === id} onChange={() => setMethod(id)} className="sr-only" />
                   <Icon className="h-5 w-5 text-accent" /><span><span className="block font-semibold">{label}</span><span className="text-xs text-muted-foreground">{note}</span></span>
                 </label>
@@ -89,7 +89,7 @@ function Checkout() {
           </fieldset>
         </div>
         <aside className="lg:col-span-5">
-          <div className="sticky top-28 rounded-sm bg-paper p-8">
+          <div className="sticky top-28 bg-paper p-8">
             <p className="eyebrow">Order summary</p>
             <p className="mt-4 font-display text-xl leading-snug">{item.title}</p>
             <div className="mt-6 space-y-2 border-t pt-4 text-sm">
@@ -105,7 +105,7 @@ function Checkout() {
               <li className="flex gap-2"><ShieldCheck className="h-4 w-4 shrink-0 text-success" /> Access unlocks only after the payment is confirmed.</li>
               <li className="flex gap-2"><ShieldCheck className="h-4 w-4 shrink-0 text-success" /> Downloads use private, expiring links.</li>
             </ul>
-            <p className="mt-4 rounded bg-gold/20 p-3 text-xs">Demo mode: no real payment is taken.</p>
+            <p className="mt-4 bg-gold/20 p-3 text-xs">Demo mode: no real payment is taken.</p>
           </div>
         </aside>
       </form>

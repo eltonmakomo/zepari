@@ -33,7 +33,7 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
     <form onSubmit={onSubmit} className="flex flex-col gap-2 sm:flex-row">
       <label htmlFor={`nl-${tone}`} className="sr-only">Email address</label>
       <input id={`nl-${tone}`} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@organisation.org"
-        className={`flex-1 rounded border px-4 py-3 text-sm outline-none ${dark ? "border-ink-foreground/20 bg-ink-foreground/5 text-ink-foreground placeholder:text-ink-foreground/40" : "bg-card"}`} />
+        className={`flex-1 border px-4 py-3 text-sm outline-none ${dark ? "border-ink-foreground/20 bg-ink-foreground/5 text-ink-foreground placeholder:text-ink-foreground/40" : "bg-card"}`} />
       <button disabled={busy} className={`rounded px-5 py-3 text-sm font-semibold transition disabled:opacity-60 ${dark ? "bg-gold text-ink hover:bg-ink-foreground" : "bg-ink text-ink-foreground hover:bg-primary"}`}>
         {busy ? "Subscribing…" : "Subscribe"}
       </button>
