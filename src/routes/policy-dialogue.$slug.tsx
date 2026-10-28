@@ -36,7 +36,7 @@ function EventPage() {
   };
   const submit = (ev: React.FormEvent) => {
     ev.preventDefault();
-    if (!reg.safeParse(f).success) return toast.error("Please complete your name and a valid email.");
+    if (!reg.safeParse(f).success) { toast.error("Please complete your name and a valid email."); return; }
     setDone(true);
     toast.success("Registration received — we'll email your confirmation.");
   };

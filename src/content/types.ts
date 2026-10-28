@@ -74,7 +74,7 @@ export interface Article {
   themes: ThemeId[];
   excerpt: string;
   body: string[];
-  image?: string;
+  image?: string | undefined;
   relatedPublication?: string;
   access: Access;
 }

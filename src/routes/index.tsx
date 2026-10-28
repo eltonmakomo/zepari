@@ -73,7 +73,7 @@ function Home() {
       <section className="container-z py-24">
         <SectionHead eyebrow="Insights & News" title="The latest from our researchers" to="/insights" />
         <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7"><ArticleCard a={latest[0]} large /></div>
+          <div className="lg:col-span-7">{latest[0] && <ArticleCard a={latest[0]} large />}</div>
           <div className="space-y-10 lg:col-span-5">
             {latest.slice(1, 4).map((a) => (
               <article key={a.slug} className="border-b pb-8 last:border-0">

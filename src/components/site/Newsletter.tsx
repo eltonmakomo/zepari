@@ -21,7 +21,7 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const r = schema.safeParse(email);
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "Please check the form"); return; }
     setBusy(true);
     await subscribe(r.data);
     setBusy(false);

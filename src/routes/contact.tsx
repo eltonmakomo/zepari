@@ -24,7 +24,7 @@ function Contact() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const r = schema.safeParse(f);
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "Please check the form"); return; }
     setSent(true);
     toast.success("Message sent. We'll be in touch.");
   };

@@ -31,17 +31,17 @@ function Checkout() {
   const { item, kind } = Route.useLoaderData();
   const navigate = useNavigate();
   const tiers = item.access.tiers ?? [{ id: "standard", label: "Standard access", priceUSD: item.access.priceUSD!, note: "Personal licence, read online & download" }];
-  const [tier, setTier] = useState(tiers[0].id);
+  const [tier, setTier] = useState(tiers[0]!.id);
   const [method, setMethod] = useState("ecocash");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
-  const chosen = tiers.find((t) => t.id === tier)!;
+  const chosen = tiers.find((t) => t.id === tier) ?? tiers[0]!;
 
   const pay = async (e: React.FormEvent) => {
     e.preventDefault();
     const r = form.safeParse({ name, email });
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "Please check the form"); return; }
     setBusy(true);
     // Production: server creates an order and redirects to the gateway (e.g. Paynow for
     // EcoCash/ZIPIT, card processor for international). Access is granted only when the

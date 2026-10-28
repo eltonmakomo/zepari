@@ -15,7 +15,7 @@ export function ThemeTags({ ids }: { ids: ThemeId[] }) {
   );
 }
 
-export function AccessBadge({ mode, price }: { mode: "free" | "paid"; price?: number }) {
+export function AccessBadge({ mode, price }: { mode: "free" | "paid"; price?: number | undefined }) {
   return mode === "paid" ? (
     <span className="inline-flex items-center gap-1 rounded-full bg-gold/25 px-2 py-0.5 text-[11px] font-semibold text-ink"><Lock className="h-3 w-3" /> US${price}</span>
   ) : (
