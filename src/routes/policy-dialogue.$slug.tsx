@@ -57,7 +57,7 @@ function EventPage() {
           </div>
           {upcoming && (
             <aside className="lg:col-span-4">
-              <div className="bg-card p-6 shadow-card">
+              <div className="rounded-sm bg-card p-6 shadow-card">
                 <p className="font-display text-xl">Register to attend</p>
                 {done ? <p className="mt-4 text-success">You're registered. See you there.</p> : (
                   <form onSubmit={submit} className="mt-4 space-y-3">
@@ -75,7 +75,7 @@ function EventPage() {
       </section>
       <section className="container-z grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          {e.video && <div className="aspect-video overflow-hidden"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
+          {e.video && <div className="aspect-video overflow-hidden rounded-sm"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
           {e.agenda && (
             <><h2 className="mb-4 text-2xl">Programme</h2>
               <ol className="divide-y border-y">{e.agenda.map((x) => <li key={x.time} className="flex gap-8 py-4"><span className="w-16 font-mono text-sm text-accent">{x.time}</span>{x.item}</li>)}</ol></>

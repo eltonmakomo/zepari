@@ -61,7 +61,7 @@ export function SiteHeader() {
   };
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="glass container-z flex h-16 items-center justify-between gap-6">
+      <div className="glass container-z flex h-16 items-center justify-between gap-6 rounded-2xl">
 
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">

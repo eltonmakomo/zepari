@@ -7,7 +7,7 @@ export function ThemeTags({ ids }: { ids: ThemeId[] }) {
   return (
     <div className="flex flex-wrap gap-1.5">
       {ids.map((id) => (
-        <Link key={id} to="/research/$theme" params={{ theme: id }} className="bg-muted px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground hover:bg-gold/30">
+        <Link key={id} to="/research/$theme" params={{ theme: id }} className="rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-medium text-secondary-foreground hover:bg-gold/30">
           {getTheme(id).short}
         </Link>
       ))}
@@ -19,7 +19,7 @@ export function AccessBadge({ mode, price }: { mode: "free" | "paid"; price?: nu
   return mode === "paid" ? (
     <span className="inline-flex items-center gap-1 rounded-full bg-gold/25 px-2 py-0.5 text-[11px] font-semibold text-ink"><Lock className="h-3 w-3" /> US${price}</span>
   ) : (
-    <span className="bg-success/15 px-2 py-0.5 text-[11px] font-semibold text-success">Free</span>
+    <span className="rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold text-success">Free</span>
   );
 }
 

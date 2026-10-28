@@ -100,7 +100,7 @@ function Home() {
             </p>
             <Link to="/insights/$slug" params={{ slug: "jobs-paradox" }} className="mt-8 inline-flex items-center gap-2 font-semibold text-gold hover:underline">Read: The Jobs Paradox <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
-          <div className="border border-ink-foreground/10 bg-ink-foreground/5 p-6">
+          <div className="rounded-sm border border-ink-foreground/10 bg-ink-foreground/5 p-6">
             <GrowthChart />
           </div>
         </div>
