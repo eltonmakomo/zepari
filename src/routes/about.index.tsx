@@ -69,7 +69,7 @@ function About() {
         </div>
       </section>
       <section className="container-z grid items-center gap-16 py-24 lg:grid-cols-2">
-        <img src={field} alt="ZEPARI researcher speaking with farmers" loading="lazy" width={1408} height={912} className="rounded-sm" />
+        <img src={field} alt="ZEPARI researcher speaking with farmers" loading="lazy" width={1408} height={912} className="" />
         <div>
           <p className="eyebrow">Corporate identity</p>
           <h2 className="mt-3 text-3xl">The Eagle</h2>
