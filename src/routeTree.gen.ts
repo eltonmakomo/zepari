@@ -11,11 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 import { Route as AboutTeamRouteImport } from './routes/about.team'
 import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
+import { Route as PolicyDialogueIndexRouteImport } from './routes/policy-dialogue.index'
+import { Route as PolicyDialogueSlugRouteImport } from './routes/policy-dialogue.$slug'
 import { Route as PublicationsIndexRouteImport } from './routes/publications.index'
 import { Route as PublicationsSlugRouteImport } from './routes/publications.$slug'
 import { Route as ResearchIndexRouteImport } from './routes/research.index'
@@ -29,6 +36,21 @@ const IndexRoute = IndexRouteImport.update({
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
@@ -56,6 +78,26 @@ const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
   path: '/checkout/success',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/insights/$slug',
+  path: '/insights/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolicyDialogueIndexRoute = PolicyDialogueIndexRouteImport.update({
+  id: '/policy-dialogue/',
+  path: '/policy-dialogue/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolicyDialogueSlugRoute = PolicyDialogueSlugRouteImport.update({
+  id: '/policy-dialogue/$slug',
+  path: '/policy-dialogue/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PublicationsIndexRoute = PublicationsIndexRouteImport.update({
   id: '/publications/',
   path: '/publications/',
@@ -80,26 +122,40 @@ const ResearchThemeRoute = ResearchThemeRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/contact': typeof ContactRoute
+  '/media': typeof MediaRoute
+  '/search': typeof SearchRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about/': typeof AboutIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/policy-dialogue/': typeof PolicyDialogueIndexRoute
   '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/contact': typeof ContactRoute
+  '/media': typeof MediaRoute
+  '/search': typeof SearchRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about': typeof AboutIndexRoute
+  '/insights': typeof InsightsIndexRoute
+  '/policy-dialogue': typeof PolicyDialogueIndexRoute
   '/publications': typeof PublicationsIndexRoute
   '/research': typeof ResearchIndexRoute
 }
@@ -107,13 +163,20 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/contact': typeof ContactRoute
+  '/media': typeof MediaRoute
+  '/search': typeof SearchRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
   '/about/': typeof AboutIndexRoute
+  '/insights/': typeof InsightsIndexRoute
+  '/policy-dialogue/': typeof PolicyDialogueIndexRoute
   '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
 }
@@ -122,39 +185,60 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/account'
+    | '/contact'
+    | '/media'
+    | '/search'
     | '/about/governance'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
+    | '/insights/$slug'
+    | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
     | '/about/'
+    | '/insights/'
+    | '/policy-dialogue/'
     | '/publications/'
     | '/research/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/account'
+    | '/contact'
+    | '/media'
+    | '/search'
     | '/about/governance'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
+    | '/insights/$slug'
+    | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
     | '/about'
+    | '/insights'
+    | '/policy-dialogue'
     | '/publications'
     | '/research'
   id:
     | '__root__'
     | '/'
     | '/account'
+    | '/contact'
+    | '/media'
+    | '/search'
     | '/about/governance'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
+    | '/insights/$slug'
+    | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
     | '/about/'
+    | '/insights/'
+    | '/policy-dialogue/'
     | '/publications/'
     | '/research/'
   fileRoutesById: FileRoutesById
@@ -162,13 +246,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
+  ContactRoute: typeof ContactRoute
+  MediaRoute: typeof MediaRoute
+  SearchRoute: typeof SearchRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutTeamRoute: typeof AboutTeamRoute
   CheckoutSlugRoute: typeof CheckoutSlugRoute
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+  InsightsSlugRoute: typeof InsightsSlugRoute
+  PolicyDialogueSlugRoute: typeof PolicyDialogueSlugRoute
   PublicationsSlugRoute: typeof PublicationsSlugRoute
   ResearchThemeRoute: typeof ResearchThemeRoute
   AboutIndexRoute: typeof AboutIndexRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
+  PolicyDialogueIndexRoute: typeof PolicyDialogueIndexRoute
   PublicationsIndexRoute: typeof PublicationsIndexRoute
   ResearchIndexRoute: typeof ResearchIndexRoute
 }
@@ -187,6 +278,27 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/account'
       preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/': {
@@ -224,6 +336,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/insights/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policy-dialogue/': {
+      id: '/policy-dialogue/'
+      path: '/policy-dialogue'
+      fullPath: '/policy-dialogue/'
+      preLoaderRoute: typeof PolicyDialogueIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/policy-dialogue/$slug': {
+      id: '/policy-dialogue/$slug'
+      path: '/policy-dialogue/$slug'
+      fullPath: '/policy-dialogue/$slug'
+      preLoaderRoute: typeof PolicyDialogueSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/publications/': {
       id: '/publications/'
       path: '/publications'
@@ -258,13 +398,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
+  ContactRoute: ContactRoute,
+  MediaRoute: MediaRoute,
+  SearchRoute: SearchRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutTeamRoute: AboutTeamRoute,
   CheckoutSlugRoute: CheckoutSlugRoute,
   CheckoutSuccessRoute: CheckoutSuccessRoute,
+  InsightsSlugRoute: InsightsSlugRoute,
+  PolicyDialogueSlugRoute: PolicyDialogueSlugRoute,
   PublicationsSlugRoute: PublicationsSlugRoute,
   ResearchThemeRoute: ResearchThemeRoute,
   AboutIndexRoute: AboutIndexRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
+  PolicyDialogueIndexRoute: PolicyDialogueIndexRoute,
   PublicationsIndexRoute: PublicationsIndexRoute,
   ResearchIndexRoute: ResearchIndexRoute,
 }
