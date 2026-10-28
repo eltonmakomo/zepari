@@ -41,7 +41,7 @@ function Contact() {
           <iframe title="ZEPARI location map" className="aspect-[4/3] w-full border" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=31.010%2C-17.840%2C31.040%2C-17.820&layer=mapnik&marker=-17.830%2C31.025" />
         </div>
         <div className="lg:col-span-7">
-          {sent ? <div className="rounded-sm bg-paper p-12"><p className="font-display text-3xl">Thank you.</p><p className="mt-2 text-muted-foreground">Your message has been received.</p></div> : (
+          {sent ? <div className="bg-paper p-12"><p className="font-display text-3xl">Thank you.</p><p className="mt-2 text-muted-foreground">Your message has been received.</p></div> : (
             <form onSubmit={submit} className="space-y-5 bg-paper p-8 md:p-10">
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block text-sm"><span className="mb-1 block font-medium">Name</span><input className={inp} value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} maxLength={100} required /></label>

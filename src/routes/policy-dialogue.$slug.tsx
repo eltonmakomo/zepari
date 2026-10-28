@@ -57,7 +57,7 @@ function EventPage() {
           </div>
           {upcoming && (
             <aside className="lg:col-span-4">
-              <div className="rounded-sm bg-card p-6 shadow-card">
+              <div className="bg-card p-6 shadow-card">
                 <p className="font-display text-xl">Register to attend</p>
                 {done ? <p className="mt-4 text-success">You're registered. See you there.</p> : (
                   <form onSubmit={submit} className="mt-4 space-y-3">
