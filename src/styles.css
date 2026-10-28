@@ -65,7 +65,6 @@
   --input: oklch(0.86 0.015 82);
   --ring: oklch(0.58 0.14 45);
   --shadow-card: 0 1px 2px oklch(0.2 0.03 245 / 6%), 0 12px 32px -16px oklch(0.2 0.03 245 / 18%);
-  --gradient-ink: linear-gradient(180deg, oklch(0.22 0.045 245 / 0%) 0%, oklch(0.18 0.045 245 / 85%) 100%);
 }
 
 @layer base {
@@ -105,7 +104,6 @@
 }
 
 @utility shadow-card { box-shadow: var(--shadow-card); }
-@utility bg-gradient-ink { background-image: var(--gradient-ink); }
 
 @utility zim-band {
   /* Subtle nod to the national flag stripes */
@@ -147,17 +145,11 @@
   border: 1px solid oklch(1 0 0 / 14%);
   box-shadow: 0 12px 40px -12px oklch(0 0 0 / 45%);
 }
-@utility mesh-hero {
-  background:
-    radial-gradient(60% 70% at 85% 10%, oklch(0.58 0.14 45 / 55%), transparent 60%),
-    radial-gradient(50% 60% at 10% 90%, oklch(0.76 0.13 78 / 35%), transparent 60%),
-    radial-gradient(70% 80% at 40% 40%, oklch(0.32 0.075 245), oklch(0.16 0.04 245));
+@utility pattern-fade {
+  -webkit-mask-image: linear-gradient(180deg, oklch(1 0 0 / 90%) 0%, oklch(1 0 0 / 35%) 45%, transparent 85%);
+  mask-image: linear-gradient(180deg, oklch(1 0 0 / 90%) 0%, oklch(1 0 0 / 35%) 45%, transparent 85%);
 }
-@utility text-gradient {
-  background: linear-gradient(90deg, var(--gold), var(--accent));
-  background-clip: text;
-  color: transparent;
-}
+
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @utility animate-floaty { animation: floaty 7s ease-in-out infinite; }
 
