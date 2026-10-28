@@ -44,8 +44,8 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 
 function Logo({ light }: { light?: boolean }) {
   return (
-    <Link to="/" className={`flex items-center rounded-xl ${light ? "bg-card px-3 py-2" : ""}`} aria-label="ZEPARI home">
-      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto mix-blend-multiply md:h-11" />
+    <Link to="/" className="flex items-center rounded-xl bg-card px-2.5 py-1 shadow-sm" aria-label="ZEPARI home">
+      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto md:h-10" />
     </Link>
   );
 }
