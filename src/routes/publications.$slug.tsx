@@ -28,7 +28,7 @@ function PublicationPage() {
   const unlocked = p.access.mode === "free" || owns;
 
   const download = () => {
-    if (p.publicFile) return window.open(p.publicFile, "_blank", "noopener");
+    if (p.publicFile) { window.open(p.publicFile, "_blank", "noopener"); return; }
     // Paid files are never public: production requests a short-lived signed URL
     // from the server after verifying the buyer's entitlement.
     toast.success("Your secure download link has been generated (demo).");

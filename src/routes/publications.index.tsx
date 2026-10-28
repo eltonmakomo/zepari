@@ -60,7 +60,7 @@ function Archive() {
               <div className="flex gap-2">
                 {([undefined, "free", "paid"] as const).map((a) => (
                   <button key={a ?? "all"} onClick={() => set({ access: a })} aria-pressed={s.access === a}
-                    className={`flex-1 rounded border px-3 py-2 text-sm ${s.access === a ? "border-ink bg-ink text-ink-foreground" : "bg-card"}`}>{a ? a[0].toUpperCase() + a.slice(1) : "All"}</button>
+                    className={`flex-1 rounded border px-3 py-2 text-sm ${s.access === a ? "border-ink bg-ink text-ink-foreground" : "bg-card"}`}>{a ? a.charAt(0).toUpperCase() + a.slice(1) : "All"}</button>
                 ))}
               </div>
             </Field>
