@@ -119,6 +119,12 @@
     repeating-linear-gradient(45deg, oklch(1 0 0 / 3%) 0 2px, transparent 2px 14px);
 }
 
+@utility pattern-dzimbahwe-light {
+  /* Same chevron motif, dark strokes for light backgrounds */
+  background-image: repeating-linear-gradient(135deg, oklch(0.2 0.03 245 / 4%) 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(45deg, oklch(0.2 0.03 245 / 4%) 0 2px, transparent 2px 14px);
+}
+
 @utility prose-z {
   font-size: 1.075rem;
   line-height: 1.8;
