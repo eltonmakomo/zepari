@@ -10,7 +10,7 @@ export function ShareBar({ title }: { title: string }) {
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(title);
   const open = (href: string) => window.open(href, "_blank", "noopener,noreferrer,width=640,height=560");
-  const btn = "grid h-9 w-9 place-items-center rounded-full border transition hover:border-accent hover:text-accent";
+  const btn = "grid h-9 w-9 place-items-center border transition hover:border-accent hover:text-accent";
   return (
     <div className="flex items-center gap-2" aria-label="Share">
       <span className="mr-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Share</span>

@@ -62,7 +62,7 @@ function EventPage() {
                 {done ? <p className="mt-4 text-success">You're registered. See you there.</p> : (
                   <form onSubmit={submit} className="mt-4 space-y-3">
                     {(["name", "email", "org"] as const).map((k) => (
-                      <input key={k} aria-label={k} type={k === "email" ? "email" : "text"} placeholder={k === "org" ? "Organisation" : k.charAt(0).toUpperCase() + k.slice(1)} value={f[k]} onChange={(x) => setF({ ...f, [k]: x.target.value })} className="w-full rounded border bg-background px-3 py-2.5 text-sm" />
+                      <input key={k} aria-label={k} type={k === "email" ? "email" : "text"} placeholder={k === "org" ? "Organisation" : k.charAt(0).toUpperCase() + k.slice(1)} value={f[k]} onChange={(x) => setF({ ...f, [k]: x.target.value })} className="w-full border bg-background px-3 py-2.5 text-sm" />
                     ))}
                     <button className="w-full rounded bg-accent py-3 font-semibold text-accent-foreground hover:bg-ink">Register</button>
                   </form>
@@ -75,7 +75,7 @@ function EventPage() {
       </section>
       <section className="container-z grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          {e.video && <div className="aspect-video overflow-hidden rounded-sm"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
+          {e.video && <div className="aspect-video overflow-hidden"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
           {e.agenda && (
             <><h2 className="mb-4 text-2xl">Programme</h2>
               <ol className="divide-y border-y">{e.agenda.map((x) => <li key={x.time} className="flex gap-8 py-4"><span className="w-16 font-mono text-sm text-accent">{x.time}</span>{x.item}</li>)}</ol></>
@@ -83,7 +83,7 @@ function EventPage() {
         </div>
         {pub && (
           <aside className="lg:col-span-4">
-            <Link to="/publications/$slug" params={{ slug: pub.slug }} className="block rounded-sm border-l-4 border-gold bg-paper p-6 hover:bg-muted">
+            <Link to="/publications/$slug" params={{ slug: pub.slug }} className="block border-l-4 border-gold bg-paper p-6 hover:bg-muted">
               <span className="eyebrow">Related publication</span><span className="mt-2 block font-display text-xl">{pub.title}</span>
             </Link>
           </aside>

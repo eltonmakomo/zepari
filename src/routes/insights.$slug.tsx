@@ -37,14 +37,14 @@ function ArticlePage() {
           <p className="mt-6 text-sm text-muted-foreground">{authorName(a.author)} · {fmtDate(a.date)}</p>
           <div className="mt-6 flex justify-center"><ShareBar title={a.title} /></div>
         </header>
-        {a.image && <img src={a.image} alt="" className="container-z mt-12 aspect-[21/9] max-w-6xl rounded-sm object-cover" />}
+        {a.image && <img src={a.image} alt="" className="container-z mt-12 aspect-[21/9] max-w-6xl object-cover" />}
         <div className="container-z max-w-3xl py-14">
           <p className="mb-8 font-display text-2xl leading-snug">{a.excerpt}</p>
           <div className="prose-z">{body.map((p, i) => <p key={i}>{p}</p>)}</div>
           {!unlocked && <div className="mt-10"><Paywall slug={a.slug} access={a.access} kind="article" /></div>}
           <div className="mt-10"><ThemeTags ids={a.themes} /></div>
           {rel && (
-            <Link to="/publications/$slug" params={{ slug: rel.slug }} className="mt-12 block rounded-sm border-l-4 border-gold bg-paper p-6 hover:bg-muted">
+            <Link to="/publications/$slug" params={{ slug: rel.slug }} className="mt-12 block border-l-4 border-gold bg-paper p-6 hover:bg-muted">
               <span className="eyebrow">Based on the {rel.type.toLowerCase()}</span>
               <span className="mt-2 block font-display text-xl">{rel.title}</span>
             </Link>

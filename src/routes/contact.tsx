@@ -28,7 +28,7 @@ function Contact() {
     setSent(true);
     toast.success("Message sent. We'll be in touch.");
   };
-  const inp = "w-full rounded border bg-card px-3 py-3";
+  const inp = "w-full border bg-card px-3 py-3";
   return (
     <>
       <PageHeader eyebrow="Contact" title="Talk to ZEPARI." intro="For research enquiries, consultancy, media requests, partnerships and events." />
@@ -38,11 +38,11 @@ function Contact() {
           <div><p className="eyebrow">Call</p>{site.phones.map((p) => <a key={p} href={`tel:${p.replace(/[^+\d]/g, "")}`} className="mt-1 block text-lg hover:text-accent">{p}</a>)}</div>
           <div><p className="eyebrow">Email</p>{site.emails.map((m) => <a key={m} href={`mailto:${m}`} className="mt-1 block text-lg hover:text-accent">{m}</a>)}</div>
           <SocialLinks />
-          <iframe title="ZEPARI location map" className="aspect-[4/3] w-full rounded-sm border" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=31.010%2C-17.840%2C31.040%2C-17.820&layer=mapnik&marker=-17.830%2C31.025" />
+          <iframe title="ZEPARI location map" className="aspect-[4/3] w-full border" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=31.010%2C-17.840%2C31.040%2C-17.820&layer=mapnik&marker=-17.830%2C31.025" />
         </div>
         <div className="lg:col-span-7">
           {sent ? <div className="rounded-sm bg-paper p-12"><p className="font-display text-3xl">Thank you.</p><p className="mt-2 text-muted-foreground">Your message has been received.</p></div> : (
-            <form onSubmit={submit} className="space-y-5 rounded-sm bg-paper p-8 md:p-10">
+            <form onSubmit={submit} className="space-y-5 bg-paper p-8 md:p-10">
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block text-sm"><span className="mb-1 block font-medium">Name</span><input className={inp} value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} maxLength={100} required /></label>
                 <label className="block text-sm"><span className="mb-1 block font-medium">Email</span><input type="email" className={inp} value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} maxLength={255} required /></label>
