@@ -3,6 +3,7 @@ import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { site } from "@/content/data";
 import { NewsletterForm } from "./Newsletter";
+import logo from "@/assets/zepari-logo.jpg.asset.json";
 
 const nav = [
   { to: "/about", label: "About", sub: [{ to: "/about", label: "Overview" }, { to: "/about/team", label: "Our Team" }, { to: "/about/governance", label: "Governance" }] },
@@ -43,16 +44,8 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 
 function Logo({ light }: { light?: boolean }) {
   return (
-    <Link to="/" className="group flex items-center gap-3" aria-label="ZEPARI home">
-      <span className={`grid h-10 w-10 place-items-center rounded-full ${light ? "bg-gold text-ink" : "bg-ink text-gold"}`}>
-        <svg viewBox="0 0 32 32" className="h-6 w-6" fill="currentColor" aria-hidden>
-          <path d="M16 4c-2 3-6 5-11 5 2 2 5 3 8 3-2 1-4 3-5 6 3-1 5-2 7-2l1 10 1-10c2 0 4 1 7 2-1-3-3-5-5-6 3 0 6-1 8-3-5 0-9-2-11-5Z" />
-        </svg>
-      </span>
-      <span className="leading-none">
-        <span className="block font-display text-2xl font-semibold tracking-tight">ZEPARI</span>
-        <span className={`hidden text-[10px] uppercase tracking-[0.18em] sm:block ${light ? "text-ink-foreground/60" : "text-muted-foreground"}`}>Economic Policy Research</span>
-      </span>
+    <Link to="/" className={`flex items-center rounded-xl ${light ? "bg-card px-3 py-2" : ""}`} aria-label="ZEPARI home">
+      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto mix-blend-multiply md:h-11" />
     </Link>
   );
 }
@@ -67,9 +60,9 @@ export function SiteHeader() {
     navigate({ to: "/search", search: { q } });
   };
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
-      <div className="zim-band" />
-      <div className="container-z flex h-18 items-center justify-between gap-6 py-3">
+    <header className="sticky top-0 z-40 px-3 pt-3">
+      <div className="glass container-z flex h-16 items-center justify-between gap-6 rounded-2xl">
+
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
