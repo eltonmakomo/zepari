@@ -48,7 +48,7 @@ function Home() {
           <div className="relative lg:col-span-6">
             <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full object-cover shadow-2xl ring-1 ring-border" />
             <Link to="/publications/$slug" params={{ slug: featured.slug }}
-              className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 p-6 md:left-auto md:right-6 md:w-96">
+              className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 p-6 text-ink-foreground md:left-auto md:right-6 md:w-96">
               <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
               <p className="mt-3 font-display text-xl leading-snug group-hover:text-gold">{featured.title}</p>
               <p className="mt-3 text-xs text-ink-foreground/60">{fmtDate(featured.date)} · {featured.pages} pages</p>
