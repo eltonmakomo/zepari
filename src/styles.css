@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Public Sans", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
@@ -133,6 +133,33 @@
 
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @utility animate-rise { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Glassmorphism */
+@utility glass {
+  background: oklch(1 0 0 / 55%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid oklch(1 0 0 / 60%);
+  box-shadow: 0 8px 32px -12px oklch(0.2 0.03 245 / 25%);
+}
+@utility glass-dark {
+  background: oklch(0.22 0.045 245 / 45%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid oklch(1 0 0 / 14%);
+  box-shadow: 0 12px 40px -12px oklch(0 0 0 / 45%);
+}
+@utility mesh-hero {
+  background:
+    radial-gradient(60% 70% at 85% 10%, oklch(0.58 0.14 45 / 55%), transparent 60%),
+    radial-gradient(50% 60% at 10% 90%, oklch(0.76 0.13 78 / 35%), transparent 60%),
+    radial-gradient(70% 80% at 40% 40%, oklch(0.32 0.075 245), oklch(0.16 0.04 245));
+}
+@utility text-gradient {
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+  background-clip: text;
+  color: transparent;
+}
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@utility animate-floaty { animation: floaty 7s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
