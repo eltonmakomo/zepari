@@ -30,23 +30,23 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-ink relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
-        <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
+      <section className="bg-background relative -mt-[76px] overflow-hidden pt-[76px] text-foreground">
+        <div className="pattern-dzimbahwe-light pattern-fade absolute inset-0" aria-hidden />
         <div className="container-z relative grid items-center gap-12 pb-24 pt-14 lg:grid-cols-12 lg:pt-24">
           <div className="animate-rise lg:col-span-6">
             <h1 className="mt-7 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-              Evidence that shapes <span className="text-gold">Zimbabwe's</span> economic future.
+              Evidence that shapes <span className="text-accent">Zimbabwe's</span> economic future.
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-ink-foreground/75">
+            <p className="mt-8 max-w-xl text-lg text-muted-foreground">
               ZEPARI produces independent, contextually relevant research and convenes the dialogues where policy is debated — so decisions are made on evidence, not assumption.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link to="/publications" className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:shadow-card">Explore research <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/policy-dialogue" className="glass-dark inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition hover:text-gold">Upcoming dialogues</Link>
+              <Link to="/policy-dialogue" className="inline-flex items-center gap-2 rounded-full border bg-card px-6 py-3.5 text-sm font-semibold transition hover:text-accent">Upcoming dialogues</Link>
             </div>
           </div>
           <div className="relative lg:col-span-6">
-            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full object-cover shadow-2xl ring-1 ring-ink-foreground/15" />
+            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full object-cover shadow-2xl ring-1 ring-border" />
             <Link to="/publications/$slug" params={{ slug: featured.slug }}
               className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 p-6 md:left-auto md:right-6 md:w-96">
               <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
