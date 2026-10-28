@@ -167,11 +167,12 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
 
 export function PageHeader({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children?: ReactNode }) {
   return (
-    <section className="border-b bg-paper">
-      <div className="container-z animate-rise py-16 md:py-24">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-4 max-w-4xl text-4xl leading-[1.05] md:text-6xl">{title}</h1>
-        {intro && <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{intro}</p>}
+    <section className="mesh-hero relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
+      <div className="pattern-dzimbahwe absolute inset-0 opacity-70" aria-hidden />
+      <div className="container-z relative animate-rise py-16 md:py-24">
+        <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
+        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
+        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/75">{intro}</p>}
         {children}
       </div>
     </section>

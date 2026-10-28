@@ -30,39 +30,41 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="container-z grid items-end gap-10 pb-16 pt-12 lg:grid-cols-12 lg:pt-20">
+      <section className="mesh-hero relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
+        <div className="pattern-dzimbahwe absolute inset-0 opacity-70" aria-hidden />
+        <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-gold/30 blur-3xl" aria-hidden />
+        <div className="container-z relative grid items-center gap-12 pb-24 pt-14 lg:grid-cols-12 lg:pt-24">
           <div className="animate-rise lg:col-span-6">
-            <p className="eyebrow">Zimbabwe Economic Policy Analysis & Research Institute</p>
-            <h1 className="mt-6 text-5xl leading-[1.02] md:text-7xl">
-              Evidence that shapes <em className="text-accent">Zimbabwe's</em> economic future.
+            <span className="glass-dark inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold"><span className="h-1.5 w-1.5 rounded-full bg-gold" /> Independent think tank · Since 2003</span>
+            <h1 className="mt-7 text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
+              Evidence that shapes <span className="text-gradient">Zimbabwe's</span> economic future.
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-muted-foreground">
-              Since 2003, ZEPARI has produced independent, contextually relevant research and convened the dialogues where policy is debated — so decisions are made on evidence, not assumption.
+            <p className="mt-8 max-w-xl text-lg text-ink-foreground/75">
+              ZEPARI produces independent, contextually relevant research and convenes the dialogues where policy is debated — so decisions are made on evidence, not assumption.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link to="/publications" className="inline-flex items-center gap-2 rounded bg-ink px-6 py-3.5 text-sm font-semibold text-ink-foreground transition hover:bg-primary">Explore research <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/policy-dialogue" className="inline-flex items-center gap-2 rounded border border-foreground/20 px-6 py-3.5 text-sm font-semibold transition hover:border-accent hover:text-accent">Upcoming dialogues</Link>
+              <Link to="/publications" className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:shadow-card">Explore research <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/policy-dialogue" className="glass-dark inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition hover:text-gold">Upcoming dialogues</Link>
             </div>
           </div>
           <div className="relative lg:col-span-6">
-            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full rounded-sm object-cover" />
+            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl ring-1 ring-ink-foreground/15" />
             <Link to="/publications/$slug" params={{ slug: featured.slug }}
-              className="group absolute -bottom-8 left-4 right-4 rounded-sm bg-card p-6 shadow-card transition hover:-translate-y-1 md:left-auto md:right-6 md:w-96">
-              <div className="flex items-center justify-between"><span className="eyebrow">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
-              <p className="mt-3 font-display text-xl leading-snug group-hover:text-accent">{featured.title}</p>
-              <p className="mt-3 text-xs text-muted-foreground">{fmtDate(featured.date)} · {featured.pages} pages</p>
+              className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 rounded-2xl p-6 md:left-auto md:right-6 md:w-96">
+              <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
+              <p className="mt-3 font-display text-xl leading-snug group-hover:text-gold">{featured.title}</p>
+              <p className="mt-3 text-xs text-ink-foreground/60">{fmtDate(featured.date)} · {featured.pages} pages</p>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Stats band */}
-      <section className="mt-12 border-y bg-paper">
-        <div className="container-z grid grid-cols-2 divide-x md:grid-cols-4">
+      <section className="container-z relative z-10 -mt-6">
+        <div className="glass grid grid-cols-2 rounded-3xl md:grid-cols-4">
           {impactStats.map((s) => (
-            <div key={s.label} className="px-4 py-10 first:pl-0 md:px-8">
-              <div className="font-display text-4xl md:text-5xl">{s.value}</div>
+            <div key={s.label} className="px-6 py-8 md:px-8">
+              <div className="font-display text-4xl font-semibold text-gradient md:text-5xl">{s.value}</div>
               <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
             </div>
           ))}
