@@ -160,6 +160,12 @@
   border: 1px solid oklch(1 0 0 / 14%);
   box-shadow: 0 12px 40px -12px oklch(0 0 0 / 45%);
 }
+
+/* Locked-content preview: text continues but is blurred and fades out under the paywall card */
+@utility preview-fade {
+  filter: blur(8px);
+  mask-image: linear-gradient(180deg, oklch(1 0 0) 0%, oklch(1 0 0 / 60%) 40%, transparent 100%);
+}
 @utility pattern-fade {
   -webkit-mask-image: linear-gradient(180deg, oklch(1 0 0 / 90%) 0%, oklch(1 0 0 / 35%) 45%, transparent 85%);
   mask-image: linear-gradient(180deg, oklch(1 0 0 / 90%) 0%, oklch(1 0 0 / 35%) 45%, transparent 85%);
