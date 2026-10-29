@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, TrendingUp, Banknote, Ship, Users, Wheat, Landmark, Zap, type LucideIcon } from "lucide-react";
+
+const themeIcons: Record<string, LucideIcon> = {
+  macro: TrendingUp, finance: Banknote, trade: Ship, poverty: Users,
+  agriculture: Wheat, governance: Landmark, energy: Zap,
+};
 import hero from "@/assets/hero.jpg";
 import dialogue from "@/assets/dialogue.jpg";
 import researcher from "@/assets/researcher.jpg";
