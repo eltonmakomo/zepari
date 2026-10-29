@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { CheckCircle2, Download, Eye, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { AccessBadge, ThemeTags } from "@/components/site/Cards";
-import { Paywall } from "@/components/site/Paywall";
+import { PaywallPreview } from "@/components/site/Paywall";
 import { RelatedContent, ShareBar } from "@/components/site/Share";
 import { authorName, fmtDate, getPerson, getPublication } from "@/content/queries";
 import { useOwns } from "@/lib/purchases";
@@ -87,7 +87,11 @@ function PublicationPage() {
                 {owns && <p className="bg-paper p-5 text-sm">Full text unlocked. Download the complete PDF for all chapters, tables and annexes.</p>}
               </div>
             ) : (
-              <div className="mt-12 not-prose"><Paywall slug={p.slug} access={p.access} kind="publication" /></div>
+              <PaywallPreview slug={p.slug} access={p.access} kind="publication">
+                <h2>Policy recommendations</h2>
+                <ul>{p.recommendations.map((r) => <li key={r}>{r}</li>)}</ul>
+                <p className="not-prose text-sm">The full text continues with chapter analysis, data tables and annexes.</p>
+              </PaywallPreview>
             )}
           </div>
           <aside className="lg:col-span-4">
