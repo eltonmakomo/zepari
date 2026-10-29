@@ -26,8 +26,8 @@ export function Paywall(props: PaywallProps) {
 export function PaywallPreview({ children, slug, access, kind }: PaywallProps & { children: ReactNode }) {
   return (
     <div className="relative mt-12">
-      <div aria-hidden className="pointer-events-none select-none preview-fade">{children}</div>
-      <div className="relative -mt-32 sm:-mt-40 md:-mt-48">
+      <div aria-hidden className="min-h-72 pointer-events-none select-none preview-fade md:min-h-96">{children}</div>
+      <div className="relative -mt-36 sm:-mt-44 md:-mt-52">
         <PaywallCard slug={slug} access={access} kind={kind} />
       </div>
     </div>
