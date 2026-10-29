@@ -113,16 +113,13 @@
   height: 4px;
 }
 
+/* Patterns retired by design request; utilities kept as no-ops */
 @utility pattern-dzimbahwe {
-  /* Chevron motif inspired by Great Zimbabwe stonework */
-  background-image: repeating-linear-gradient(135deg, oklch(1 0 0 / 3%) 0 2px, transparent 2px 14px),
-    repeating-linear-gradient(45deg, oklch(1 0 0 / 3%) 0 2px, transparent 2px 14px);
+  background-image: none;
 }
 
 @utility pattern-dzimbahwe-light {
-  /* Same chevron motif, dark strokes for light backgrounds */
-  background-image: repeating-linear-gradient(135deg, oklch(0.2 0.03 245 / 4%) 0 2px, transparent 2px 14px),
-    repeating-linear-gradient(45deg, oklch(0.2 0.03 245 / 4%) 0 2px, transparent 2px 14px);
+  background-image: none;
 }
 
 @utility prose-z {
