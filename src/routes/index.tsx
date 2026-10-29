@@ -118,7 +118,6 @@ function Home() {
                 params={{ theme: t.id }}
                 className={`group relative flex min-h-64 flex-col justify-end overflow-hidden border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg ${big ? "border-transparent bg-accent text-accent-foreground sm:col-span-2" : `${tint} border-transparent hover:border-accent/40`}`}
               >
-                <div aria-hidden className={`absolute -right-10 -top-10 rounded-full border-[3px] transition duration-500 group-hover:scale-105 ${big ? "h-60 w-60 border-accent-foreground/30" : "h-40 w-40 border-accent/20"}`} />
                 <span className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${big ? "text-accent-foreground/80" : "text-muted-foreground"}`}>Area 0{i + 1}</span>
                 <h3 className={`mt-3 leading-snug ${big ? "text-3xl" : "text-xl group-hover:text-accent"}`}>{t.name}</h3>
                 <p className={`mt-2 line-clamp-2 text-sm ${big ? "max-w-md text-accent-foreground/80" : "text-muted-foreground"}`}>{t.short} — {t.description}</p>
