@@ -65,12 +65,19 @@ export function PublicationCard({ p, layout = "vertical" }: { p: Publication; la
   );
 }
 
-export function ArticleCard({ a, large }: { a: Article; large?: boolean }) {
+export function ArticleCard({ a, large, noImage }: { a: Article; large?: boolean; noImage?: boolean }) {
   return (
-    <article className="group">
-      {a.image && (
+    <article className="group flex flex-col">
+      {!noImage && (
         <Link to="/insights/$slug" params={{ slug: a.slug }} className={`mb-4 block overflow-hidden ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`} tabIndex={-1}>
-          <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+          {a.image ? (
+            <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+          ) : (
+            <div className="flex h-full w-full flex-col justify-between bg-primary p-6 text-primary-foreground transition duration-700 group-hover:scale-105">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">ZEPARI · {a.kind}</span>
+              <span className="font-display text-xl leading-snug line-clamp-3">{a.title}</span>
+            </div>
+          )}
         </Link>
       )}
       <div className="flex items-center gap-3 text-xs text-muted-foreground">
