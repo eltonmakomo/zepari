@@ -35,7 +35,7 @@ export function RelatedContent({ themes, exclude }: { themes: ThemeId[]; exclude
             <div className="grid gap-10 sm:grid-cols-3">{r.publications.map((p) => <PublicationCard key={p.slug} p={p} />)}</div>
           </div>
           <div className="space-y-8">
-            {r.articles.slice(0, 2).map((a) => <ArticleCard key={a.slug} a={{ ...a, image: undefined }} />)}
+            {r.articles.slice(0, 2).map((a) => <ArticleCard key={a.slug} a={a} noImage />)}
             {r.events.slice(0, 1).map((e) => <EventCard key={e.slug} e={e} />)}
           </div>
         </div>
