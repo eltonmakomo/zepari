@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ThemeTags } from "@/components/site/Cards";
-import { Paywall } from "@/components/site/Paywall";
+import { Paywall, PaywallPreview } from "@/components/site/Paywall";
 import { RelatedContent, ShareBar } from "@/components/site/Share";
 import { authorName, fmtDate, getArticle, getPublication } from "@/content/queries";
 import { useOwns } from "@/lib/purchases";
@@ -41,7 +41,13 @@ function ArticlePage() {
         <div className="container-z max-w-3xl py-14">
           <p className="mb-8 font-display text-2xl leading-snug">{a.excerpt}</p>
           <div className="prose-z">{body.map((p, i) => <p key={i}>{p}</p>)}</div>
-          {!unlocked && <div className="mt-10"><Paywall slug={a.slug} access={a.access} kind="article" /></div>}
+          {!unlocked && (a.body.length > 1 ? (
+            <PaywallPreview slug={a.slug} access={a.access} kind="article">
+              <div className="prose-z">{a.body.slice(1).map((p, i) => <p key={i}>{p}</p>)}</div>
+            </PaywallPreview>
+          ) : (
+            <div className="mt-10"><Paywall slug={a.slug} access={a.access} kind="article" /></div>
+          ))}
           <div className="mt-10"><ThemeTags ids={a.themes} /></div>
           {rel && (
             <Link to="/publications/$slug" params={{ slug: rel.slug }} className="mt-12 block border-l-4 border-gold bg-paper p-6 hover:bg-muted">
