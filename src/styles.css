@@ -40,9 +40,9 @@
 :root {
   --radius: 0.25rem;
   /* Warm paper, deep Zambezi ink, msasa ochre, Great Zimbabwe terracotta */
-  --background: oklch(0.985 0.006 85);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.2 0.03 245);
-  --paper: oklch(0.955 0.014 82);
+  --paper: oklch(0.975 0.007 82);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.03 245);
   --popover: oklch(1 0 0);
