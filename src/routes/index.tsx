@@ -30,7 +30,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background relative -mt-[76px] overflow-hidden pt-[76px] text-foreground">
+      <section className="bg-background relative overflow-hidden text-foreground">
         <div className="pattern-dzimbahwe-light pattern-fade absolute inset-0" aria-hidden />
         <div className="container-z relative grid items-center gap-12 pb-24 pt-14 lg:grid-cols-12 lg:pt-24">
           <div className="animate-rise lg:col-span-6">

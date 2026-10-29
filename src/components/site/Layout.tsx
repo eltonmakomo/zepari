@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { site } from "@/content/data";
 import { NewsletterForm } from "./Newsletter";
 import logo from "@/assets/zepari-logo.jpg.asset.json";
@@ -53,15 +53,27 @@ function Logo({ light }: { light?: boolean }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setOpen(false);
     navigate({ to: "/search", search: { q } });
   };
   return (
-    <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="glass container-z flex h-16 items-center justify-between gap-6 rounded-2xl">
+    <header
+      className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        scrolled ? "glass" : "border-transparent bg-card"
+      }`}
+    >
+      <div className="container-z flex h-16 items-center justify-between gap-6">
+
 
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
@@ -167,7 +179,7 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
 
 export function PageHeader({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children?: ReactNode }) {
   return (
-    <section className="bg-ink relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
+    <section className="bg-ink relative overflow-hidden text-ink-foreground">
       <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
       <div className="container-z relative animate-rise py-16 md:py-24">
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
