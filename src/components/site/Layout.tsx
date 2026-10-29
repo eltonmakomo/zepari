@@ -179,7 +179,7 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
 
 export function PageHeader({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children?: ReactNode }) {
   return (
-    <section className="bg-ink relative -mt-[76px] overflow-hidden pt-[76px] text-ink-foreground">
+    <section className="bg-ink relative overflow-hidden text-ink-foreground">
       <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
       <div className="container-z relative animate-rise py-16 md:py-24">
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
