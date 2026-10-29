@@ -44,7 +44,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 
 function Logo({ light }: { light?: boolean }) {
   return (
-    <Link to="/" className="flex items-center border-0 outline-none ring-0" aria-label="ZEPARI home">
+    <Link to="/" className="flex items-center overflow-hidden rounded-xl border-0 outline-none ring-0" aria-label="ZEPARI home">
       <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto md:h-10" />
     </Link>
   );
