@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, TrendingUp, Banknote, Ship, Users, Wheat, Landmark, Zap, type LucideIcon } from "lucide-react";
+
+const themeIcons: Record<string, LucideIcon> = {
+  macro: TrendingUp, finance: Banknote, trade: Ship, poverty: Users,
+  agriculture: Wheat, governance: Landmark, energy: Zap,
+};
 import hero from "@/assets/hero.jpg";
 import dialogue from "@/assets/dialogue.jpg";
 import researcher from "@/assets/researcher.jpg";
@@ -107,20 +112,29 @@ function Home() {
       {/* Research themes */}
       <section className="container-z py-24">
         <SectionHead eyebrow="Research areas" title="Where we focus" to="/research" cta="All research areas" />
-        <div className="grid gap-px overflow-hidden border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {themes.map((t, i) => (
-            <Link key={t.id} to="/research/$theme" params={{ theme: t.id }} className="group flex min-h-52 flex-col justify-between bg-card p-6 transition hover:bg-paper">
-              <span className="font-display text-sm text-muted-foreground">0{i + 1}</span>
-              <div>
-                <h3 className="text-xl leading-snug group-hover:text-accent">{t.name}</h3>
-                <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{t.description}</p>
-              </div>
-            </Link>
-          ))}
-          <Link to="/publications" className="flex min-h-52 flex-col justify-end bg-accent p-6 text-accent-foreground">
-            <h3 className="text-xl">Browse the full archive</h3>
-            <ArrowRight className="mt-3 h-5 w-5" />
-          </Link>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {themes.map((t, i) => {
+            const Icon = themeIcons[t.id] ?? Landmark;
+            const big = i === 0;
+            return (
+              <Link
+                key={t.id}
+                to="/research/$theme"
+                params={{ theme: t.id }}
+                className={`group relative flex min-h-64 flex-col justify-end overflow-hidden border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg ${big ? "border-transparent bg-accent text-accent-foreground sm:col-span-2" : "bg-paper hover:border-accent/40"}`}
+              >
+                <div aria-hidden className={`absolute -right-10 -top-10 grid place-items-center rounded-full border-[3px] transition duration-500 group-hover:scale-105 ${big ? "h-60 w-60 border-accent-foreground/30" : "h-40 w-40 border-accent/20"}`}>
+                  <Icon className={big ? "h-24 w-24 text-accent-foreground/40" : "h-14 w-14 text-accent/25"} strokeWidth={1.5} />
+                </div>
+                <span className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${big ? "text-accent-foreground/80" : "text-muted-foreground"}`}>Area 0{i + 1}</span>
+                <h3 className={`mt-3 leading-snug ${big ? "text-3xl" : "text-xl group-hover:text-accent"}`}>{t.name}</h3>
+                <p className={`mt-2 line-clamp-2 text-sm ${big ? "max-w-md text-accent-foreground/80" : "text-muted-foreground"}`}>{t.short} — {t.description}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest">
+                  Explore <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
