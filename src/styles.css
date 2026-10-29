@@ -49,12 +49,12 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.2 0.03 245);
   --paper: oklch(0.975 0.007 82);
-  --tint-1: oklch(0.95 0.04 85);
-  --tint-2: oklch(0.95 0.035 230);
-  --tint-3: oklch(0.95 0.04 150);
-  --tint-4: oklch(0.95 0.035 25);
-  --tint-5: oklch(0.95 0.03 290);
-  --tint-6: oklch(0.95 0.04 190);
+  --tint-1: oklch(0.975 0.015 85);
+  --tint-2: oklch(0.975 0.012 230);
+  --tint-3: oklch(0.975 0.015 150);
+  --tint-4: oklch(0.975 0.012 25);
+  --tint-5: oklch(0.975 0.01 290);
+  --tint-6: oklch(0.975 0.015 190);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.03 245);
   --popover: oklch(1 0 0);
