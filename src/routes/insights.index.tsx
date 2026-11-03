@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { z } from "zod";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { ArticleCard } from "@/components/site/Cards";
 import { articles } from "@/content/data";
 import { byDateDesc } from "@/content/queries";
@@ -20,7 +20,7 @@ function Insights() {
   const list = articles.filter((a) => kind === "All" || a.kind === kind).sort(byDateDesc);
   return (
     <>
-      <PageHeader eyebrow="Insights" title="Analysis for the moment." intro="Timely news, explainers, blogs and commentary that translate our research into clear arguments about Zimbabwe's economy." />
+      <PageHeader image={banners.research} eyebrow="Insights" title="Analysis for the moment." intro="Timely news, explainers, blogs and commentary that translate our research into clear arguments about Zimbabwe's economy." />
       <section className="container-z py-12">
         <div role="tablist" aria-label="Filter by type" className="mb-12 flex flex-wrap gap-2 border-b pb-6">
           {kinds.map((k) => (

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Download, Eye } from "lucide-react";
 import { toast } from "sonner";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { fmtDate, getArticle, getPublication } from "@/content/queries";
 import { usePurchases } from "@/lib/purchases";
 
@@ -14,7 +14,7 @@ function Account() {
   const list = usePurchases();
   return (
     <>
-      <PageHeader eyebrow="Account" title="My library" intro="Everything you've purchased, available to read and download at any time." />
+      <PageHeader image={banners.research} eyebrow="Account" title="My library" intro="Everything you've purchased, available to read and download at any time." />
       <section className="container-z py-16">
         {list.length === 0 ? (
           <div className="bg-paper p-12 text-center">

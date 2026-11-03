@@ -19,7 +19,7 @@ export function GrowthChart() {
     <figure>
       <figcaption className="mb-4 flex flex-wrap items-center justify-between gap-2 text-sm">
         <span className="font-display text-lg">Real GDP growth vs formal job growth, %</span>
-        <span className="flex gap-4 text-xs text-ink-foreground/70">
+        <span className="flex gap-4 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5"><i className="h-2 w-3 bg-gold" /> GDP</span>
           <span className="flex items-center gap-1.5"><i className="h-0.5 w-4 bg-accent" /> Formal jobs</span>
         </span>
@@ -37,7 +37,7 @@ export function GrowthChart() {
         <polyline fill="none" stroke="var(--accent)" strokeWidth={2.5} points={growth.map((d, i) => `${x(i)},${y(d.jobs)}`).join(" ")} />
         {growth.map((d, i) => <circle key={d.y} cx={x(i)} cy={y(d.jobs)} r={3.5} fill="var(--accent)" />)}
       </svg>
-      <p className="mt-3 text-xs text-ink-foreground/50">Source: ZEPARI estimates (illustrative). See the Economic Barometer for official series.</p>
+      <p className="mt-3 text-xs text-muted-foreground">Source: ZEPARI estimates (illustrative). See the Economic Barometer for official series.</p>
     </figure>
   );
 }

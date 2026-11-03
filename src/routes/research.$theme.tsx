@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { ArticleCard, EventCard, PublicationCard, SectionHead } from "@/components/site/Cards";
 import { PersonCard } from "@/components/site/PersonCard";
 import { articles, events, people, publications, themes } from "@/content/data";
@@ -24,7 +24,7 @@ function ThemePage() {
   const experts = people.filter((p) => p.group === "team" && p.themes?.includes(theme.id));
   return (
     <>
-      <PageHeader eyebrow="Research area" title={theme.name} intro={theme.description}>
+      <PageHeader image={banners.workshop} eyebrow="Research area" title={theme.name} intro={theme.description}>
         <ul className="mt-8 flex flex-wrap gap-2">
           {theme.questions.map((q) => <li key={q} className="border bg-card px-4 py-2 text-sm">{q}</li>)}
         </ul>

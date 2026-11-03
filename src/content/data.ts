@@ -1,4 +1,5 @@
-import type { Article, EventItem, MediaItem, Person, Publication, Theme } from "./types";
+import type { Article, EventItem, MediaItem, Partner, Person, Publication, Theme } from "./types";
+import { liveArticles, liveEvents, livePublications, liveVideos } from "./live";
 
 const F = "https://zepari.co.zw/sites/default/files";
 
@@ -28,18 +29,18 @@ export const themes: Theme[] = [
 ];
 
 export const people: Person[] = [
-  { slug: "gibson-chigumira", name: "Dr. Gibson Chigumira", role: "Executive Director", group: "team", photo: `${F}/2018-03/chigumira_0.jpg`, bio: "Dr Chigumira leads ZEPARI's research and policy engagement programme, with expertise in trade policy, industrial competitiveness and structural transformation. He also serves as an ex-officio member of the Board of Trustees.", themes: ["macro", "trade"] },
-  { slug: "ngosi-shumba", name: "Ngosi Shumba", role: "Finance and Administration Manager", group: "team", bio: "Oversees finance, administration and operations at ZEPARI." },
-  { slug: "erinah-chipumho", name: "Erinah Chipumho", role: "Senior Research Fellow", group: "team", bio: "Senior Research Fellow working on macroeconomic policy and public finance.", themes: ["macro", "governance"] },
-  { slug: "evangelista-mudzonga", name: "Evangelista Mudzonga", role: "Senior Research Fellow", group: "team", bio: "Senior Research Fellow focusing on trade, industry and structural transformation.", themes: ["trade", "macro"] },
-  { slug: "esnath-nyamunga", name: "Esnath Nyamunga", role: "Finance and Administration Assistant", group: "team", bio: "Supports finance and administrative functions at ZEPARI." },
+  { slug: "gibson-chigumira", name: "Dr. Gibson Chigumira", role: "Executive Director", group: "team", photo: `${F}/2018-03/chigumira.jpg`, bio: "Gibson Chigumira has extensive experience in research, including coordinating research studies, editing publications and developing data bases, having been at the helm of the institution since it started operating in 2004. Dr. G. Chigumira has also done work in his individual capacity for civil society organizations such as NANGO, Action AID and ZIMCOD.", themes: ["macro", "trade"] },
+  { slug: "ngosi-shumba", name: "Ngosi Shumba", role: "Finance and Administration Manager", group: "team", photo: `${F}/2018-03/shumba.jpg`, bio: "Ngosi Shumba holds a Bachelor of Accountancy Honours Degree from the University of Zimbabwe (UZ). He is also an Associate member of the Chartered Institute of Secretaries and Administrators (CIS) and holds an MBA in Finance from the University of Wales. He has extensive experience in auditing, accounting and finance." },
+  { slug: "erinah-chipumho", name: "Erinah Chipumho", role: "Senior Research Fellow", group: "team", photo: `${F}/2018-03/erinah.jpg`, bio: "Erinah Chipumho is an Economist with more than 10 years of experience in economic policy research. She joined ZEPARU in January 2005 as a Research Fellow and rose to the post of Senior Research Fellow in February 2011. She holds a Bachelors and a Master’s degree in Economics obtained from the University of Zimbabwe.", themes: ["macro", "governance"] },
+  { slug: "evangelista-mudzonga", name: "Evangelista Mudzonga", role: "Senior Research Fellow", group: "team", photo: `${F}/2018-03/madzonga.jpg`, bio: "Evangelista Mudzonga holds an MBA, MSc Economics and BSc Economics Degrees. She has over 11 years of national, regional and international trade policy analysis, trade negotiations and trade policy implementation experience, particularly on SADC, COMESA and EAC regions.", themes: ["trade", "macro"] },
+  { slug: "esnath-nyamunga", name: "Esnath Nyamunga", role: "Finance and Administration Assistant", group: "team", photo: `${F}/2026-07/eSNATH%20GIMP2.jpeg`, bio: "Supports finance and administrative functions at ZEPARI." },
   { slug: "jesimen-chipika", name: "Dr. Jesimen Chipika", role: "Chairperson", affiliation: "Reserve Bank of Zimbabwe, Deputy Governor", group: "board", photo: `${F}/2018-03/jesimen-chipika.jpg`, bio: "Chairperson of the ZEPARI Board of Trustees." },
   { slug: "isaac-kwesu", name: "Dr. Isaac Kwesu", role: "Trustee", affiliation: "Chamber of Mines", group: "board", photo: `${F}/2018-03/kwesu.jpg`, bio: "Trustee representing the Chamber of Mines." },
   { slug: "gibson-chigumira-board", name: "Dr. Gibson Chigumira", role: "Executive Director (Ex Officio)", affiliation: "ZEPARI", group: "board", photo: `${F}/2018-03/chigumira_0.jpg`, bio: "Ex-officio trustee." },
   { slug: "cornelius-dube", name: "Dr. Cornelius Dube", role: "Trustee", affiliation: "Confederation of Zimbabwe Industries (CZI)", group: "board", photo: `${F}/2023-01/Dube%203.jpg`, bio: "Trustee representing the Confederation of Zimbabwe Industries." },
 ];
 
-export const publications: Publication[] = [
+const curatedPublications: Publication[] = [
   {
     slug: "structural-transformation-zimbabwe",
     title: "A Diagnosis of Structural Transformation in Zimbabwe: Trends, Challenges, and Opportunities",
@@ -82,7 +83,7 @@ export const publications: Publication[] = [
   { slug: "working-paper-informality-jobs", title: "Informality and the Jobs Gap in Zimbabwe", type: "Working Paper", date: "2026-07-15", pages: 41, authors: ["evangelista-mudzonga"], themes: ["macro", "poverty"], abstract: "Working paper analysing why recent growth has not translated into formal employment and better incomes.", keyFindings: ["Most net job creation is informal and low-wage."], recommendations: ["Reduce the cost of formalisation for small firms."], access: { mode: "free" } },
 ];
 
-export const articles: Article[] = [
+const curatedArticles: Article[] = [
   { slug: "safe-sound-still-short-of-credit", title: "Safe, sound and still short of credit: the dilemma at the heart of Zimbabwe's banking sector", kind: "News", date: "2026-10-13", author: "ZEPARI", themes: ["finance"], image: `${F}/2026-10/Gemini_Generated_Image_49by0649by0649by.jpeg`, excerpt: "The Banking Industry Competition, Efficiency and Stability in Zimbabwe study finds a sector that is stable yet lending too little to the productive economy.", body: ["The Banking Industry Competition, Efficiency and Stability in Zimbabwe study by the Zimbabwe Economic Policy Analysis and Research Institute examines a paradox: Zimbabwe's banks are well capitalised and liquid, yet credit to the private sector remains thin.", "The study argues that the constraint is less about bank soundness and more about the macroeconomic environment — particularly currency uncertainty — and weaknesses in credit infrastructure.", "Recommendations include strengthening the collateral registry, providing a predictable monetary framework, and fostering competition through digital banking."], relatedPublication: "banking-competition-efficiency-stability", access: { mode: "free" } },
   { slug: "us454-billion-imperative", title: "The US$45.4 Billion Imperative: Unlocking Infrastructure to Drive Industrial Competitiveness", kind: "Explainer", date: "2026-09-17", author: "ZEPARI", themes: ["trade", "energy"], image: `${F}/2026-09/download_0.png`, excerpt: "Physical infrastructure constraints represent one of several bottlenecks to regional competitiveness for Zimbabwean businesses.", body: ["Physical infrastructure constraints represent one of several bottlenecks to regional competitiveness for Zimbabwean businesses.", "Closing the infrastructure gap — estimated at US$45.4 billion — requires blended finance, public-private partnerships and a credible project pipeline.", "Energy reliability and transport logistics are the most binding constraints identified by manufacturers."], relatedPublication: "afcfta-readiness-zimbabwe", access: { mode: "free" } },
   { slug: "jobs-paradox", title: "The Jobs Paradox: Why Zimbabwe's Economic Growth isn't translating into Better Income", kind: "Commentary", date: "2026-09-11", author: "evangelista-mudzonga", themes: ["macro", "poverty"], image: `${F}/2026-09/Zimbabwe%20economic%20insight%20banner%20infographic_0.png`, excerpt: "After years of navigating currency instability and external shocks, Zimbabwe's macroeconomic figures are painting a more positive picture — but households are not yet feeling it.", body: ["After years of navigating currency instability and external economic shocks, Zimbabwe's macroeconomic figures are painting a more positive picture.", "Yet the gains have not translated into better jobs and incomes. Most new employment is informal, low-productivity and poorly paid.", "Structural transformation — moving workers into higher-productivity activities — is the missing link."], relatedPublication: "working-paper-informality-jobs", access: { mode: "free" } },
@@ -90,7 +91,7 @@ export const articles: Article[] = [
   { slug: "devolution-what-works", title: "Devolution: what makes it work?", kind: "Blog", date: "2026-06-02", author: "erinah-chipumho", themes: ["governance"], excerpt: "Lessons from ZEPARI's policy dialogue on devolution and what they mean for provincial councils today.", body: ["Devolution remains one of the most consequential governance reforms in Zimbabwe's constitution.", "ZEPARI's dialogue identified predictable fiscal transfers, local capacity and citizen participation as the three pillars of success."], relatedPublication: "towards-successful-devolution", access: { mode: "free" } },
 ];
 
-export const events: EventItem[] = [
+const curatedEvents: EventItem[] = [
   { slug: "nds2-structural-transformation-dialogue", title: "Structural Transformation under NDS2: A High-Level Policy Dialogue", date: "2026-11-19", format: "Policy Dialogue", location: "Rainbow Towers, Harare", themes: ["macro", "trade"], summary: "Launch and discussion of ZEPARI's diagnosis of structural transformation with government, private sector and development partners.", agenda: [{ time: "08:30", item: "Registration" }, { time: "09:00", item: "Opening remarks" }, { time: "09:30", item: "Presentation of key findings" }, { time: "11:00", item: "Panel: Industrial policy for NDS2" }, { time: "12:30", item: "Closing & lunch" }], relatedPublication: "structural-transformation-zimbabwe" },
   { slug: "banking-study-webinar", title: "Webinar: Credit, Competition and Stability in Zimbabwe's Banks", date: "2026-12-04", format: "Webinar", location: "Online (Zoom)", themes: ["finance"], summary: "Researchers discuss the findings of the banking industry study with bankers and regulators.", relatedPublication: "banking-competition-efficiency-stability" },
   { slug: "economic-policy-management-training", title: "Economic Policy Management Short Course for Government Economists", date: "2027-01-26", endDate: "2027-01-30", format: "Training", location: "ZEPARI, Belvedere, Harare", themes: ["macro", "governance"], summary: "Tailor-made training in economic policy management for economists in ministries dealing with economic issues." },
@@ -99,14 +100,19 @@ export const events: EventItem[] = [
 ];
 
 export const media: MediaItem[] = [
-  { id: "v1", kind: "Video", title: "ZEPARI Technical Validation Workshop | Zimbabwe's Readiness, Opportunities & Trade Challenges", date: "2026-08-14", youtubeId: "Omr0c6ZWSAU", description: "Highlights from the AfCFTA readiness validation workshop.", themes: ["trade"] },
+  ...liveVideos,
   { id: "p1", kind: "Podcast", title: "Policy in Plain Terms, Ep. 4 — The jobs paradox", date: "2026-09-20", url: site.social.youtube, description: "Why growth hasn't meant better incomes, in 25 minutes.", themes: ["macro"] },
   { id: "p2", kind: "Podcast", title: "Policy in Plain Terms, Ep. 3 — Banks that won't lend", date: "2026-08-10", url: site.social.youtube, description: "Unpacking credit scarcity in a stable banking sector.", themes: ["finance"] },
-  { id: "n1", kind: "Newsletter", title: "ZEPARI Policy Digest — October 2026", date: "2026-10-20", url: "/publications", description: "Structural transformation launch, banking study and upcoming dialogues.", themes: ["macro", "finance"] },
-  { id: "n2", kind: "Newsletter", title: "ZEPARI Policy Digest — September 2026", date: "2026-09-22", url: "/publications", description: "Infrastructure imperative, jobs paradox and Q3 Barometer.", themes: ["trade"] },
 ];
 
-export const partners = ["African Capacity Building Foundation", "Government of Zimbabwe", "Reserve Bank of Zimbabwe", "Confederation of Zimbabwe Industries", "Chamber of Mines", "UNDP Zimbabwe", "African Development Bank", "European Union"];
+export const partners: Partner[] = [
+  { name: "COMESA", logo: `${F}/2018-02/comesa.jpg`, url: "https://www.comesa.int/" },
+  { name: "Food and Agriculture Organization of the United Nations", logo: `${F}/2018-02/FAO.jpg`, url: "https://www.fao.org/" },
+  { name: "United Nations Development Programme", logo: `${F}/2018-02/UNDP.jpg`, url: "https://www.undp.org/zimbabwe" },
+  { name: "IMC-BEEP", logo: `${F}/2018-02/ICM.jpg` },
+  { name: "African Development Bank", logo: `${F}/2018-02/Afro%20Dev%20Bank.jpg`, url: "https://www.afdb.org/" },
+  { name: "African Capacity Building Foundation", logo: `${F}/2018-02/ACBF.jpg`, url: "https://www.acbf-pact.org/" },
+];
 
 export const impactStats = [
   { value: "2003", label: "Established by Deed of Trust" },
@@ -114,3 +120,33 @@ export const impactStats = [
   { value: "1,500+", label: "Government economists trained" },
   { value: "60+", label: "Policy dialogues convened" },
 ];
+
+const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, "");
+const curatedTitles = new Set(curatedPublications.map((p) => norm(p.title)));
+
+/** Curated records (with richer metadata/paid settings) first, then everything imported from the live site. */
+export const publications: Publication[] = [
+  ...curatedPublications.map((p) => {
+    const live = livePublications.find((l) => norm(l.title) === norm(p.title));
+    const cover = p.cover ?? live?.cover;
+    return cover ? { ...p, cover } : p;
+  }),
+  ...livePublications.filter((l) => !curatedTitles.has(norm(l.title))),
+];
+
+// Live articles keep the slugs already linked from the site; curated metadata (themes, related study) is merged in.
+const slugMap: Record<string, string> = {
+  "safe-sound-and-still-short-credit-dilemma-heart-zimbabwes-banking-sector": "safe-sound-still-short-of-credit",
+  "us454-billion-imperative-unlocking-infrastructure-drive-industrial-competitiveness": "us454-billion-imperative",
+  "jobs-paradox-why-zimbabwes-economic-growth-isnt-translating-better-income": "jobs-paradox",
+};
+export const articles: Article[] = [
+  ...liveArticles.map((a) => {
+    const slug = slugMap[a.slug] ?? a.slug;
+    const c = curatedArticles.find((x) => x.slug === slug);
+    return { ...a, slug, ...(c ? { kind: c.kind, themes: c.themes, relatedPublication: c.relatedPublication, author: c.author } : {}) };
+  }),
+  ...curatedArticles.filter((c) => c.access.mode === "paid"),
+];
+
+export const events: EventItem[] = [...curatedEvents, ...liveEvents];

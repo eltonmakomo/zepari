@@ -1,7 +1,7 @@
 import { articles, events, people, publications, themes, media } from "./data";
 import type { ThemeId } from "./types";
 
-export const byDateDesc = <T extends { date: string }>(a: T, b: T) => b.date.localeCompare(a.date);
+export const byDateDesc = <T extends { date?: string | undefined }>(a: T, b: T) => (b.date ?? "").localeCompare(a.date ?? "");
 
 export const getTheme = (id: ThemeId) => themes.find((t) => t.id === id)!;
 export const getPerson = (slug: string) => people.find((p) => p.slug === slug);

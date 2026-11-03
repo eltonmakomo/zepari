@@ -3,6 +3,10 @@ import { ArrowUpRight, Calendar, Lock, MapPin, Play } from "lucide-react";
 import type { Article, EventItem, MediaItem, Publication, ThemeId } from "@/content/types";
 import { authorName, fmtDate, getTheme } from "@/content/queries";
 
+const covers = ["bg-cover-1", "bg-cover-2", "bg-cover-3", "bg-cover-4"];
+/** Stable colourful gradient per item, so cards without a photo are never plain. */
+export const coverFor = (key: string) => covers[[...key].reduce((n, c) => n + c.charCodeAt(0), 0) % covers.length];
+
 export function ThemeTags({ ids }: { ids: ThemeId[] }) {
   return (
     <div className="flex flex-wrap gap-1.5">
@@ -26,8 +30,8 @@ export function AccessBadge({ mode, price }: { mode: "free" | "paid"; price?: nu
 function Cover({ p }: { p: Publication }) {
   if (p.cover) return <img src={p.cover} alt="" loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />;
   return (
-    <div className="pattern-dzimbahwe flex h-full flex-col justify-between bg-ink p-5 text-ink-foreground">
-      <span className="text-[10px] uppercase tracking-[0.2em] text-gold">ZEPARI · {p.type}</span>
+    <div className={`flex h-full flex-col justify-between p-5 text-primary-foreground ${coverFor(p.slug)}`}>
+      <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground/80">ZEPARI · {p.type}</span>
       <span className="font-display text-lg leading-snug">{p.title}</span>
     </div>
   );
@@ -37,7 +41,7 @@ export function PublicationCard({ p, layout = "vertical" }: { p: Publication; la
   if (layout === "row")
     return (
       <article className="group grid gap-5 border-b py-6 sm:grid-cols-[96px_1fr]">
-        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden sm:block" tabIndex={-1}>{p.cover ? <Cover p={p} /> : <div className="pattern-dzimbahwe grid h-full place-items-center bg-ink font-display text-2xl text-gold">Z</div>}</Link>
+        <Link to="/publications/$slug" params={{ slug: p.slug }} className="hidden aspect-[3/4] overflow-hidden sm:block" tabIndex={-1}>{p.cover ? <Cover p={p} /> : <div className={`grid h-full place-items-center font-display text-2xl text-primary-foreground ${coverFor(p.slug)}`}>Z</div>}</Link>
         <div>
           <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <span className="font-semibold uppercase tracking-wider text-accent">{p.type}</span>
@@ -73,8 +77,8 @@ export function ArticleCard({ a, large, noImage }: { a: Article; large?: boolean
           {a.image ? (
             <img src={a.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
           ) : (
-            <div className="flex h-full w-full flex-col justify-between bg-primary p-6 text-primary-foreground transition duration-700 group-hover:scale-105">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">ZEPARI · {a.kind}</span>
+            <div className={`flex h-full w-full flex-col justify-between p-6 text-primary-foreground transition duration-700 group-hover:scale-105 ${coverFor(a.slug)}`}>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80">ZEPARI · {a.kind}</span>
               <span className="font-display text-xl leading-snug line-clamp-3">{a.title}</span>
             </div>
           )}
@@ -112,16 +116,16 @@ export function EventCard({ e }: { e: EventItem }) {
 }
 
 export function MediaCard({ m }: { m: MediaItem }) {
-  const thumb = m.youtubeId ? `https://i.ytimg.com/vi/${m.youtubeId}/hqdefault.jpg` : undefined;
+  const thumb = m.thumbnail ?? (m.youtubeId ? `https://i.ytimg.com/vi/${m.youtubeId}/hqdefault.jpg` : undefined);
   const href = m.youtubeId ? `https://www.youtube.com/watch?v=${m.youtubeId}` : m.url!;
   const external = href.startsWith("http");
   return (
     <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group block">
       <div className="relative aspect-video overflow-hidden bg-ink">
-        {thumb ? <img src={thumb} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:scale-105" /> : <div className="pattern-dzimbahwe h-full w-full" />}
+        {thumb ? <img src={thumb} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:scale-105" /> : <div className={`flex h-full w-full items-end p-5 font-display text-lg leading-snug text-primary-foreground ${coverFor(m.id)}`}><span className="ml-14 line-clamp-2">{m.title}</span></div>}
         <span className="absolute bottom-3 left-3 grid h-11 w-11 place-items-center bg-gold text-ink"><Play className="h-4 w-4" /></span>
       </div>
-      <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="font-semibold uppercase tracking-wider text-accent">{m.kind}</span><Calendar className="h-3 w-3" />{fmtDate(m.date)}</div>
+      <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="font-semibold uppercase tracking-wider text-accent">{m.kind}</span>{m.date && <><Calendar className="h-3 w-3" />{fmtDate(m.date)}</>}</div>
       <h3 className="mt-1 text-lg leading-snug group-hover:text-accent">{m.title}</h3>
     </a>
   );

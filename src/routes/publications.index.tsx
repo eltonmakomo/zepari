@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { z } from "zod";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { PublicationCard } from "@/components/site/Cards";
 import { publications, themes } from "@/content/data";
 import { authorName, byDateDesc } from "@/content/queries";
@@ -44,7 +44,7 @@ function Archive() {
 
   return (
     <>
-      <PageHeader eyebrow="Publications" title="The research archive" intro="Research studies, policy briefs, working papers, reports, press releases and the Economic Barometer — searchable across two decades of ZEPARI work." />
+      <PageHeader image={banners.research} eyebrow="Publications" title="The research archive" intro="Research studies, policy briefs, working papers, reports, press releases and the Economic Barometer — searchable across two decades of ZEPARI work." />
       <section className="container-z grid gap-12 py-16 lg:grid-cols-12">
         <aside className="lg:col-span-3" aria-label="Filters">
           <div className="space-y-5 lg:sticky lg:top-28">

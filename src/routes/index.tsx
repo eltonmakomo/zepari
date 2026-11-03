@@ -30,23 +30,22 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-background relative overflow-hidden text-foreground">
-        <div className="pattern-dzimbahwe-light pattern-fade absolute inset-0" aria-hidden />
+      <section className="bg-hero-blue relative overflow-hidden text-primary-foreground">
         <div className="container-z relative grid items-center gap-12 pb-24 pt-14 lg:grid-cols-12 lg:pt-24">
           <div className="animate-rise lg:col-span-6">
             <h1 className="mt-7 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-              Evidence that shapes <span className="text-accent">Zimbabwe's</span> economic future.
+              Evidence that shapes <span className="text-gold">Zimbabwe's</span> economic future.
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-muted-foreground">
+            <p className="mt-8 max-w-xl text-lg text-primary-foreground/80">
               ZEPARI produces independent, contextually relevant research and convenes the dialogues where policy is debated — so decisions are made on evidence, not assumption.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link to="/publications" className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:shadow-card">Explore research <ArrowRight className="h-4 w-4" /></Link>
-              <Link to="/policy-dialogue" className="inline-flex items-center gap-2 rounded-full border bg-card px-6 py-3.5 text-sm font-semibold transition hover:text-accent">Upcoming dialogues</Link>
+              <Link to="/policy-dialogue" className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/40 px-6 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10">Upcoming dialogues</Link>
             </div>
           </div>
           <div className="relative lg:col-span-6">
-            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full object-cover shadow-2xl ring-1 ring-border" />
+            <img src={hero} alt="ZEPARI economists reviewing research findings" width={1600} height={1104} className="aspect-[4/3] w-full object-cover shadow-2xl ring-1 ring-primary-foreground/20" />
             <Link to="/publications/$slug" params={{ slug: featured.slug }}
               className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 p-6 text-ink-foreground md:left-auto md:right-6 md:w-96">
               <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
@@ -87,18 +86,17 @@ function Home() {
       </section>
 
       {/* Why it matters + chart */}
-      <section className="relative bg-ink text-ink-foreground">
-        <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
+      <section className="relative border-t bg-paper text-foreground">
         <div className="container-z relative grid gap-14 py-24 lg:grid-cols-2">
           <div>
-            <p className="eyebrow text-gold">Why our work matters</p>
+            <p className="eyebrow">Why our work matters</p>
             <h2 className="mt-4 text-4xl leading-tight md:text-5xl">Growth has returned. The question is who it reaches.</h2>
-            <p className="mt-6 max-w-lg text-ink-foreground/70">
+            <p className="mt-6 max-w-lg text-muted-foreground">
               Zimbabwe's economy is recovering, but jobs, credit and incomes lag behind. ZEPARI's research follows the evidence from the national accounts to the household — informing government, business and development partners across Southern Africa.
             </p>
-            <Link to="/insights/$slug" params={{ slug: "jobs-paradox" }} className="mt-8 inline-flex items-center gap-2 font-semibold text-gold hover:underline">Read: The Jobs Paradox <ArrowUpRight className="h-4 w-4" /></Link>
+            <Link to="/insights/$slug" params={{ slug: "jobs-paradox" }} className="mt-8 inline-flex items-center gap-2 font-semibold text-accent hover:underline">Read: The Jobs Paradox <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
-          <div className="border border-ink-foreground/10 bg-ink-foreground/5 p-6">
+          <div className="border bg-card p-6">
             <GrowthChart />
           </div>
         </div>

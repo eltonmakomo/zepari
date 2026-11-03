@@ -174,6 +174,22 @@
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @utility animate-floaty { animation: floaty 7s ease-in-out infinite; }
 
+/* Homepage banner: deep blue with a soft diagonal gradient */
+@utility bg-hero-blue {
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 10%, oklch(0.5 0.13 245 / 55%), transparent 70%),
+    linear-gradient(135deg, oklch(0.24 0.07 252) 0%, oklch(0.33 0.1 245) 55%, oklch(0.42 0.11 232) 100%);
+}
+/* Image overlay for inside-page banners, keeps text readable */
+@utility bg-banner-overlay {
+  background: linear-gradient(90deg, oklch(0.2 0.06 250 / 92%) 0%, oklch(0.24 0.07 248 / 75%) 50%, oklch(0.3 0.08 240 / 40%) 100%);
+}
+/* Lively fallback covers for items without a thumbnail */
+@utility bg-cover-1 { background: linear-gradient(135deg, oklch(0.3 0.09 250), oklch(0.5 0.13 225) 60%, oklch(0.7 0.12 200)); }
+@utility bg-cover-2 { background: linear-gradient(135deg, oklch(0.35 0.1 30), oklch(0.58 0.14 45) 55%, oklch(0.78 0.13 78)); }
+@utility bg-cover-3 { background: linear-gradient(135deg, oklch(0.28 0.06 170), oklch(0.48 0.1 160) 55%, oklch(0.72 0.12 130)); }
+@utility bg-cover-4 { background: linear-gradient(135deg, oklch(0.27 0.08 290), oklch(0.45 0.12 270) 55%, oklch(0.66 0.12 240)); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
