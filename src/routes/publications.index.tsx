@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Paginated } from "@/components/site/Pager";
 import { Search } from "lucide-react";
 import { z } from "zod";
 import { PageHeader, banners } from "@/components/site/Layout";
