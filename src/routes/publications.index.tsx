@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Paginated } from "@/components/site/Pager";
 import { Search } from "lucide-react";
 import { z } from "zod";
 import { PageHeader, banners } from "@/components/site/Layout";
@@ -69,7 +70,7 @@ function Archive() {
         </aside>
         <div className="lg:col-span-9">
           <p className="border-b pb-4 text-sm text-muted-foreground" aria-live="polite">{results.length} {results.length === 1 ? "result" : "results"}</p>
-          {results.map((p) => <PublicationCard key={p.slug} p={p} layout="row" />)}
+          <Paginated items={results} perPage={12} render={(p) => <PublicationCard key={p.slug} p={p} layout="row" />} />
           {results.length === 0 && <p className="py-16 text-center text-muted-foreground">No publications match these filters.</p>}
         </div>
       </section>

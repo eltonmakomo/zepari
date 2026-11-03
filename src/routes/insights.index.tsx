@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Paginated } from "@/components/site/Pager";
 import { z } from "zod";
 import { PageHeader, banners } from "@/components/site/Layout";
 import { ArticleCard } from "@/components/site/Cards";
@@ -28,7 +29,7 @@ function Insights() {
               className={`rounded-full px-4 py-2 text-sm font-medium ${kind === k ? "bg-ink text-ink-foreground" : "bg-muted hover:bg-gold/30"}`}>{k}</button>
           ))}
         </div>
-        <div className="grid gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-3">{list.map((a) => <ArticleCard key={a.slug} a={a} />)}</div>
+        <Paginated items={list} perPage={9} className="grid gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-3" render={(a) => <ArticleCard key={a.slug} a={a} />} />
         {list.length === 0 && <p className="text-muted-foreground">Nothing here yet.</p>}
       </section>
     </>
