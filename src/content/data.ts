@@ -128,7 +128,8 @@ const curatedTitles = new Set(curatedPublications.map((p) => norm(p.title)));
 export const publications: Publication[] = [
   ...curatedPublications.map((p) => {
     const live = livePublications.find((l) => norm(l.title) === norm(p.title));
-    return { ...p, cover: p.cover ?? live?.cover };
+    const cover = p.cover ?? live?.cover;
+    return cover ? { ...p, cover } : p;
   }),
   ...livePublications.filter((l) => !curatedTitles.has(norm(l.title))),
 ];
