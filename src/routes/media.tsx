@@ -44,7 +44,7 @@ function Media() {
               className={`rounded-full px-4 py-2 text-sm font-medium ${kind === k ? "bg-ink text-ink-foreground" : "bg-muted hover:bg-gold/30"}`}>{k === "All" || k === "Photo gallery" ? k : k + "s"}</button>
           ))}
         </div>
-        {showMedia && <Paginated items={list} perPage={9} className="grid gap-10 md:grid-cols-3" render={(m) => <MediaCard key={m.id} m={m} />} />}
+        {showMedia && <Paginated items={ordered} perPage={9} className="grid gap-10 md:grid-cols-3" render={(m) => <MediaCard key={m.id} m={m} />} />}
         {showGallery && (
           <div className={showMedia ? "mt-20" : ""}>
             <h2 className="mb-8 text-3xl">Photo gallery</h2>
