@@ -1,8 +1,8 @@
-import bDialogue from "@/assets/banner-dialogue.jpg";
-import bWorkshop from "@/assets/banner-workshop.jpg";
-import bResearch from "@/assets/banner-research.jpg";
-import bMeeting from "@/assets/banner-meeting.jpg";
-import bPeople from "@/assets/banner-people.jpg";
+import bDialogue from "@/assets/live-banner-dialogue.jpg";
+import bWorkshop from "@/assets/live-banner-workshop.jpg";
+import bResearch from "@/assets/live-banner-research.jpg";
+import bMeeting from "@/assets/live-banner-meeting.jpg";
+import bPeople from "@/assets/live-banner-people.jpg";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
@@ -193,7 +193,7 @@ export const banners = {
 export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, children }: { eyebrow: string; title: string; intro?: string; image?: string; children?: ReactNode }) {
   return (
     <section className="relative overflow-hidden bg-ink text-ink-foreground">
-      <img src={image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-[75%_30%]" />
+      <img src={image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
       <div className="bg-banner-overlay absolute inset-0" aria-hidden />
       <div className="container-z relative animate-rise py-16 md:py-24">
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
