@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { Select } from "@/components/site/Select";
 import { PageHeader, banners, SocialLinks } from "@/components/site/Layout";
 import { site } from "@/content/data";
 import { seo } from "@/lib/seo";
@@ -48,9 +49,9 @@ function Contact() {
                 <label className="block text-sm"><span className="mb-1 block font-medium">Email</span><input type="email" className={inp} value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} maxLength={255} required /></label>
               </div>
               <label className="block text-sm"><span className="mb-1 block font-medium">Topic</span>
-                <select className={inp} value={f.topic} onChange={(e) => setF({ ...f, topic: e.target.value })}>
+                <Select className="px-3 py-3" value={f.topic} onChange={(e) => setF({ ...f, topic: e.target.value })}>
                   {["Research enquiry", "Consultancy", "Capacity building / training", "Media", "Events", "Publication purchase support", "Internships"].map((t) => <option key={t}>{t}</option>)}
-                </select></label>
+                </Select></label>
               <label className="block text-sm"><span className="mb-1 block font-medium">Message</span><textarea rows={6} className={inp} value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} maxLength={2000} required /></label>
               <button className="rounded bg-ink px-8 py-3.5 font-semibold text-ink-foreground hover:bg-primary">Send message</button>
             </form>

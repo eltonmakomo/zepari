@@ -23,7 +23,12 @@ function Media() {
   const { kind = "All" } = Route.useSearch();
   const navigate = useNavigate({ from: "/media" });
   const list = media.filter((m) => kind === "All" || m.kind === kind).sort(byDateDesc);
-  const lead = media.find((m) => m.youtubeId)!;
+  // The former featured video now leads the grid instead of sitting in its own big embed.
+  const leadId = media.find((m) => m.youtubeId)!.id;
+  const ordered = (() => {
+    const lead = list.find((m) => m.id === leadId);
+    return lead ? [lead, ...list.filter((m) => m.id !== leadId)] : list;
+  })();
   const showGallery = kind === "All" || kind === "Photo gallery";
   const showMedia = kind !== "Photo gallery";
   const [album, setAlbum] = useState<GalleryAlbum | null>(null);
@@ -33,19 +38,13 @@ function Media() {
         <SocialLinks className="mt-8" />
       </PageHeader>
       <section className="container-z py-16">
-        <div className="aspect-video overflow-hidden bg-ink">
-          <iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${lead.youtubeId}`} title={lead.title} allowFullScreen loading="lazy" />
-        </div>
-        <p className="mt-4 font-display text-2xl">{lead.title}</p>
-      </section>
-      <section className="container-z">
         <div role="tablist" className="mb-10 flex flex-wrap gap-2 border-b pb-6">
           {kinds.map((k) => (
             <button key={k} role="tab" aria-selected={kind === k} onClick={() => navigate({ search: { kind: k === "All" ? undefined : k } })}
               className={`rounded-full px-4 py-2 text-sm font-medium ${kind === k ? "bg-ink text-ink-foreground" : "bg-muted hover:bg-gold/30"}`}>{k === "All" || k === "Photo gallery" ? k : k + "s"}</button>
           ))}
         </div>
-        {showMedia && <Paginated items={list} perPage={9} className="grid gap-10 md:grid-cols-3" render={(m) => <MediaCard key={m.id} m={m} />} />}
+        {showMedia && <Paginated items={ordered} perPage={9} className="grid gap-10 md:grid-cols-3" render={(m) => <MediaCard key={m.id} m={m} />} />}
         {showGallery && (
           <div className={showMedia ? "mt-20" : ""}>
             <h2 className="mb-8 text-3xl">Photo gallery</h2>
