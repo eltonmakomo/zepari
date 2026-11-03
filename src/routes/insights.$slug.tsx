@@ -37,7 +37,7 @@ function ArticlePage() {
           <p className="mt-6 text-sm text-muted-foreground">{authorName(a.author)} · {fmtDate(a.date)}</p>
           <div className="mt-6 flex justify-center"><ShareBar title={a.title} /></div>
         </header>
-        {a.image && <img src={a.image} alt="" className="container-z mt-12 aspect-[21/9] max-w-6xl object-cover" />}
+        {a.image && <img src={a.image} alt="" className="container-z mt-12 aspect-[16/9] max-w-6xl object-cover" />}
         <div className="container-z max-w-3xl py-14">
           <p className="mb-8 font-display text-2xl leading-snug">{a.excerpt}</p>
           <div className="prose-z">{body.map((p, i) => <p key={i}>{p}</p>)}</div>

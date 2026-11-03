@@ -139,8 +139,7 @@ export function SiteFooter() {
       <div className="pattern-dzimbahwe absolute inset-0 opacity-60" aria-hidden />
       <div className="container-z relative grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <Logo light />
-          <p className="mt-6 max-w-md text-ink-foreground/70">{site.full}. Independent, evidence-based economic policy analysis for Zimbabwe since {site.founded}.</p>
+          <p className="max-w-md text-ink-foreground/70">{site.full}. Independent, evidence-based economic policy analysis for Zimbabwe since {site.founded}.</p>
           <div className="mt-8 max-w-md">
             <p className="mb-3 font-display text-xl">The Policy Digest, monthly.</p>
             <NewsletterForm tone="dark" />

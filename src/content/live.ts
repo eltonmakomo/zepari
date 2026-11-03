@@ -2339,7 +2339,7 @@ export const liveArticles: Article[] = [
    "Register today: moyod@zepari.co.zw, +263 (242) 785 926 or +263 (242) 778 423.",
    "ZEPARI • Evidence for better policy"
   ],
-  "image": "/__l5e/assets-v1/cf95f69e-3b92-416b-b61f-4e7af4dec7be/course-cover-branded.png",
+  "image": "/__l5e/assets-v1/4c210536-4be4-4b77-9f52-31ea3b3ada0d/course-cover-enhanced.png",
   "access": {
    "mode": "free"
   }
