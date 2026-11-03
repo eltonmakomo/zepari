@@ -78,12 +78,12 @@ function PublicationPage() {
           <div id="preview" className="prose-z lg:col-span-8">
             <h2 className="!mt-0">Abstract</h2>
             <p>{p.abstract}</p>
-            <h2>Key findings</h2>
-            <ul>{p.keyFindings.map((f) => <li key={f}>{f}</li>)}</ul>
+            {p.keyFindings.length > 0 && <><h2>Key findings</h2>
+            <ul>{p.keyFindings.map((f) => <li key={f}>{f}</li>)}</ul></>}
             {unlocked ? (
               <div id="full-text">
-                <h2>Policy recommendations</h2>
-                <ul>{p.recommendations.map((r) => <li key={r}>{r}</li>)}</ul>
+                {p.recommendations.length > 0 && <><h2>Policy recommendations</h2>
+                <ul>{p.recommendations.map((r) => <li key={r}>{r}</li>)}</ul></>}
                 {owns && <p className="bg-paper p-5 text-sm">Full text unlocked. Download the complete PDF for all chapters, tables and annexes.</p>}
               </div>
             ) : (

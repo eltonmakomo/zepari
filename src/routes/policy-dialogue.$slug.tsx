@@ -75,6 +75,8 @@ function EventPage() {
       </section>
       <section className="container-z grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-8">
+          {e.image && <img src={e.image} alt="" className="mb-10 w-full object-cover" />}
+          {e.details && <div className="prose-z mb-10">{e.details.map((d) => <p key={d}>{d}</p>)}</div>}
           {e.video && <div className="aspect-video overflow-hidden"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
           {e.agenda && (
             <><h2 className="mb-4 text-2xl">Programme</h2>

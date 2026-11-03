@@ -77,9 +77,16 @@ function About() {
         </div>
       </section>
       <section className="container-z pb-8">
-        <SectionHead eyebrow="Clients & partners" title="Who we work with" />
-        <ul className="grid grid-cols-2 gap-px border bg-border md:grid-cols-4">
-          {partners.map((p) => <li key={p} className="flex min-h-24 items-center bg-card p-5 font-display text-lg">{p}</li>)}
+        <SectionHead eyebrow="Partners" title="Who we work with" />
+        <ul className="grid grid-cols-2 gap-px border bg-border sm:grid-cols-3 lg:grid-cols-6">
+          {partners.map((p) => {
+            const img = <img src={p.logo} alt={p.name} title={p.name} loading="lazy" className="max-h-20 w-auto max-w-full object-contain" />;
+            return (
+              <li key={p.name} className="flex min-h-36 items-center justify-center bg-card p-6">
+                {p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="transition hover:opacity-80">{img}</a> : img}
+              </li>
+            );
+          })}
         </ul>
       </section>
     </>
