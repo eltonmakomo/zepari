@@ -2339,7 +2339,7 @@ export const liveArticles: Article[] = [
    "Register today: moyod@zepari.co.zw, +263 (242) 785 926 or +263 (242) 778 423.",
    "ZEPARI • Evidence for better policy"
   ],
-  "image": "https://zepari.co.zw/sites/default/files/2026-10/ZEPARI_Policy_Brief_Mar2027_1240x700_full_0.png",
+  "image": "/__l5e/assets-v1/cf95f69e-3b92-416b-b61f-4e7af4dec7be/course-cover-branded.png",
   "access": {
    "mode": "free"
   }
@@ -2737,7 +2737,7 @@ export const liveEvents: EventItem[] = [
    "Register today: moyod@zepari.co.zw, +263 (242) 785 926 or +263 (242) 778 423.",
    "ZEPARI • Evidence for better policy"
   ],
-  "image": "https://zepari.co.zw/index.php/sites/default/files/2026-10/ZEPARI_Policy_Brief_Mar2027_1240x700_full.png"
+  "image": "/__l5e/assets-v1/cf95f69e-3b92-416b-b61f-4e7af4dec7be/course-cover-branded.png"
  }
 ];
 
