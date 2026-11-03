@@ -182,7 +182,6 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
   );
 }
 
-const BANNER = "https://zepari.co.zw/sites/default/files/2018-06";
 export const banners = {
   dialogue: bDialogue,
   workshop: bWorkshop,
