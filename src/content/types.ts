@@ -91,15 +91,32 @@ export interface EventItem {
   agenda?: { time: string; item: string }[];
   video?: string; // YouTube id
   relatedPublication?: string;
+  /** Extra body paragraphs (e.g. imported from the live site). */
+  details?: string[];
+  image?: string;
 }
 
 export interface MediaItem {
   id: string;
   kind: "Video" | "Podcast" | "Newsletter" | "Photo";
   title: string;
-  date: string;
+  date?: string;
   youtubeId?: string;
+  thumbnail?: string;
   url?: string;
   description: string;
   themes: ThemeId[];
+}
+
+export interface GalleryAlbum {
+  slug: string;
+  title: string;
+  cover?: string | null;
+  images: (string | null)[];
+}
+
+export interface Partner {
+  name: string;
+  logo: string;
+  url?: string;
 }
