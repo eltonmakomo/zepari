@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import harare from "@/assets/harare.jpg";
 import field from "@/assets/field.jpg";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { SectionHead } from "@/components/site/Cards";
 import { impactStats, partners } from "@/content/data";
 import { seo } from "@/lib/seo";
@@ -32,7 +32,7 @@ const work = [
 function About() {
   return (
     <>
-      <PageHeader eyebrow="About us" title="An independent think tank for evidence-based policy in Zimbabwe."
+      <PageHeader image={banners.people} eyebrow="About us" title="An independent think tank for evidence-based policy in Zimbabwe."
         intro="The Zimbabwe Economic Policy Analysis and Research Institute (ZEPARI) is an autonomous economic policy analysis and research think tank established in the year 2003 by a Deed of Trust.">
         <div className="mt-8 flex gap-4 text-sm font-semibold">
           <Link to="/about/team" className="text-accent hover:underline">Our team →</Link>

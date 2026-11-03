@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { PageHeader, SocialLinks } from "@/components/site/Layout";
+import { PageHeader, banners, SocialLinks } from "@/components/site/Layout";
 import { site } from "@/content/data";
 import { seo } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ function Contact() {
   const inp = "w-full border bg-card px-3 py-3";
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Talk to ZEPARI." intro="For research enquiries, consultancy, media requests, partnerships and events." />
+      <PageHeader image={banners.meeting} eyebrow="Contact" title="Talk to ZEPARI." intro="For research enquiries, consultancy, media requests, partnerships and events." />
       <section className="container-z grid gap-16 py-20 lg:grid-cols-12">
         <div className="space-y-8 lg:col-span-5">
           <div><p className="eyebrow">Visit</p><p className="mt-2 font-display text-2xl">{site.address}</p></div>

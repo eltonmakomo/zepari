@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { PersonCard } from "@/components/site/PersonCard";
 import { people } from "@/content/data";
 import { seo } from "@/lib/seo";
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/about/governance")({
   head: () => seo("Governance & Board of Trustees", "ZEPARI is managed by an independent Board of Trustees under its Deed of Trust."),
   component: () => (
     <>
-      <PageHeader eyebrow="About · Governance" title="Board of Trustees" intro="The Deed of Trust that ZEPARI was established under stipulates that ZEPARI will be managed by an independent Board of Trustees." />
+      <PageHeader image={banners.meeting} eyebrow="About · Governance" title="Board of Trustees" intro="The Deed of Trust that ZEPARI was established under stipulates that ZEPARI will be managed by an independent Board of Trustees." />
       <section className="container-z grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-4">
         {people.filter((p) => p.group === "board").map((p) => <PersonCard key={p.slug} p={p} />)}
       </section>

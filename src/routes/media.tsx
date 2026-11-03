@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { useNavigate } from "@tanstack/react-router";
-import { PageHeader, SocialLinks } from "@/components/site/Layout";
+import { PageHeader, banners, SocialLinks } from "@/components/site/Layout";
 import { MediaCard } from "@/components/site/Cards";
 import { media } from "@/content/data";
 import { byDateDesc } from "@/content/queries";
@@ -22,7 +22,7 @@ function Media() {
   const lead = media.find((m) => m.youtubeId)!;
   return (
     <>
-      <PageHeader eyebrow="Media" title="Watch, listen and subscribe." intro="Recordings of dialogues and workshops, our Policy in Plain Terms podcast, and the monthly Policy Digest newsletter.">
+      <PageHeader image={banners.workshop} eyebrow="Media" title="Watch, listen and subscribe." intro="Recordings of dialogues and workshops, our Policy in Plain Terms podcast, and the monthly Policy Digest newsletter.">
         <SocialLinks className="mt-8" />
       </PageHeader>
       <section className="container-z py-16">

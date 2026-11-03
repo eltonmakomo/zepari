@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { PageHeader } from "@/components/site/Layout";
+import { PageHeader, banners } from "@/components/site/Layout";
 import { publications, themes } from "@/content/data";
 import { seo } from "@/lib/seo";
 
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/research/")({
   head: () => seo("Research Areas", "ZEPARI's research programme: macroeconomy, finance, trade, poverty and gender, agriculture, governance and energy."),
   component: () => (
     <>
-      <PageHeader eyebrow="Research" title="Seven areas. One question: what works for Zimbabwe?" intro="Our applied research programme responds to the priorities of government, the private sector and citizens — from currency stability to household resilience." />
+      <PageHeader image={banners.dialogue} eyebrow="Research" title="Seven areas. One question: what works for Zimbabwe?" intro="Our applied research programme responds to the priorities of government, the private sector and citizens — from currency stability to household resilience." />
       <section className="container-z py-16">
         {themes.map((t, i) => {
           const n = publications.filter((p) => p.themes.includes(t.id)).length;
