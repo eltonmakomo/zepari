@@ -69,7 +69,7 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
-        scrolled ? "glass" : "border-transparent bg-card"
+        scrolled ? "border-border bg-card shadow-card" : "border-transparent bg-card"
       }`}
     >
       <div className="container-z flex h-16 items-center justify-between gap-6">
@@ -144,7 +144,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
           <FooterCol title="Institute" links={[["/about", "Overview"], ["/about/team", "Our Team"], ["/about/governance", "Governance"], ["/contact", "Contact"]]} />
           <FooterCol title="Research" links={[["/research", "Research areas"], ["/publications", "Publications"], ["/insights", "Insights"], ["/policy-dialogue", "Policy Dialogue"]]} />
-          <FooterCol title="Media" links={[["/media", "Videos & podcasts"], ["/media", "Newsletters"], ["/insights", "News"], ["/account", "My library"]]} />
+          <FooterCol title="Media" links={[["/media", "Videos & podcasts"], ["/media", "Photo gallery"], ["/insights", "News"], ["/account", "My library"]]} />
           <div className="col-span-2 sm:col-span-3">
             <p className="text-sm text-ink-foreground/70">{site.address}</p>
             <p className="mt-1 text-sm text-ink-foreground/70">
@@ -177,14 +177,24 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
   );
 }
 
-export function PageHeader({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro?: string; children?: ReactNode }) {
+const BANNER = "https://zepari.co.zw/sites/default/files/2018-06";
+export const banners = {
+  dialogue: `${BANNER}/fm1.JPG`,
+  workshop: `${BANNER}/Trade%201.JPG`,
+  research: `${BANNER}/LM1.JPG`,
+  meeting: `${BANNER}/Debt1.JPG`,
+  people: `${BANNER}/oxfam2.JPG`,
+};
+
+export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, children }: { eyebrow: string; title: string; intro?: string; image?: string; children?: ReactNode }) {
   return (
-    <section className="bg-ink relative overflow-hidden text-ink-foreground">
-      <div className="pattern-dzimbahwe pattern-fade absolute inset-0" aria-hidden />
+    <section className="relative overflow-hidden bg-ink text-ink-foreground">
+      <img src={image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+      <div className="bg-banner-overlay absolute inset-0" aria-hidden />
       <div className="container-z relative animate-rise py-16 md:py-24">
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
         <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
-        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/75">{intro}</p>}
+        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85">{intro}</p>}
         {children}
       </div>
     </section>
