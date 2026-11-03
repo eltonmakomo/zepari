@@ -78,16 +78,40 @@ function About() {
       </section>
       <section className="container-z pb-8">
         <SectionHead eyebrow="Partners" title="Who we work with" />
-        <ul className="grid grid-cols-2 gap-px border bg-border sm:grid-cols-3 lg:grid-cols-6">
-          {partners.map((p) => {
-            const img = <img src={p.logo} alt={p.name} title={p.name} loading="lazy" className="max-h-20 w-auto max-w-full object-contain" />;
-            return (
-              <li key={p.name} className="flex min-h-36 items-center justify-center bg-card p-6">
-                {p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="transition hover:opacity-80">{img}</a> : img}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="relative overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent md:w-28"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent md:w-28"
+          />
+          <ul className="grid grid-cols-2 items-center gap-x-10 gap-y-12 sm:grid-cols-3 lg:grid-cols-6">
+            {partners.map((p) => {
+              const img = (
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  title={p.name}
+                  loading="lazy"
+                  className="max-h-16 w-auto max-w-full object-contain opacity-50 grayscale transition duration-300 hover:scale-[1.05] hover:opacity-100 hover:grayscale-0"
+                />
+              );
+              return (
+                <li key={p.name} className="flex min-h-24 items-center justify-center">
+                  {p.url ? (
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="flex items-center justify-center">
+                      {img}
+                    </a>
+                  ) : (
+                    img
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </section>
     </>
   );
