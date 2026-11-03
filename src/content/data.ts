@@ -1,5 +1,11 @@
 import type { Article, EventItem, MediaItem, Partner, Person, Publication, Theme } from "./types";
 import { liveArticles, liveEvents, livePublications, liveVideos } from "./live";
+import comesaLogo from "@/assets/partners/comesa.png.asset.json";
+import faoLogo from "@/assets/partners/fao.png.asset.json";
+import undpLogo from "@/assets/partners/undp.png.asset.json";
+import imcLogo from "@/assets/partners/imc.png.asset.json";
+import afdbLogo from "@/assets/partners/afdb.png.asset.json";
+import acbfLogo from "@/assets/partners/acbf.png.asset.json";
 
 const F = "https://zepari.co.zw/sites/default/files";
 
