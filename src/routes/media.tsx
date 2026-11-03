@@ -23,7 +23,12 @@ function Media() {
   const { kind = "All" } = Route.useSearch();
   const navigate = useNavigate({ from: "/media" });
   const list = media.filter((m) => kind === "All" || m.kind === kind).sort(byDateDesc);
-  const lead = media.find((m) => m.youtubeId)!;
+  // The former featured video now leads the grid instead of sitting in its own big embed.
+  const leadId = media.find((m) => m.youtubeId)!.id;
+  const ordered = (() => {
+    const lead = list.find((m) => m.id === leadId);
+    return lead ? [lead, ...list.filter((m) => m.id !== leadId)] : list;
+  })();
   const showGallery = kind === "All" || kind === "Photo gallery";
   const showMedia = kind !== "Photo gallery";
   const [album, setAlbum] = useState<GalleryAlbum | null>(null);
