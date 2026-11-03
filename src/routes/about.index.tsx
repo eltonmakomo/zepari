@@ -95,7 +95,7 @@ function About() {
                   alt={p.name}
                   title={p.name}
                   loading="lazy"
-                  className="max-h-16 w-auto max-w-full object-contain opacity-50 grayscale transition duration-300 hover:scale-[1.05] hover:opacity-100 hover:grayscale-0"
+                  className="max-h-16 w-auto max-w-full object-contain opacity-50 grayscale mix-blend-multiply transition duration-300 hover:scale-[1.05] hover:opacity-100 hover:grayscale-0"
                 />
               );
               return (
