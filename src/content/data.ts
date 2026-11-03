@@ -1,5 +1,11 @@
 import type { Article, EventItem, MediaItem, Partner, Person, Publication, Theme } from "./types";
 import { liveArticles, liveEvents, livePublications, liveVideos } from "./live";
+import comesaLogo from "@/assets/partners/comesa.png.asset.json";
+import faoLogo from "@/assets/partners/fao.png.asset.json";
+import undpLogo from "@/assets/partners/undp.png.asset.json";
+import imcLogo from "@/assets/partners/imc.png.asset.json";
+import afdbLogo from "@/assets/partners/afdb.png.asset.json";
+import acbfLogo from "@/assets/partners/acbf.png.asset.json";
 
 const F = "https://zepari.co.zw/sites/default/files";
 
@@ -106,12 +112,12 @@ export const media: MediaItem[] = [
 ];
 
 export const partners: Partner[] = [
-  { name: "COMESA", logo: `${F}/2018-02/comesa.jpg`, url: "https://www.comesa.int/" },
-  { name: "Food and Agriculture Organization of the United Nations", logo: `${F}/2018-02/FAO.jpg`, url: "https://www.fao.org/" },
-  { name: "United Nations Development Programme", logo: `${F}/2018-02/UNDP.jpg`, url: "https://www.undp.org/zimbabwe" },
-  { name: "IMC-BEEP", logo: `${F}/2018-02/ICM.jpg` },
-  { name: "African Development Bank", logo: `${F}/2018-02/Afro%20Dev%20Bank.jpg`, url: "https://www.afdb.org/" },
-  { name: "African Capacity Building Foundation", logo: `${F}/2018-02/ACBF.jpg`, url: "https://www.acbf-pact.org/" },
+  { name: "COMESA", logo: comesaLogo.url, url: "https://www.comesa.int/" },
+  { name: "Food and Agriculture Organization of the United Nations", logo: faoLogo.url, url: "https://www.fao.org/" },
+  { name: "United Nations Development Programme", logo: undpLogo.url, url: "https://www.undp.org/zimbabwe" },
+  { name: "IMC-BEEP", logo: imcLogo.url },
+  { name: "African Development Bank", logo: afdbLogo.url, url: "https://www.afdb.org/" },
+  { name: "African Capacity Building Foundation", logo: acbfLogo.url, url: "https://www.acbf-pact.org/" },
 ];
 
 export const impactStats = [
