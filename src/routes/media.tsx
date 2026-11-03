@@ -38,12 +38,6 @@ function Media() {
         <SocialLinks className="mt-8" />
       </PageHeader>
       <section className="container-z py-16">
-        <div className="aspect-video overflow-hidden bg-ink">
-          <iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${lead.youtubeId}`} title={lead.title} allowFullScreen loading="lazy" />
-        </div>
-        <p className="mt-4 font-display text-2xl">{lead.title}</p>
-      </section>
-      <section className="container-z">
         <div role="tablist" className="mb-10 flex flex-wrap gap-2 border-b pb-6">
           {kinds.map((k) => (
             <button key={k} role="tab" aria-selected={kind === k} onClick={() => navigate({ search: { kind: k === "All" ? undefined : k } })}
