@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Paginated } from "@/components/site/Pager";
+import { Select } from "@/components/site/Select";
 import { Search } from "lucide-react";
 import { z } from "zod";
 import { PageHeader, banners } from "@/components/site/Layout";
@@ -40,7 +41,7 @@ function Archive() {
     .filter((p) => !q || [p.title, p.abstract, p.authors.map(authorName).join(" ")].join(" ").toLowerCase().includes(q))
     .sort(byDateDesc);
 
-  const sel = "w-full border bg-card px-3 py-2.5 text-sm";
+  const sel = "px-3 py-2.5 text-sm";
   const active = Object.values(s).some(Boolean);
 
   return (
@@ -54,9 +55,9 @@ function Archive() {
               <label htmlFor="kw" className="sr-only">Keyword</label>
               <input id="kw" value={s.q ?? ""} onChange={(e) => set({ q: e.target.value || undefined })} placeholder="Keyword, title or author" className="w-full bg-transparent px-2 py-2.5 text-sm outline-none" />
             </div>
-            <Field label="Publication type"><select className={sel} value={s.type ?? ""} onChange={(e) => set({ type: e.target.value || undefined })}><option value="">All types</option>{types.map((t) => <option key={t}>{t}</option>)}</select></Field>
-            <Field label="Research area"><select className={sel} value={s.theme ?? ""} onChange={(e) => set({ theme: e.target.value || undefined })}><option value="">All areas</option>{themes.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}</select></Field>
-            <Field label="Year"><select className={sel} value={s.year ?? ""} onChange={(e) => set({ year: e.target.value || undefined })}><option value="">All years</option>{years.map((y) => <option key={y}>{y}</option>)}</select></Field>
+            <Field label="Publication type"><Select className={sel} value={s.type ?? ""} onChange={(e) => set({ type: e.target.value || undefined })}><option value="">All types</option>{types.map((t) => <option key={t}>{t}</option>)}</Select></Field>
+            <Field label="Research area"><Select className={sel} value={s.theme ?? ""} onChange={(e) => set({ theme: e.target.value || undefined })}><option value="">All areas</option>{themes.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}</Select></Field>
+            <Field label="Year"><Select className={sel} value={s.year ?? ""} onChange={(e) => set({ year: e.target.value || undefined })}><option value="">All years</option>{years.map((y) => <option key={y}>{y}</option>)}</Select></Field>
             <Field label="Access">
               <div className="flex gap-2">
                 {([undefined, "free", "paid"] as const).map((a) => (
