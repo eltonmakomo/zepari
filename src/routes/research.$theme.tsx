@@ -26,7 +26,7 @@ function ThemePage() {
     <>
       <PageHeader image={banners.workshop} eyebrow="Research area" title={theme.name} intro={theme.description}>
         <ul className="mt-8 flex flex-wrap gap-2">
-          {theme.questions.map((q) => <li key={q} className="border bg-card px-4 py-2 text-sm">{q}</li>)}
+          {theme.questions.map((q) => <li key={q} className="border bg-card px-4 py-2 text-sm text-card-foreground">{q}</li>)}
         </ul>
       </PageHeader>
       <section className="container-z py-20">
