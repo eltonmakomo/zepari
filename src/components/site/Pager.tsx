@@ -20,7 +20,7 @@ export function Paginated<T>({ items, perPage, className, render }: { items: T[]
           <button className={`${btn} hover:bg-muted`} disabled={cur === 1} onClick={() => go(cur - 1)}>← Prev</button>
           {nums.map((n, i) => (
             <span key={n} className="flex items-center gap-2">
-              {i > 0 && n - nums[i - 1] > 1 && <span className="text-muted-foreground">…</span>}
+              {i > 0 && n - (nums[i - 1] ?? n) > 1 && <span className="text-muted-foreground">…</span>}
               <button aria-current={n === cur ? "page" : undefined} className={`${btn} ${n === cur ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`} onClick={() => go(n)}>{n}</button>
             </span>
           ))}
