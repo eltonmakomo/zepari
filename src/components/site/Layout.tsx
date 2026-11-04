@@ -210,13 +210,13 @@ export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, ch
       <picture>
         {portrait && <source media="(max-width: 767px)" srcSet={portrait} />}
         <img src={image} alt="" aria-hidden width={1920} height={768} fetchPriority="high"
-          className={`absolute inset-0 h-full w-full object-top md:object-cover md:object-right ${portrait ? "page-banner-portrait object-contain" : "object-cover"}`} />
+          className={`absolute inset-x-0 top-0 w-full object-cover object-top md:h-full md:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[360px]" : "h-full"}`} />
       </picture>
       <div className="bg-banner-overlay absolute inset-0" aria-hidden />
-      <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] md:py-24" : "py-16 md:py-24"}`}>
+      <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] sm:pt-[330px] md:py-24" : "py-16 md:py-24"}`}>
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
-        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
-        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85">{intro}</p>}
+        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:max-w-[55%] md:text-6xl">{title}</h1>
+        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85 md:max-w-[55%]">{intro}</p>}
         {children}
       </div>
     </section>
