@@ -13,7 +13,7 @@ export function getPublication(slug: string) {
   const source = livePublications.find((p) => p.slug === slug);
   if (!source) return undefined;
   const titleKey = (title: string) => title.toLowerCase().replace(/[^a-z0-9]/g, "");
-  // Legacy source slugs must respect curated access settings for the same document type.
+   // Original live slugs resolve to the same edition under its preserved short site slug.
   return publications.find((p) => p.type === source.type && titleKey(p.title) === titleKey(source.title)) ?? source;
 }
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);

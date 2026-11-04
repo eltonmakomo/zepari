@@ -24,7 +24,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const featured = publications.find((p) => p.featured)!;
+  const featured = publications.find((p) => p.featured) ?? publications[0];
+  if (!featured) return null;
   const latestPubs = [...publications].sort(byDateDesc).filter((p) => p.slug !== featured.slug).slice(0, 4);
   const latest = [...articles].sort(byDateDesc);
   const upcoming = upcomingEvents().slice(0, 3);
@@ -52,7 +53,7 @@ function Home() {
               className="glass-dark animate-floaty group absolute -bottom-10 left-4 right-4 p-6 text-ink-foreground md:left-auto md:right-6 md:w-96">
               <div className="flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">New flagship study</span><AccessBadge mode={featured.access.mode} price={featured.access.priceUSD} /></div>
               <p className="mt-3 font-display text-xl leading-snug group-hover:text-gold">{featured.title}</p>
-              <p className="mt-3 text-xs text-ink-foreground/60">{fmtDate(featured.date)} · {featured.pages} pages</p>
+              <p className="mt-3 text-xs text-ink-foreground/60">{fmtDate(featured.date)}{featured.pages && ` · ${featured.pages} pages`}</p>
             </Link>
           </div>
         </div>
