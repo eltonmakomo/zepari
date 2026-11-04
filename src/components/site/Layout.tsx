@@ -118,10 +118,11 @@ export function SiteFooter() {
             <NewsletterForm tone="dark" />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-7">
           <FooterCol title="Institute" links={[["/about", "Overview"], ["/about/team", "Our Team"], ["/about/governance", "Governance"], ["/contact", "Contact"]]} />
-          <FooterCol title="Research" links={[["/research", "Research areas"], ["/publications", "Publications"], ["/insights", "Insights"], ["/policy-dialogue", "Policy Dialogue"]]} />
+          <FooterCol title="What We Do" links={[["/research", "Research"], ["/what-we-do/capacity-building", "Capacity Building"], ["/what-we-do/consultancy", "Consultancy"], ["/what-we-do/our-impact", "Our Impact"]]} />
           <FooterCol title="Media" links={[["/media", "Videos"], ["/media", "Photo gallery"], ["/insights", "News"], [site.webmail, "Webmail Login"]]} />
+          <FooterCol title="Important Links" links={[["/important-links#government", "Government Ministries and Entities"], ["/important-links#economic", "Economic Resource"], ["/important-links#blogs", "Economists Blogs"], ["https://www.afdb.org/en/countries/southern-africa/zimbabwe/", "AfDB Zimbabwe Economic Outlook Bulletins"]]} />
           <div className="col-span-2 sm:col-span-3">
             <p className="text-sm text-ink-foreground/70">{site.address}</p>
             <p className="mt-1 text-sm text-ink-foreground/70">
@@ -150,7 +151,7 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
           <li key={l}>{to.startsWith("https://") ? (
             <a href={to} target="_blank" rel="noopener noreferrer" className="text-ink-foreground/80 hover:text-gold">{l}</a>
           ) : (
-            <Link to={to} className="text-ink-foreground/80 hover:text-gold">{l}</Link>
+            <Link to={to.split("#")[0] ?? to} {...(to.includes("#") ? { hash: to.split("#")[1] ?? "" } : {})} className="text-ink-foreground/80 hover:text-gold">{l}</Link>
           )}</li>
         ))}
       </ul>

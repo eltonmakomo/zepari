@@ -11,7 +11,12 @@ const navigation = [
     { to: "/about/clients", label: "Our Clients" },
     { to: "/about/partners", label: "Partners" },
   ] },
-  { to: "/research", label: "Research" },
+  { to: "/research", label: "What We Do", sub: [
+    { to: "/research", label: "Research" },
+    { to: "/what-we-do/capacity-building", label: "Capacity Building" },
+    { to: "/what-we-do/consultancy", label: "Consultancy" },
+    { to: "/what-we-do/our-impact", label: "Our Impact" },
+  ] },
   { to: "/publications", label: "Publications", sub: [
     { to: "/publications", search: { type: "Policy Brief" }, label: "Policy Briefs" },
     { to: "/publications", search: { type: "Research Study" }, label: "Research Studies" },
