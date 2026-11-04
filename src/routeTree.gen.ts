@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ImportantLinksRouteImport } from './routes/important-links'
+import { Route as InternshipsRouteImport } from './routes/internships'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
@@ -54,6 +55,11 @@ const ContactRoute = ContactRouteImport.update({
 const ImportantLinksRoute = ImportantLinksRouteImport.update({
   id: '/important-links',
   path: '/important-links',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternshipsRoute = InternshipsRouteImport.update({
+  id: '/internships',
+  path: '/internships',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MediaRoute = MediaRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
   '/important-links': typeof ImportantLinksRoute
+  '/internships': typeof InternshipsRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -201,6 +208,7 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
   '/important-links': typeof ImportantLinksRoute
+  '/internships': typeof InternshipsRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -230,6 +238,7 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
   '/important-links': typeof ImportantLinksRoute
+  '/internships': typeof InternshipsRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -260,6 +269,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/contact'
     | '/important-links'
+    | '/internships'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -288,6 +298,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/contact'
     | '/important-links'
+    | '/internships'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -316,6 +327,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/contact'
     | '/important-links'
+    | '/internships'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   ContactRoute: typeof ContactRoute
   ImportantLinksRoute: typeof ImportantLinksRoute
+  InternshipsRoute: typeof InternshipsRoute
   MediaRoute: typeof MediaRoute
   SearchRoute: typeof SearchRoute
   AboutClientsRoute: typeof AboutClientsRoute
@@ -397,6 +410,13 @@ declare module '@tanstack/react-router' {
       path: '/important-links'
       fullPath: '/important-links'
       preLoaderRoute: typeof ImportantLinksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/internships': {
+      id: '/internships'
+      path: '/internships'
+      fullPath: '/internships'
+      preLoaderRoute: typeof InternshipsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/media': {
@@ -561,6 +581,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   ContactRoute: ContactRoute,
   ImportantLinksRoute: ImportantLinksRoute,
+  InternshipsRoute: InternshipsRoute,
   MediaRoute: MediaRoute,
   SearchRoute: SearchRoute,
   AboutClientsRoute: AboutClientsRoute,

@@ -33,6 +33,7 @@ const navigation = [
     { to: "/media", search: { kind: "Video" }, label: "Video Gallery" },
     { to: "/media/testimonials", label: "Testimonials" },
   ] },
+  { to: "/internships", label: "Internships" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
