@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Calendar, Lock, MapPin, Play } from "lucide-react";
 import type { Article, EventItem, MediaItem, Publication, ThemeId } from "@/content/types";
 import { authorName, fmtDate, getTheme } from "@/content/queries";
+import { Button } from "@/components/ui/button";
+import { VideoPlayer } from "@/components/site/VideoPlayer";
 
 const covers = ["bg-cover-1", "bg-cover-2", "bg-cover-3", "bg-cover-4"];
 /** Stable colourful gradient per item, so cards without a photo are never plain. */
@@ -117,18 +119,27 @@ export function EventCard({ e }: { e: EventItem }) {
 
 export function MediaCard({ m }: { m: MediaItem }) {
   const thumb = m.thumbnail ?? (m.youtubeId ? `https://i.ytimg.com/vi/${m.youtubeId}/hqdefault.jpg` : undefined);
-  const href = m.youtubeId ? `https://www.youtube.com/watch?v=${m.youtubeId}` : m.url!;
-  const external = href.startsWith("http");
-  return (
-    <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group block">
-      <div className="relative aspect-video overflow-hidden bg-ink">
+  const content = (
+    <>
+      <span className="relative block aspect-video overflow-hidden bg-ink">
         {thumb ? <img src={thumb} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:scale-105" /> : <div className={`flex h-full w-full items-end p-5 font-display text-lg leading-snug text-primary-foreground ${coverFor(m.id)}`}><span className="ml-14 line-clamp-2">{m.title}</span></div>}
         <span className="absolute bottom-3 left-3 grid h-11 w-11 place-items-center bg-gold text-ink"><Play className="h-4 w-4" /></span>
-      </div>
-      <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="font-semibold uppercase tracking-wider text-accent">{m.kind}</span>{m.date && <><Calendar className="h-3 w-3" />{fmtDate(m.date)}</>}</div>
-      <h3 className="mt-1 text-lg leading-snug group-hover:text-accent">{m.title}</h3>
-    </a>
+      </span>
+      <span className="mt-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="font-semibold uppercase tracking-wider text-accent">{m.kind}</span>{m.date && <><Calendar className="h-3 w-3" />{fmtDate(m.date)}</>}</span>
+      <span className="mt-1 block font-display text-lg font-medium leading-snug group-hover:text-accent">{m.title}</span>
+    </>
   );
+  if (m.kind === "Video") {
+    return (
+      <VideoPlayer title={m.title} youtubeId={m.youtubeId} url={m.url}>
+        <Button variant="ghost" disabled={!m.youtubeId && !m.url} aria-label={`Play ${m.title}`} className="group block h-auto w-full whitespace-normal rounded-none p-0 text-left font-normal text-foreground hover:bg-transparent [&_svg]:size-auto">
+          {content}
+        </Button>
+      </VideoPlayer>
+    );
+  }
+  const external = m.url?.startsWith("http");
+  return <a href={m.url} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="group block">{content}</a>;
 }
 
 export function SectionHead({ eyebrow, title, to, cta }: { eyebrow: string; title: string; to?: string; cta?: string }) {

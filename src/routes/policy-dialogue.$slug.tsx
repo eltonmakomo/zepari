@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { CalendarPlus, MapPin } from "lucide-react";
+import { CalendarPlus, MapPin, Play } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -7,6 +7,8 @@ import { ThemeTags } from "@/components/site/Cards";
 import { RelatedContent, ShareBar } from "@/components/site/Share";
 import { fmtDate, getEvent, getPublication } from "@/content/queries";
 import { seo } from "@/lib/seo";
+import { Button } from "@/components/ui/button";
+import { VideoPlayer } from "@/components/site/VideoPlayer";
 
 export const Route = createFileRoute("/policy-dialogue/$slug")({
   loader: ({ params }) => {
@@ -77,7 +79,14 @@ function EventPage() {
         <div className="lg:col-span-8">
           {e.image && <img src={e.image} alt="" className="mb-10 w-full object-cover" />}
           {e.details && <div className="prose-z mb-10">{e.details.map((d) => <p key={d}>{d}</p>)}</div>}
-          {e.video && <div className="aspect-video overflow-hidden"><iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${e.video}`} title={e.title} allowFullScreen loading="lazy" /></div>}
+          {e.video && (
+            <VideoPlayer title={e.title} youtubeId={e.video}>
+              <Button variant="ghost" aria-label={`Play ${e.title}`} className="group relative block aspect-video h-auto w-full overflow-hidden rounded-none bg-ink p-0 hover:bg-ink">
+                <img src={`https://i.ytimg.com/vi/${e.video}/hqdefault.jpg`} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:scale-105" />
+                <span className="absolute inset-0 grid place-items-center"><span className="grid h-14 w-14 place-items-center bg-gold text-ink"><Play className="size-5" /></span></span>
+              </Button>
+            </VideoPlayer>
+          )}
           {e.agenda && (
             <><h2 className="mb-4 text-2xl">Programme</h2>
               <ol className="divide-y border-y">{e.agenda.map((x) => <li key={x.time} className="flex gap-8 py-4"><span className="w-16 font-mono text-sm text-accent">{x.time}</span>{x.item}</li>)}</ol></>
