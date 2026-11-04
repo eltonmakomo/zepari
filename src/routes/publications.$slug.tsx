@@ -54,7 +54,7 @@ function PublicationPage() {
                     {owns && <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-success"><CheckCircle2 className="h-4 w-4" /> In your library</p>}
                     {readUrl && p.publicFile ? (
                       <>
-                        <Button asChild className="h-auto w-full bg-ink px-5 py-3 font-semibold text-ink-foreground hover:bg-primary"><a href={p.publicFile} target="_blank" rel="noopener noreferrer" download><Download /> Download PDF</a></Button>
+                        <Button asChild className="h-auto w-full bg-ink px-5 py-3 font-semibold text-ink-foreground hover:bg-primary"><a href={`/api/public/download?u=${encodeURIComponent(p.publicFile)}`} download><Download /> Download PDF</a></Button>
                         <Button asChild variant="outline" className="mt-3 h-auto w-full px-5 py-3 font-semibold"><a href={readUrl} target="_blank" rel="noopener noreferrer"><Eye /> Read online</a></Button>
                       </>
                     ) : (
