@@ -30,6 +30,7 @@ import { Route as PublicationsIndexRouteImport } from './routes/publications.ind
 import { Route as PublicationsSlugRouteImport } from './routes/publications.$slug'
 import { Route as ResearchIndexRouteImport } from './routes/research.index'
 import { Route as ResearchThemeRouteImport } from './routes/research.$theme'
+import { Route as ApiPublicDownloadRouteImport } from './routes/api/public/download'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -136,6 +137,11 @@ const ResearchThemeRoute = ResearchThemeRouteImport.update({
   path: '/research/$theme',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicDownloadRoute = ApiPublicDownloadRouteImport.update({
+  id: '/api/public/download',
+  path: '/api/public/download',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/policy-dialogue/': typeof PolicyDialogueIndexRoute
   '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
+  '/api/public/download': typeof ApiPublicDownloadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/policy-dialogue': typeof PolicyDialogueIndexRoute
   '/publications': typeof PublicationsIndexRoute
   '/research': typeof ResearchIndexRoute
+  '/api/public/download': typeof ApiPublicDownloadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/policy-dialogue/': typeof PolicyDialogueIndexRoute
   '/publications/': typeof PublicationsIndexRoute
   '/research/': typeof ResearchIndexRoute
+  '/api/public/download': typeof ApiPublicDownloadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/policy-dialogue/'
     | '/publications/'
     | '/research/'
+    | '/api/public/download'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/policy-dialogue'
     | '/publications'
     | '/research'
+    | '/api/public/download'
   id:
     | '__root__'
     | '/'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/policy-dialogue/'
     | '/publications/'
     | '/research/'
+    | '/api/public/download'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   PolicyDialogueIndexRoute: typeof PolicyDialogueIndexRoute
   PublicationsIndexRoute: typeof PublicationsIndexRoute
   ResearchIndexRoute: typeof ResearchIndexRoute
+  ApiPublicDownloadRoute: typeof ApiPublicDownloadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -452,6 +465,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchThemeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/download': {
+      id: '/api/public/download'
+      path: '/api/public/download'
+      fullPath: '/api/public/download'
+      preLoaderRoute: typeof ApiPublicDownloadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   PolicyDialogueIndexRoute: PolicyDialogueIndexRoute,
   PublicationsIndexRoute: PublicationsIndexRoute,
   ResearchIndexRoute: ResearchIndexRoute,
+  ApiPublicDownloadRoute: ApiPublicDownloadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

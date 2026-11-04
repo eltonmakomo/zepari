@@ -40,15 +40,14 @@ export const Route = createFileRoute("/api/public/download")({
         }
 
         const filename = safeFilename(target, parsed.data.name);
-        return new Response(upstream.body, {
-          status: 200,
-          headers: {
-            "Content-Type": upstream.headers.get("content-type") ?? "application/pdf",
-            "Content-Disposition": `attachment; filename="${filename.replace(/"/g, "")}"; filename*=UTF-8''${encodeURIComponent(filename)}`,
-            "Content-Length": upstream.headers.get("content-length") ?? "",
-            "Cache-Control": "public, max-age=86400",
-          },
-        });
+        const headers: Record<string, string> = {
+          "Content-Type": upstream.headers.get("content-type") ?? "application/pdf",
+          "Content-Disposition": `attachment; filename="${filename.replace(/"/g, "")}"; filename*=UTF-8''${encodeURIComponent(filename)}`,
+          "Cache-Control": "public, max-age=86400",
+        };
+        const length = upstream.headers.get("content-length");
+        if (length) headers["Content-Length"] = length;
+        return new Response(upstream.body, { status: 200, headers });
       },
     },
   },
