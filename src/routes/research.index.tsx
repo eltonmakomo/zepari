@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHeader, banners } from "@/components/site/Layout";
+import { ContactBand, Eyebrow, TintGrid, WhatWeDoNext } from "@/components/site/WhatWeDo";
 import { publications, themes } from "@/content/data";
 import { researchPage } from "@/content/whatWeDo";
 import { seo } from "@/lib/seo";
@@ -9,35 +10,41 @@ export const Route = createFileRoute("/research/")({
   head: () => seo("Research", "ZEPARI's commissioned and core economic policy research across 14 broad thematic areas."),
   component: () => (
     <>
-      <PageHeader image={banners.dialogue} eyebrow="What we do · Research" title="Research" intro={researchPage.intro} />
-      <section className="container-z py-16">
-        <h2 className="mb-8 text-3xl">{researchPage.areasLead}</h2>
-        <ol className="grid gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
-          {researchPage.areas.map((a, i) => (
-            <li key={a} className="flex gap-4 border-t py-5">
-              <span className="font-display text-muted-foreground">{String(i + 1).padStart(2, "0")}</span><span>{a}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-14 max-w-3xl space-y-3 text-lg">
-          <p>{researchPage.mission}</p>
-          <p className="text-muted-foreground">{researchPage.contactLead}{" "}
-            {researchPage.emails.map((e, i) => <span key={e}>{i > 0 && " or "}<a href={`mailto:${e}`} className="text-accent underline-offset-4 hover:underline">{e}</a></span>)}
-          </p>
+      <PageHeader image={banners.dialogue} eyebrow="What we do · Research" title="Research" />
+      <section className="container-z grid gap-10 py-16 md:grid-cols-12 md:py-20">
+        <div className="md:col-span-5"><Eyebrow>How we work</Eyebrow><h2 className="text-3xl md:text-4xl">Two kinds of research, one purpose.</h2></div>
+        <div className="md:col-span-7">
+          <p className="text-lg leading-relaxed text-muted-foreground">{researchPage.intro}</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="border-l-2 border-accent bg-tint-1 p-5"><p className="font-display text-xl">Commissioned research</p><p className="text-sm text-muted-foreground">Demand driven</p></div>
+            <div className="border-l-2 border-gold bg-tint-3 p-5"><p className="font-display text-xl">Proactive core research</p><p className="text-sm text-muted-foreground">Supply driven</p></div>
+          </div>
         </div>
       </section>
       <section className="container-z pb-16">
-        <h2 className="mb-2 text-3xl">Browse publications by topic</h2>
-        {themes.map((t) => {
-          const n = publications.filter((p) => p.themes.includes(t.id)).length;
-          return (
-            <Link key={t.id} to="/research/$theme" params={{ theme: t.id }} className="group grid gap-2 border-b py-6 md:grid-cols-12 md:items-center">
-              <h3 className="text-xl group-hover:text-accent md:col-span-6">{t.name}</h3>
-              <span className="flex items-center gap-2 text-sm font-semibold md:col-span-6 md:justify-end">{n} publications <ArrowUpRight className="h-4 w-4" /></span>
-            </Link>
-          );
-        })}
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div><Eyebrow>Thematic areas</Eyebrow><h2 className="max-w-2xl text-3xl md:text-4xl">{researchPage.areasLead}</h2></div>
+          <span className="font-display text-6xl text-accent/20">14</span>
+        </div>
+        <TintGrid items={researchPage.areas} />
+        <blockquote className="mx-auto mt-20 max-w-3xl text-center font-display text-2xl leading-snug md:text-3xl">“{researchPage.mission}”</blockquote>
       </section>
+      <section className="container-z pb-20">
+        <Eyebrow>Browse publications by topic</Eyebrow>
+        <div className="grid gap-px border bg-border sm:grid-cols-2">
+          {themes.map((t) => {
+            const n = publications.filter((p) => p.themes.includes(t.id)).length;
+            return (
+              <Link key={t.id} to="/research/$theme" params={{ theme: t.id }} className="group flex items-center justify-between gap-4 bg-card p-6 transition hover:bg-muted">
+                <span className="text-lg font-medium group-hover:text-accent">{t.name}</span>
+                <span className="flex shrink-0 items-center gap-1 text-sm text-muted-foreground">{n} <ArrowUpRight className="h-4 w-4" /></span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+      <ContactBand text={researchPage.contactLead.replace(":", ".")} emails={researchPage.emails} />
+      <WhatWeDoNext current="/research" />
     </>
   ),
 });

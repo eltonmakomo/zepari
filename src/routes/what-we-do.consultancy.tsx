@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { PageHeader, banners } from "@/components/site/Layout";
+import { ContactBand, Eyebrow, WhatWeDoNext, tints } from "@/components/site/WhatWeDo";
 import { consultancy } from "@/content/whatWeDo";
 import { seo } from "@/lib/seo";
 
@@ -13,24 +14,41 @@ function Page() {
   return (
     <>
       <PageHeader image={banners.meeting} eyebrow="What we do · Consultancy" title="Consultancy" />
-      <section className="container-z py-16 md:py-20">
-        <p className="max-w-3xl text-lg text-muted-foreground">{consultancy.intro}</p>
-        <ul className="mt-8 grid gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
-          {consultancy.services.map((s) => <li key={s} className="border-t py-5 font-medium">{s}</li>)}
-        </ul>
-        <p className="mt-16 max-w-3xl text-lg text-muted-foreground">{consultancy.casesLead}</p>
-        <div className="mt-10 space-y-12">
-          {consultancy.cases.map((c) => (
-            <article key={c.title} className="max-w-3xl border-l-2 border-accent pl-6">
-              <h2 className="text-2xl">
-                {c.url ? <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent">{c.title} <ArrowUpRight className="inline h-5 w-5" /></a> : c.title}
-              </h2>
-              <div className="mt-4 space-y-4 text-muted-foreground">{c.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
-            </article>
-          ))}
+      <section className="container-z grid gap-12 py-16 md:grid-cols-12 md:py-20">
+        <div className="md:col-span-5">
+          <Eyebrow>Our services</Eyebrow>
+          <p className="text-xl leading-relaxed">{consultancy.intro}</p>
         </div>
-        <p className="mt-16 max-w-3xl border-t pt-8">{consultancy.contact}</p>
+        <ul className="grid gap-3 sm:grid-cols-2 md:col-span-7">
+          {consultancy.services.map((s, i) => (
+            <li key={s} className={`${tints[i % tints.length]} flex items-center gap-3 border border-border/60 px-5 py-4 font-medium`}>
+              <Check className="h-4 w-4 shrink-0 text-accent" />{s}
+            </li>
+          ))}
+        </ul>
       </section>
+      <section className="border-t bg-tint-2/50">
+        <div className="container-z py-16 md:py-20">
+          <Eyebrow>Selected assignments</Eyebrow>
+          <p className="mb-12 max-w-3xl text-lg text-muted-foreground">{consultancy.casesLead}</p>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {consultancy.cases.map((c, i) => (
+              <article key={c.title} className="flex flex-col border bg-card p-8 transition hover:shadow-card">
+                <span className="font-display text-4xl text-accent/30">{String(i + 1).padStart(2, "0")}</span>
+                <h2 className="mt-3 text-xl leading-snug md:text-2xl">{c.title}</h2>
+                <div className="mt-4 flex-1 space-y-3 text-sm leading-relaxed text-muted-foreground">{c.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
+                {c.url && (
+                  <a href={c.url} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 self-start rounded-full border px-4 py-2 text-sm font-semibold transition hover:border-accent hover:text-accent">
+                    Read the study <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <ContactBand text={consultancy.contact.split(", or email")[0] + "."} emails={["administration@zepari.co.zw", "chigumirag@zepari.co.zw"]} />
+      <WhatWeDoNext current="/what-we-do/consultancy" />
     </>
   );
 }
