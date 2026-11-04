@@ -3,7 +3,7 @@ import bWorkshop from "@/assets/live-banner-workshop.jpg";
 import bResearch from "@/assets/live-banner-research.jpg";
 import bMeeting from "@/assets/live-banner-meeting.jpg";
 import bPeople from "@/assets/live-banner-people.jpg";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useMatch, useNavigate } from "@tanstack/react-router";
 import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { site } from "@/content/data";
@@ -134,8 +134,9 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const isContactPage = Boolean(useMatch({ from: "/contact", shouldThrow: false }));
   return (
-    <footer className="relative mt-24 bg-ink text-ink-foreground">
+    <footer className={`relative bg-ink text-ink-foreground ${isContactPage ? "mt-0" : "mt-24"}`}>
       <div className="pattern-dzimbahwe absolute inset-0 opacity-60" aria-hidden />
       <div className="container-z relative grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
