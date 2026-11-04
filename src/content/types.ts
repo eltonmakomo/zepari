@@ -63,7 +63,7 @@ export interface Publication {
   featured?: boolean;
 }
 
-export type ArticleKind = "News" | "Blog" | "Explainer" | "Commentary";
+export type ArticleKind = "News" | "Blog";
 
 export interface Article {
   slug: string;
@@ -98,7 +98,7 @@ export interface EventItem {
 
 export interface MediaItem {
   id: string;
-  kind: "Video" | "Podcast" | "Newsletter" | "Photo";
+  kind: "Video" | "Newsletter" | "Photo";
   title: string;
   date?: string;
   youtubeId?: string;

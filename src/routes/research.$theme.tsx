@@ -35,7 +35,7 @@ function ThemePage() {
       </section>
       {arts.length > 0 && (
         <section className="border-t bg-paper py-20"><div className="container-z">
-          <SectionHead eyebrow="Insights" title="Analysis & commentary" />
+          <SectionHead eyebrow="Insights" title="Analysis & news" />
           <div className="grid gap-10 md:grid-cols-3">{arts.map((a) => <ArticleCard key={a.slug} a={a} />)}</div>
         </div></section>
       )}

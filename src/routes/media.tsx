@@ -11,11 +11,11 @@ import { byDateDesc } from "@/content/queries";
 import type { GalleryAlbum } from "@/content/types";
 import { seo } from "@/lib/seo";
 
-const kinds = ["All", "Video", "Podcast", "Photo gallery"] as const;
+const kinds = ["All", "Video", "Photo gallery"] as const;
 
 export const Route = createFileRoute("/media")({
   validateSearch: z.object({ kind: z.enum(kinds).optional() }),
-  head: () => seo("Media", "Videos, podcasts and photo galleries from ZEPARI dialogues and workshops."),
+  head: () => seo("Media", "Videos and photo galleries from ZEPARI dialogues and workshops."),
   component: Media,
 });
 
@@ -34,7 +34,7 @@ function Media() {
   const [album, setAlbum] = useState<GalleryAlbum | null>(null);
   return (
     <>
-      <PageHeader image={banners.workshop} eyebrow="Media" title="Watch, listen and look back." intro="Recordings of dialogues and workshops, our Policy in Plain Terms podcast, and photo galleries from ZEPARI events.">
+      <PageHeader image={banners.workshop} eyebrow="Media" title="Watch, listen and look back." intro="Recordings of dialogues and workshops, and photo galleries from ZEPARI events.">
         <SocialLinks className="mt-8" />
       </PageHeader>
       <section className="container-z py-16">
