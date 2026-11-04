@@ -1,4 +1,4 @@
-import bDialogue from "@/assets/policy-dialogue-panorama.jpg";
+import bDialogue from "@/assets/policy-dialogue-panorama-refined.jpg";
 import bWorkshop from "@/assets/economics-workshop-panorama.jpg";
 import bResearch from "@/assets/research-archive-panorama.jpg";
 import bMeeting from "@/assets/governance-meeting-panorama.jpg";
@@ -208,15 +208,15 @@ export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, ch
   return (
     <section className="relative overflow-hidden bg-ink text-ink-foreground">
       <picture>
-        {portrait && <source media="(max-width: 767px)" srcSet={portrait} />}
+        {portrait && <source media="(max-width: 1023px)" srcSet={portrait} />}
         <img src={image} alt="" aria-hidden width={1920} height={768} fetchPriority="high"
-          className={`absolute inset-x-0 top-0 w-full object-cover object-top md:h-full md:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[360px]" : "h-full"}`} />
+          className={`absolute inset-x-0 top-0 w-full object-cover object-top lg:h-full lg:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[360px]" : "h-full"}`} />
       </picture>
       <div className="bg-banner-overlay absolute inset-0" aria-hidden />
-      <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] sm:pt-[330px] md:py-24" : "py-16 md:py-24"}`}>
+      <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] sm:pt-[330px] lg:py-24" : "py-16 md:py-24"}`}>
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
-        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:max-w-[55%] md:text-6xl">{title}</h1>
-        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85 md:max-w-[55%]">{intro}</p>}
+        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight lg:max-w-[55%] md:text-6xl">{title}</h1>
+        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85 lg:max-w-[55%]">{intro}</p>}
         {children}
       </div>
     </section>
