@@ -14,3 +14,4 @@
 - Paid items must never carry a public file URL; entitlement logic is isolated in `src/lib/purchases.ts` (currently a demo adapter) so it can be swapped for server-verified payments. Why: protected files must not leak.
 - Content imported from the live zepari.co.zw site lives in `src/content/live.ts` (generated, editable); `data.ts` merges it with curated records, curated entries win on title match. Why: keeps live content complete without duplicate entry.
 - Shared PageHeader imagery uses bundled panoramas and matching portrait sources for people scenes; mobile portraits occupy a fixed-height upper image band with reserved text space. Why: changing header height must not crop faces or alter actual content photography.
+- Video cards use the shared VideoPlayer dialog with players mounted only while open. Why: consistent accessible playback across pages and closing stops video/audio.
