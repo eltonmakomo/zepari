@@ -208,9 +208,9 @@ export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, ch
   return (
     <section className="relative overflow-hidden bg-ink text-ink-foreground">
       <picture>
-        {portrait && <source media="(max-width: 1023px)" srcSet={portrait} />}
+        {portrait && <source media="(max-width: 639px)" srcSet={portrait} />}
         <img src={image} alt="" aria-hidden width={1920} height={768} fetchPriority="high"
-          className={`absolute inset-x-0 top-0 w-full object-cover object-top lg:h-full lg:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[360px]" : "h-full"}`} />
+          className={`absolute inset-x-0 top-0 w-full object-cover object-top sm:object-right-top lg:h-full lg:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[320px]" : "h-full"}`} />
       </picture>
       <div className="bg-banner-overlay absolute inset-0" aria-hidden />
       <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] sm:pt-[330px] lg:py-24" : "py-16 md:py-24"}`}>
