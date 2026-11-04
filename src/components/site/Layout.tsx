@@ -104,7 +104,7 @@ export function SiteHeader() {
             <label className="sr-only" htmlFor="site-search">Search ZEPARI</label>
             <input id="site-search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-32 bg-transparent px-2 py-2 text-sm outline-none" />
           </form>
-          <Link to="/account" className="hidden whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition hover:bg-primary sm:inline-flex">My library</Link>
+          <a href={site.webmail} target="_blank" rel="noopener noreferrer" className="hidden whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition hover:bg-primary sm:inline-flex">Webmail Login</a>
           <button className="grid h-10 w-10 place-items-center lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
             {open ? <X /> : <Menu />}
           </button>
@@ -125,7 +125,7 @@ export function SiteHeader() {
                 ))}
               </div>
             ))}
-            <Link to="/account" onClick={() => setOpen(false)} className="block py-2 font-display text-xl text-accent">My library</Link>
+            <a href={site.webmail} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block py-2 font-display text-xl text-accent">Webmail Login</a>
           </div>
         </div>
       )}
@@ -148,7 +148,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
           <FooterCol title="Institute" links={[["/about", "Overview"], ["/about/team", "Our Team"], ["/about/governance", "Governance"], ["/contact", "Contact"]]} />
           <FooterCol title="Research" links={[["/research", "Research areas"], ["/publications", "Publications"], ["/insights", "Insights"], ["/policy-dialogue", "Policy Dialogue"]]} />
-          <FooterCol title="Media" links={[["/media", "Videos"], ["/media", "Photo gallery"], ["/insights", "News"], ["/account", "My library"]]} />
+          <FooterCol title="Media" links={[["/media", "Videos"], ["/media", "Photo gallery"], ["/insights", "News"], [site.webmail, "Webmail Login"]]} />
           <div className="col-span-2 sm:col-span-3">
             <p className="text-sm text-ink-foreground/70">{site.address}</p>
             <p className="mt-1 text-sm text-ink-foreground/70">
@@ -174,7 +174,11 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
       <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{title}</p>
       <ul className="space-y-2 text-sm">
         {links.map(([to, l]) => (
-          <li key={l}><Link to={to} className="text-ink-foreground/80 hover:text-gold">{l}</Link></li>
+          <li key={l}>{to.startsWith("https://") ? (
+            <a href={to} target="_blank" rel="noopener noreferrer" className="text-ink-foreground/80 hover:text-gold">{l}</a>
+          ) : (
+            <Link to={to} className="text-ink-foreground/80 hover:text-gold">{l}</Link>
+          )}</li>
         ))}
       </ul>
     </div>
