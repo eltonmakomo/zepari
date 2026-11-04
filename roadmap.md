@@ -1,5 +1,6 @@
 # Roadmap
 
+- [in progress] Remove invented documents/articles and paid settings; restore genuine free documents and original downloads.
 - [done] Compare About, Publications and Media dropdowns with the live site; add missing pages and expose every destination.
 - [done] Verify all 16 dropdown destinations, archive detail links and tablet/mobile menus.
 
