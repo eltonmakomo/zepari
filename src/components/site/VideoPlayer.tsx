@@ -3,8 +3,8 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 
 interface VideoPlayerProps {
   title: string;
-  youtubeId?: string;
-  url?: string;
+  youtubeId?: string | undefined;
+  url?: string | undefined;
   children: ReactElement;
 }
 
