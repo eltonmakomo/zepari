@@ -39,7 +39,6 @@ function Contact() {
           <div><p className="eyebrow">Call</p>{site.phones.map((p) => <a key={p} href={`tel:${p.replace(/[^+\d]/g, "")}`} className="mt-1 block text-lg hover:text-accent">{p}</a>)}</div>
           <div><p className="eyebrow">Email</p>{site.emails.map((m) => <a key={m} href={`mailto:${m}`} className="mt-1 block text-lg hover:text-accent">{m}</a>)}</div>
           <SocialLinks />
-          <iframe title="ZEPARI location map" className="aspect-[4/3] w-full border" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=31.0085%2C-17.8310%2C31.0215%2C-17.8215&layer=mapnik&marker=-17.8263%2C31.0151" />
         </div>
         <div className="lg:col-span-7">
           {sent ? <div className="bg-paper p-12"><p className="font-display text-3xl">Thank you.</p><p className="mt-2 text-muted-foreground">Your message has been received.</p></div> : (
@@ -58,6 +57,12 @@ function Contact() {
           )}
         </div>
       </section>
+      <iframe
+        title="ZEPARI location map"
+        className="block h-[70vh] min-h-[420px] w-full border-0"
+        loading="lazy"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=31.0085%2C-17.8310%2C31.0215%2C-17.8215&layer=mapnik&marker=-17.8263%2C31.0151"
+      />
     </>
   );
 }
