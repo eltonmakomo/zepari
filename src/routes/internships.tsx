@@ -2,9 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { GraduationCap } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { PageHeader, banners } from "@/components/site/Layout";
-import { Eyebrow, ContactBand } from "@/components/site/WhatWeDo";
+import { Eyebrow, ContactBand, tints } from "@/components/site/WhatWeDo";
 import { internships } from "@/content/whatWeDo";
-import { tints } from "@/components/site/WhatWeDo";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/internships")({
