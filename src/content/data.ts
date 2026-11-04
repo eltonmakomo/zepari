@@ -110,7 +110,8 @@ const articlePublications: Record<string, string> = {
 };
 export const articles: Article[] = liveArticles.map((article) => {
   const slug = slugMap[article.slug] ?? article.slug;
-  return { ...article, slug, relatedPublication: articlePublications[slug] };
+  const relatedPublication = articlePublications[slug];
+  return { ...article, slug, ...(relatedPublication ? { relatedPublication } : {}) };
 });
 
 export const events: EventItem[] = [...curatedEvents, ...liveEvents];
