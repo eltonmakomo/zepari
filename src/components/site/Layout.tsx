@@ -148,7 +148,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
           <FooterCol title="Institute" links={[["/about", "Overview"], ["/about/team", "Our Team"], ["/about/governance", "Governance"], ["/contact", "Contact"]]} />
           <FooterCol title="Research" links={[["/research", "Research areas"], ["/publications", "Publications"], ["/insights", "Insights"], ["/policy-dialogue", "Policy Dialogue"]]} />
-          <FooterCol title="Media" links={[["/media", "Videos & podcasts"], ["/media", "Photo gallery"], ["/insights", "News"], ["/account", "My library"]]} />
+          <FooterCol title="Media" links={[["/media", "Videos"], ["/media", "Photo gallery"], ["/insights", "News"], ["/account", "My library"]]} />
           <div className="col-span-2 sm:col-span-3">
             <p className="text-sm text-ink-foreground/70">{site.address}</p>
             <p className="mt-1 text-sm text-ink-foreground/70">
