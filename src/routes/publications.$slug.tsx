@@ -7,6 +7,8 @@ import { RelatedContent, ShareBar } from "@/components/site/Share";
 import { authorName, fmtDate, getPerson, getPublication } from "@/content/queries";
 import { useOwns } from "@/lib/purchases";
 import { seo } from "@/lib/seo";
+import { Button } from "@/components/ui/button";
+import { publicationReadUrl } from "@/lib/publication-files";
 
 export const Route = createFileRoute("/publications/$slug")({
   loader: ({ params }) => {
@@ -26,13 +28,7 @@ function PublicationPage() {
   const { p } = Route.useLoaderData();
   const owns = useOwns(p.slug);
   const unlocked = p.access.mode === "free" || owns;
-
-  const download = () => {
-    if (p.publicFile) { window.open(p.publicFile, "_blank", "noopener"); return; }
-    // Paid files are never public: production requests a short-lived signed URL
-    // from the server after verifying the buyer's entitlement.
-    toast.success("Your secure download link has been generated (demo).");
-  };
+  const readUrl = publicationReadUrl(p);
 
   return (
     <>
@@ -56,8 +52,14 @@ function PublicationPage() {
                 {unlocked ? (
                   <>
                     {owns && <p className="mb-4 flex items-center gap-2 text-sm font-semibold text-success"><CheckCircle2 className="h-4 w-4" /> In your library</p>}
-                    <button onClick={download} className="flex w-full items-center justify-center gap-2 rounded bg-ink px-5 py-3 font-semibold text-ink-foreground hover:bg-primary"><Download className="h-4 w-4" /> Download PDF</button>
-                    <a href="#full-text" className="mt-3 flex w-full items-center justify-center gap-2 rounded border px-5 py-3 font-semibold hover:border-accent"><Eye className="h-4 w-4" /> Read online</a>
+                    {readUrl && p.publicFile ? (
+                      <>
+                        <Button asChild className="h-auto w-full bg-ink px-5 py-3 font-semibold text-ink-foreground hover:bg-primary"><a href={p.publicFile} target="_blank" rel="noopener noreferrer" download><Download /> Download PDF</a></Button>
+                        <Button asChild variant="outline" className="mt-3 h-auto w-full px-5 py-3 font-semibold"><a href={readUrl} target="_blank" rel="noopener noreferrer"><Eye /> Read online</a></Button>
+                      </>
+                    ) : (
+                      <Button disabled variant="outline" className="h-auto w-full whitespace-normal px-5 py-3"><FileText /> Document file unavailable</Button>
+                    )}
                   </>
                 ) : (
                   <>

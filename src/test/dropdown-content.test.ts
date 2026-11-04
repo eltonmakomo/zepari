@@ -36,11 +36,11 @@ describe("live dropdown destination content", () => {
     expect(brief?.slug).not.toBe(study?.slug);
   });
 
-  it("applies curated paid protection when opening an original live study slug", () => {
+  it("preserves free access and the original PDF when opening a live study slug", () => {
     const source = livePublications.find((item) => item.title === "Banking Industry Competition, Efficiency and Stability in Zimbabwe");
     expect(source).toBeDefined();
     const result = getPublication(source?.slug ?? "");
-    expect(result?.access.mode).toBe("paid");
-    expect(result?.publicFile).toBeUndefined();
+    expect(result?.access.mode).toBe("free");
+    expect(result?.publicFile).toBe("https://zepari.co.zw/sites/default/files/2026-10/Banking%20Industry%20Competition%20Combined_1.pdf");
   });
 });
