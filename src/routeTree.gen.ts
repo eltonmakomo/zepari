@@ -15,12 +15,15 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
+import { Route as AboutClientsRouteImport } from './routes/about.clients'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
+import { Route as AboutPartnersRouteImport } from './routes/about.partners'
 import { Route as AboutTeamRouteImport } from './routes/about.team'
 import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
+import { Route as MediaTestimonialsRouteImport } from './routes/media_.testimonials'
 import { Route as PolicyDialogueIndexRouteImport } from './routes/policy-dialogue.index'
 import { Route as PolicyDialogueSlugRouteImport } from './routes/policy-dialogue.$slug'
 import { Route as PublicationsIndexRouteImport } from './routes/publications.index'
@@ -58,9 +61,19 @@ const AboutIndexRoute = AboutIndexRouteImport.update({
   path: '/about/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutClientsRoute = AboutClientsRouteImport.update({
+  id: '/about/clients',
+  path: '/about/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
   id: '/about/governance',
   path: '/about/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutPartnersRoute = AboutPartnersRouteImport.update({
+  id: '/about/partners',
+  path: '/about/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutTeamRoute = AboutTeamRouteImport.update({
@@ -86,6 +99,11 @@ const InsightsIndexRoute = InsightsIndexRouteImport.update({
 const InsightsSlugRoute = InsightsSlugRouteImport.update({
   id: '/insights/$slug',
   path: '/insights/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaTestimonialsRoute = MediaTestimonialsRouteImport.update({
+  id: '/media_/testimonials',
+  path: '/media/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PolicyDialogueIndexRoute = PolicyDialogueIndexRouteImport.update({
@@ -125,11 +143,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
+  '/about/clients': typeof AboutClientsRoute
   '/about/governance': typeof AboutGovernanceRoute
+  '/about/partners': typeof AboutPartnersRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/media/testimonials': typeof MediaTestimonialsRoute
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
@@ -145,11 +166,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
+  '/about/clients': typeof AboutClientsRoute
   '/about/governance': typeof AboutGovernanceRoute
+  '/about/partners': typeof AboutPartnersRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/media/testimonials': typeof MediaTestimonialsRoute
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
@@ -166,11 +190,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
+  '/about/clients': typeof AboutClientsRoute
   '/about/governance': typeof AboutGovernanceRoute
+  '/about/partners': typeof AboutPartnersRoute
   '/about/team': typeof AboutTeamRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/insights/$slug': typeof InsightsSlugRoute
+  '/media_/testimonials': typeof MediaTestimonialsRoute
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
@@ -188,11 +215,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/media'
     | '/search'
+    | '/about/clients'
     | '/about/governance'
+    | '/about/partners'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
     | '/insights/$slug'
+    | '/media/testimonials'
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
@@ -208,11 +238,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/media'
     | '/search'
+    | '/about/clients'
     | '/about/governance'
+    | '/about/partners'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
     | '/insights/$slug'
+    | '/media/testimonials'
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
@@ -228,11 +261,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/media'
     | '/search'
+    | '/about/clients'
     | '/about/governance'
+    | '/about/partners'
     | '/about/team'
     | '/checkout/$slug'
     | '/checkout/success'
     | '/insights/$slug'
+    | '/media_/testimonials'
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
@@ -249,11 +285,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   MediaRoute: typeof MediaRoute
   SearchRoute: typeof SearchRoute
+  AboutClientsRoute: typeof AboutClientsRoute
   AboutGovernanceRoute: typeof AboutGovernanceRoute
+  AboutPartnersRoute: typeof AboutPartnersRoute
   AboutTeamRoute: typeof AboutTeamRoute
   CheckoutSlugRoute: typeof CheckoutSlugRoute
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   InsightsSlugRoute: typeof InsightsSlugRoute
+  MediaTestimonialsRoute: typeof MediaTestimonialsRoute
   PolicyDialogueSlugRoute: typeof PolicyDialogueSlugRoute
   PublicationsSlugRoute: typeof PublicationsSlugRoute
   ResearchThemeRoute: typeof ResearchThemeRoute
@@ -308,11 +347,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/clients': {
+      id: '/about/clients'
+      path: '/about/clients'
+      fullPath: '/about/clients'
+      preLoaderRoute: typeof AboutClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/governance': {
       id: '/about/governance'
       path: '/about/governance'
       fullPath: '/about/governance'
       preLoaderRoute: typeof AboutGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/partners': {
+      id: '/about/partners'
+      path: '/about/partners'
+      fullPath: '/about/partners'
+      preLoaderRoute: typeof AboutPartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/team': {
@@ -348,6 +401,13 @@ declare module '@tanstack/react-router' {
       path: '/insights/$slug'
       fullPath: '/insights/$slug'
       preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media_/testimonials': {
+      id: '/media_/testimonials'
+      path: '/media/testimonials'
+      fullPath: '/media/testimonials'
+      preLoaderRoute: typeof MediaTestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/policy-dialogue/': {
@@ -401,11 +461,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   MediaRoute: MediaRoute,
   SearchRoute: SearchRoute,
+  AboutClientsRoute: AboutClientsRoute,
   AboutGovernanceRoute: AboutGovernanceRoute,
+  AboutPartnersRoute: AboutPartnersRoute,
   AboutTeamRoute: AboutTeamRoute,
   CheckoutSlugRoute: CheckoutSlugRoute,
   CheckoutSuccessRoute: CheckoutSuccessRoute,
   InsightsSlugRoute: InsightsSlugRoute,
+  MediaTestimonialsRoute: MediaTestimonialsRoute,
   PolicyDialogueSlugRoute: PolicyDialogueSlugRoute,
   PublicationsSlugRoute: PublicationsSlugRoute,
   ResearchThemeRoute: ResearchThemeRoute,
