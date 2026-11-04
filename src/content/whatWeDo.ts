@@ -127,3 +127,20 @@ export const importantLinks: { id: LinkGroupId; title: string; links: { title: s
 ];
 
 export const afdbBulletins = { title: "AfDB Zimbabwe Economic Outlook Bulletins", url: "https://www.afdb.org/en/countries/southern-africa/zimbabwe/" };
+
+// Text copied from zepari.co.zw/internships.
+export const internships = {
+  intro: [
+    "As part of ZEPARI’s mandate to build sustainable indigenous capacity for economic policy analysis and management to assist the Government of Zimbabwe in the formulation and implementation of economic policies, ZEPARI engages recently qualified MSc in Economics graduates for an initial period of 6 months under the ZEPARI internship program.",
+    "The ZEPARI internship program awards interns an opportunity to be part of a vibrant research team, and learn about the fundamentals of the policy research process, research proposal development; research methodology, differentiating between academic research and policy research, and gain insights of intersectional issues that impact economic development.",
+  ],
+  requirementsLead: "To be considered for the ZEPARI internship program, you must meet the following requirements:",
+  requirements: [
+    "Be a recently qualified MSc in Economics graduate",
+    "Have research interests that align with ZEPARI thematic areas",
+    "Have an excellent verbal and written command of English",
+  ],
+  internsHeading: "Meet our Interns",
+  contactLead: "Kindly get hold of us if you wish to apply:",
+  emails: ["administration@zepari.co.zw"],
+};
