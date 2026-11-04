@@ -6,7 +6,7 @@ export function PersonCard({ p }: { p: Person }) {
     <article id={p.slug} className="group">
       <div className="aspect-[4/5] overflow-hidden bg-paper">
         {p.photo ? (
-          <img src={p.photo} alt={p.name} loading="lazy" className="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0" />
+          <img src={p.photo} alt={p.name} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
         ) : (
           <div className="pattern-dzimbahwe grid h-full place-items-center bg-ink font-display text-5xl text-gold">{initials}</div>
         )}
