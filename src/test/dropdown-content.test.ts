@@ -35,4 +35,12 @@ describe("live dropdown destination content", () => {
     expect(study?.type).toBe("Research Study");
     expect(brief?.slug).not.toBe(study?.slug);
   });
+
+  it("applies curated paid protection when opening an original live study slug", () => {
+    const source = livePublications.find((item) => item.title === "Banking Industry Competition, Efficiency and Stability in Zimbabwe");
+    expect(source).toBeDefined();
+    const result = getPublication(source?.slug ?? "");
+    expect(result?.access.mode).toBe("paid");
+    expect(result?.publicFile).toBeUndefined();
+  });
 });

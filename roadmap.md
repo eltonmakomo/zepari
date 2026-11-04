@@ -1,7 +1,7 @@
 # Roadmap
 
-- [open] Compare About, Publications and Media dropdowns with the live site; add missing pages and expose every destination.
-- [open] Verify dropdown navigation and destination content on desktop and mobile.
+- [done] Compare About, Publications and Media dropdowns with the live site; add missing pages and expose every destination.
+- [done] Verify all 16 dropdown destinations, archive detail links and tablet/mobile menus.
 
 - [done] Open video cards in an on-site pop-up; verify opening, closing and mobile fit.
 

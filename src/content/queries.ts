@@ -7,7 +7,15 @@ export const byDateDesc = <T extends { date?: string | undefined }>(a: T, b: T) 
 export const getTheme = (id: ThemeId) => themes.find((t) => t.id === id)!;
 export const getPerson = (slug: string) => people.find((p) => p.slug === slug);
 export const authorName = (s: string) => getPerson(s)?.name ?? s;
-export const getPublication = (slug: string) => publications.find((p) => p.slug === slug) ?? livePublications.find((p) => p.slug === slug);
+export function getPublication(slug: string) {
+  const publication = publications.find((p) => p.slug === slug);
+  if (publication) return publication;
+  const source = livePublications.find((p) => p.slug === slug);
+  if (!source) return undefined;
+  const titleKey = (title: string) => title.toLowerCase().replace(/[^a-z0-9]/g, "");
+  // Legacy source slugs must respect curated access settings for the same document type.
+  return publications.find((p) => p.type === source.type && titleKey(p.title) === titleKey(source.title)) ?? source;
+}
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
 export const getEvent = (slug: string) => events.find((e) => e.slug === slug);
 
