@@ -4,9 +4,10 @@ import { toast } from "sonner";
 import { PageHeader, banners } from "@/components/site/Layout";
 import { fmtDate, getArticle, getPublication } from "@/content/queries";
 import { usePurchases } from "@/lib/purchases";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/account")({
-  head: () => ({ meta: [{ title: "My library | ZEPARI" }, { name: "description", content: "Access your purchased ZEPARI publications and articles." }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [...seo("My library", "Access your purchased ZEPARI publications and articles.").meta, { name: "robots", content: "noindex" }] }),
   component: Account,
 });
 

@@ -1,8 +1,11 @@
-import bDialogue from "@/assets/live-banner-dialogue.jpg";
-import bWorkshop from "@/assets/live-banner-workshop.jpg";
-import bResearch from "@/assets/live-banner-research.jpg";
-import bMeeting from "@/assets/live-banner-meeting.jpg";
-import bPeople from "@/assets/live-banner-people.jpg";
+import bDialogue from "@/assets/policy-dialogue-panorama-refined.jpg";
+import bWorkshop from "@/assets/economics-workshop-panorama.jpg";
+import bResearch from "@/assets/research-archive-panorama.jpg";
+import bMeeting from "@/assets/governance-meeting-panorama.jpg";
+import bPeople from "@/assets/harare-institute-panorama.jpg";
+import dialoguePortrait from "@/assets/policy-dialogue-portrait.jpg";
+import workshopPortrait from "@/assets/economics-workshop-portrait.jpg";
+import meetingPortrait from "@/assets/governance-meeting-portrait.jpg";
 import { Link, useMatch, useNavigate } from "@tanstack/react-router";
 import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
@@ -194,15 +197,26 @@ export const banners = {
   people: bPeople,
 };
 
+const portraitBanners = new Map([
+  [bDialogue, dialoguePortrait],
+  [bWorkshop, workshopPortrait],
+  [bMeeting, meetingPortrait],
+]);
+
 export function PageHeader({ eyebrow, title, intro, image = banners.dialogue, children }: { eyebrow: string; title: string; intro?: string; image?: string; children?: ReactNode }) {
+  const portrait = portraitBanners.get(image);
   return (
     <section className="relative overflow-hidden bg-ink text-ink-foreground">
-      <img src={image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+      <picture>
+        {portrait && <source media="(max-width: 639px)" srcSet={portrait} />}
+        <img src={image} alt="" aria-hidden width={1920} height={768} fetchPriority="high"
+          className={`absolute inset-x-0 top-0 w-full object-cover object-top sm:object-right-top lg:h-full lg:object-right ${portrait ? "page-banner-portrait h-[300px] sm:h-[320px]" : "h-full"}`} />
+      </picture>
       <div className="bg-banner-overlay absolute inset-0" aria-hidden />
-      <div className="container-z relative animate-rise py-16 md:py-24">
+      <div className={`container-z relative animate-rise ${portrait ? "pb-12 pt-[220px] sm:pt-[330px] lg:py-24" : "py-16 md:py-24"}`}>
         <span className="glass-dark inline-flex rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
-        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
-        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85">{intro}</p>}
+        <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight lg:max-w-[55%] md:text-6xl">{title}</h1>
+        {intro && <p className="mt-6 max-w-2xl text-lg text-ink-foreground/85 lg:max-w-[55%]">{intro}</p>}
         {children}
       </div>
     </section>

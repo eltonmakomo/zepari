@@ -16,7 +16,7 @@ export const Route = createFileRoute("/insights/$slug")({
     if (!loaderData) return { meta: [{ title: "Insight | ZEPARI" }, { name: "robots", content: "noindex" }] };
     const { a } = loaderData;
     const h = seo(a.title, a.excerpt);
-    const img = a.image ? [{ property: "og:image", content: a.image }, { name: "twitter:image", content: a.image }] : [];
+    const img = a.image?.startsWith("https://") ? [{ property: "og:image", content: a.image }, { name: "twitter:image", content: a.image }] : [];
     return { meta: [...h.meta, { property: "og:type", content: "article" }, ...img] };
   },
   component: ArticlePage,
