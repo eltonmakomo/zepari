@@ -16,6 +16,7 @@ export const site = {
   address: "55 Mull Road, Belvedere, Harare, Zimbabwe",
   phones: ["+263 242 778423", "+263 242 785926-7", "+263 242 711451"],
   emails: ["administration@zepari.co.zw", "chigumirag@zepari.co.zw"],
+  webmail: "https://login.microsoftonline.com",
   social: {
     linkedin: "https://www.linkedin.com/search/results/all/?keywords=ZEPARI",
     x: "https://twitter.com/ZEPARU1",
