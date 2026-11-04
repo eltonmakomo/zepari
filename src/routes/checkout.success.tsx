@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { z } from "zod";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/checkout/success")({
   validateSearch: z.object({ ref: z.string().default(""), slug: z.string().default(""), kind: z.enum(["publication", "article"]).default("publication") }),
-  head: () => ({ meta: [{ title: "Purchase confirmed | ZEPARI" }, { name: "description", content: "Your ZEPARI purchase is confirmed." }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [...seo("Purchase confirmed", "Your ZEPARI purchase is confirmed.").meta, { name: "robots", content: "noindex" }] }),
   component: Success,
 });
 

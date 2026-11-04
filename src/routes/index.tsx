@@ -16,6 +16,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "ZEPARI is Zimbabwe's independent economic policy think tank: research, policy briefs, dialogues and data on growth, finance, trade and poverty." },
       { property: "og:title", content: "ZEPARI — Evidence for Zimbabwe's economic future" },
       { property: "og:description", content: "Independent economic policy research, policy dialogue and capacity building for Zimbabwe since 2003." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,

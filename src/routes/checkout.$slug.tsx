@@ -5,6 +5,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { getArticle, getPublication } from "@/content/queries";
 import { recordPurchase } from "@/lib/purchases";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/checkout/$slug")({
   validateSearch: z.object({ kind: z.enum(["publication", "article"]).default("publication") }),
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/checkout/$slug")({
     if (!item || item.access.mode !== "paid") throw notFound();
     return { item: { slug: item.slug, title: item.title, access: item.access }, kind: deps.kind };
   },
-  head: () => ({ meta: [{ title: "Checkout | ZEPARI" }, { name: "description", content: "Secure one-off purchase of a ZEPARI publication." }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [...seo("Checkout", "Secure one-off purchase of a ZEPARI publication.").meta, { name: "robots", content: "noindex" }] }),
   component: Checkout,
 });
 

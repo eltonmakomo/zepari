@@ -3,10 +3,11 @@ import { Search as SearchIcon } from "lucide-react";
 import { z } from "zod";
 import { ArticleCard, EventCard, PublicationCard } from "@/components/site/Cards";
 import { searchAll } from "@/content/queries";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/search")({
   validateSearch: z.object({ q: z.string().default("") }),
-  head: () => ({ meta: [{ title: "Search | ZEPARI" }, { name: "description", content: "Search ZEPARI research, insights and events." }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [...seo("Search", "Search ZEPARI research, insights and events.").meta, { name: "robots", content: "noindex" }] }),
   component: SearchPage,
 });
 
