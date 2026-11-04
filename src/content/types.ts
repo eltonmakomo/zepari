@@ -120,3 +120,14 @@ export interface Partner {
   logo: string;
   url?: string;
 }
+
+export interface ClientDirectory {
+  intro: string[];
+  groups: { title: string; names: string[] }[];
+}
+
+export interface Testimonial {
+  slug: string;
+  name: string;
+  paragraphs: string[];
+}

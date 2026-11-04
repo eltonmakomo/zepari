@@ -1,12 +1,13 @@
 import { articles, events, people, publications, themes, media } from "./data";
 import type { ThemeId } from "./types";
+import { livePublications } from "./live";
 
 export const byDateDesc = <T extends { date?: string | undefined }>(a: T, b: T) => (b.date ?? "").localeCompare(a.date ?? "");
 
 export const getTheme = (id: ThemeId) => themes.find((t) => t.id === id)!;
 export const getPerson = (slug: string) => people.find((p) => p.slug === slug);
 export const authorName = (s: string) => getPerson(s)?.name ?? s;
-export const getPublication = (slug: string) => publications.find((p) => p.slug === slug);
+export const getPublication = (slug: string) => publications.find((p) => p.slug === slug) ?? livePublications.find((p) => p.slug === slug);
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug);
 export const getEvent = (slug: string) => events.find((e) => e.slug === slug);
 

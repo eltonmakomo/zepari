@@ -9,6 +9,7 @@ import { publications, themes } from "@/content/data";
 import { authorName, byDateDesc } from "@/content/queries";
 import type { PubType } from "@/content/types";
 import { seo } from "@/lib/seo";
+import { publicationsForType } from "@/content/publication-archive";
 
 const types: PubType[] = ["Research Study", "Policy Brief", "Working Paper", "Economic Barometer", "Report", "Press Release"];
 
@@ -33,8 +34,7 @@ function Archive() {
   const years = [...new Set(publications.map((p) => p.date.slice(0, 4)))].sort().reverse();
   const q = (s.q ?? "").toLowerCase();
 
-  const results = publications
-    .filter((p) => !s.type || p.type === s.type)
+  const results = publicationsForType(s.type)
     .filter((p) => !s.theme || p.themes.includes(s.theme as never))
     .filter((p) => !s.year || p.date.startsWith(s.year))
     .filter((p) => !s.access || p.access.mode === s.access)
