@@ -22,7 +22,6 @@ const navigation = [
   { to: "/insights", label: "Insights" },
   { to: "/policy-dialogue", label: "Policy Dialogue" },
   { to: "/media", label: "Media", sub: [
-    { to: "/policy-dialogue", label: "Events" },
     { to: "/insights", search: { kind: "News" }, label: "News" },
     { to: "/insights", search: { kind: "Blog" }, label: "Blog" },
     { to: "/media", search: { kind: "Photo gallery" }, label: "Photo Gallery" },
