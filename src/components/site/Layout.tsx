@@ -151,7 +151,7 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
           <li key={l}>{to.startsWith("https://") ? (
             <a href={to} target="_blank" rel="noopener noreferrer" className="text-ink-foreground/80 hover:text-gold">{l}</a>
           ) : (
-            <Link to={to} className="text-ink-foreground/80 hover:text-gold">{l}</Link>
+            <Link to={to.split("#")[0]} hash={to.split("#")[1]} className="text-ink-foreground/80 hover:text-gold">{l}</Link>
           )}</li>
         ))}
       </ul>

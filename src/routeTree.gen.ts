@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ImportantLinksRouteImport } from './routes/important-links'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as AboutIndexRouteImport } from './routes/about.index'
@@ -30,6 +31,9 @@ import { Route as PublicationsIndexRouteImport } from './routes/publications.ind
 import { Route as PublicationsSlugRouteImport } from './routes/publications.$slug'
 import { Route as ResearchIndexRouteImport } from './routes/research.index'
 import { Route as ResearchThemeRouteImport } from './routes/research.$theme'
+import { Route as WhatWeDoCapacityBuildingRouteImport } from './routes/what-we-do.capacity-building'
+import { Route as WhatWeDoConsultancyRouteImport } from './routes/what-we-do.consultancy'
+import { Route as WhatWeDoOurImpactRouteImport } from './routes/what-we-do.our-impact'
 import { Route as ApiPublicDownloadRouteImport } from './routes/api/public/download'
 
 const IndexRoute = IndexRouteImport.update({
@@ -45,6 +49,11 @@ const AccountRoute = AccountRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportantLinksRoute = ImportantLinksRouteImport.update({
+  id: '/important-links',
+  path: '/important-links',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MediaRoute = MediaRouteImport.update({
@@ -137,6 +146,22 @@ const ResearchThemeRoute = ResearchThemeRouteImport.update({
   path: '/research/$theme',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatWeDoCapacityBuildingRoute =
+  WhatWeDoCapacityBuildingRouteImport.update({
+    id: '/what-we-do/capacity-building',
+    path: '/what-we-do/capacity-building',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoConsultancyRoute = WhatWeDoConsultancyRouteImport.update({
+  id: '/what-we-do/consultancy',
+  path: '/what-we-do/consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoOurImpactRoute = WhatWeDoOurImpactRouteImport.update({
+  id: '/what-we-do/our-impact',
+  path: '/what-we-do/our-impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicDownloadRoute = ApiPublicDownloadRouteImport.update({
   id: '/api/public/download',
   path: '/api/public/download',
@@ -147,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
+  '/important-links': typeof ImportantLinksRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -160,6 +186,9 @@ export interface FileRoutesByFullPath {
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
+  '/what-we-do/capacity-building': typeof WhatWeDoCapacityBuildingRoute
+  '/what-we-do/consultancy': typeof WhatWeDoConsultancyRoute
+  '/what-we-do/our-impact': typeof WhatWeDoOurImpactRoute
   '/about/': typeof AboutIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/policy-dialogue/': typeof PolicyDialogueIndexRoute
@@ -171,6 +200,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
+  '/important-links': typeof ImportantLinksRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -184,6 +214,9 @@ export interface FileRoutesByTo {
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
+  '/what-we-do/capacity-building': typeof WhatWeDoCapacityBuildingRoute
+  '/what-we-do/consultancy': typeof WhatWeDoConsultancyRoute
+  '/what-we-do/our-impact': typeof WhatWeDoOurImpactRoute
   '/about': typeof AboutIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/policy-dialogue': typeof PolicyDialogueIndexRoute
@@ -196,6 +229,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/contact': typeof ContactRoute
+  '/important-links': typeof ImportantLinksRoute
   '/media': typeof MediaRoute
   '/search': typeof SearchRoute
   '/about/clients': typeof AboutClientsRoute
@@ -209,6 +243,9 @@ export interface FileRoutesById {
   '/policy-dialogue/$slug': typeof PolicyDialogueSlugRoute
   '/publications/$slug': typeof PublicationsSlugRoute
   '/research/$theme': typeof ResearchThemeRoute
+  '/what-we-do/capacity-building': typeof WhatWeDoCapacityBuildingRoute
+  '/what-we-do/consultancy': typeof WhatWeDoConsultancyRoute
+  '/what-we-do/our-impact': typeof WhatWeDoOurImpactRoute
   '/about/': typeof AboutIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/policy-dialogue/': typeof PolicyDialogueIndexRoute
@@ -222,6 +259,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/contact'
+    | '/important-links'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -235,6 +273,9 @@ export interface FileRouteTypes {
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
+    | '/what-we-do/capacity-building'
+    | '/what-we-do/consultancy'
+    | '/what-we-do/our-impact'
     | '/about/'
     | '/insights/'
     | '/policy-dialogue/'
@@ -246,6 +287,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/contact'
+    | '/important-links'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -259,6 +301,9 @@ export interface FileRouteTypes {
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
+    | '/what-we-do/capacity-building'
+    | '/what-we-do/consultancy'
+    | '/what-we-do/our-impact'
     | '/about'
     | '/insights'
     | '/policy-dialogue'
@@ -270,6 +315,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/contact'
+    | '/important-links'
     | '/media'
     | '/search'
     | '/about/clients'
@@ -283,6 +329,9 @@ export interface FileRouteTypes {
     | '/policy-dialogue/$slug'
     | '/publications/$slug'
     | '/research/$theme'
+    | '/what-we-do/capacity-building'
+    | '/what-we-do/consultancy'
+    | '/what-we-do/our-impact'
     | '/about/'
     | '/insights/'
     | '/policy-dialogue/'
@@ -295,6 +344,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   ContactRoute: typeof ContactRoute
+  ImportantLinksRoute: typeof ImportantLinksRoute
   MediaRoute: typeof MediaRoute
   SearchRoute: typeof SearchRoute
   AboutClientsRoute: typeof AboutClientsRoute
@@ -308,6 +358,9 @@ export interface RootRouteChildren {
   PolicyDialogueSlugRoute: typeof PolicyDialogueSlugRoute
   PublicationsSlugRoute: typeof PublicationsSlugRoute
   ResearchThemeRoute: typeof ResearchThemeRoute
+  WhatWeDoCapacityBuildingRoute: typeof WhatWeDoCapacityBuildingRoute
+  WhatWeDoConsultancyRoute: typeof WhatWeDoConsultancyRoute
+  WhatWeDoOurImpactRoute: typeof WhatWeDoOurImpactRoute
   AboutIndexRoute: typeof AboutIndexRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   PolicyDialogueIndexRoute: typeof PolicyDialogueIndexRoute
@@ -337,6 +390,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/important-links': {
+      id: '/important-links'
+      path: '/important-links'
+      fullPath: '/important-links'
+      preLoaderRoute: typeof ImportantLinksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/media': {
@@ -465,6 +525,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchThemeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do/capacity-building': {
+      id: '/what-we-do/capacity-building'
+      path: '/what-we-do/capacity-building'
+      fullPath: '/what-we-do/capacity-building'
+      preLoaderRoute: typeof WhatWeDoCapacityBuildingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/consultancy': {
+      id: '/what-we-do/consultancy'
+      path: '/what-we-do/consultancy'
+      fullPath: '/what-we-do/consultancy'
+      preLoaderRoute: typeof WhatWeDoConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do/our-impact': {
+      id: '/what-we-do/our-impact'
+      path: '/what-we-do/our-impact'
+      fullPath: '/what-we-do/our-impact'
+      preLoaderRoute: typeof WhatWeDoOurImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/download': {
       id: '/api/public/download'
       path: '/api/public/download'
@@ -479,6 +560,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   ContactRoute: ContactRoute,
+  ImportantLinksRoute: ImportantLinksRoute,
   MediaRoute: MediaRoute,
   SearchRoute: SearchRoute,
   AboutClientsRoute: AboutClientsRoute,
@@ -492,6 +574,9 @@ const rootRouteChildren: RootRouteChildren = {
   PolicyDialogueSlugRoute: PolicyDialogueSlugRoute,
   PublicationsSlugRoute: PublicationsSlugRoute,
   ResearchThemeRoute: ResearchThemeRoute,
+  WhatWeDoCapacityBuildingRoute: WhatWeDoCapacityBuildingRoute,
+  WhatWeDoConsultancyRoute: WhatWeDoConsultancyRoute,
+  WhatWeDoOurImpactRoute: WhatWeDoOurImpactRoute,
   AboutIndexRoute: AboutIndexRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   PolicyDialogueIndexRoute: PolicyDialogueIndexRoute,
