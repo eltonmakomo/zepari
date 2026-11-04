@@ -15,3 +15,6 @@
 - Content imported from the live zepari.co.zw site lives in `src/content/live.ts` (generated, editable); `data.ts` merges it with curated records, curated entries win on title match. Why: keeps live content complete without duplicate entry.
 - Shared PageHeader imagery uses bundled panoramas and matching portrait sources for people scenes; mobile portraits occupy a fixed-height upper image band with reserved text space. Why: changing header height must not crop faces or alter actual content photography.
 - Video cards use the shared VideoPlayer dialog with players mounted only while open. Why: consistent accessible playback across pages and closing stops video/audio.
+- Shared navigation defines desktop dropdowns and mobile expandable links together; existing archives are linked with typed filters. Why: keep the live-site menu destinations consistent without duplicating archive pages.
+- Client directory, partner narrative and testimonials are typed source records in `src/content/organization.ts`. Why: reuse verified live-site wording without entering it into pages twice.
+- Publication category queries preserve live study/brief variants removed by title-only merging, and detail lookups can resolve their source slugs. Why: each live category remains complete while the default archive retains curated title overrides.

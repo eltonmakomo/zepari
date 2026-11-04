@@ -12,16 +12,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { site } from "@/content/data";
 import { NewsletterForm } from "./Newsletter";
 import logo from "@/assets/zepari-logo.jpg.asset.json";
-
-const nav = [
-  { to: "/about", label: "About", sub: [{ to: "/about", label: "Overview" }, { to: "/about/team", label: "Our Team" }, { to: "/about/governance", label: "Governance" }] },
-  { to: "/research", label: "Research" },
-  { to: "/publications", label: "Publications" },
-  { to: "/insights", label: "Insights" },
-  { to: "/policy-dialogue", label: "Policy Dialogue" },
-  { to: "/media", label: "Media" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { SiteNavigation } from "./Navigation";
+import { Button } from "@/components/ui/button";
 
 export function XIcon(props: { className?: string }) {
   return (
@@ -84,50 +76,27 @@ export function SiteHeader() {
 
 
         <Logo />
-        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
-          {nav.map((n) => (
-            <div key={n.to} className="group relative">
-              <Link to={n.to} activeOptions={{ exact: false }}
-                className="whitespace-nowrap rounded px-2.5 py-2 text-sm font-medium text-foreground/80 transition hover:text-foreground data-[status=active]:text-accent">
-                {n.label}
-              </Link>
-              {"sub" in n && (
-                <div className="invisible absolute left-0 top-full min-w-48 translate-y-1 rounded border bg-card p-2 opacity-0 shadow-card transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {n.sub.map((s) => (
-                    <Link key={s.to} to={s.to} activeOptions={{ exact: true }} className="block rounded px-3 py-2 text-sm hover:bg-muted">{s.label}</Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
+        <SiteNavigation />
         <div className="flex items-center gap-2">
-          <form onSubmit={submit} role="search" className="hidden items-center rounded-full border bg-card px-3 xl:flex">
+          <form onSubmit={submit} role="search" className="hidden items-center rounded-full border bg-card px-3 2xl:flex">
             <Search className="h-4 w-4 text-muted-foreground" />
             <label className="sr-only" htmlFor="site-search">Search ZEPARI</label>
             <input id="site-search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-32 bg-transparent px-2 py-2 text-sm outline-none" />
           </form>
           <a href={site.webmail} target="_blank" rel="noopener noreferrer" className="hidden whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground transition hover:bg-primary sm:inline-flex">Webmail Login</a>
-          <button className="grid h-10 w-10 place-items-center lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
+          <Button variant="ghost" size="icon" className="h-10 w-10 xl:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>
             {open ? <X /> : <Menu />}
-          </button>
+          </Button>
         </div>
       </div>
       {open && (
-        <div className="border-t bg-background lg:hidden">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t bg-background xl:hidden">
           <div className="container-z space-y-1 py-4">
             <form onSubmit={submit} role="search" className="mb-3 flex items-center rounded border bg-card px-3">
               <Search className="h-4 w-4 text-muted-foreground" />
               <input aria-label="Search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search research…" className="w-full bg-transparent px-2 py-3 outline-none" />
             </form>
-            {nav.map((n) => (
-              <div key={n.to}>
-                <Link to={n.to} onClick={() => setOpen(false)} className="block py-2 font-display text-xl">{n.label}</Link>
-                {"sub" in n && n.sub.slice(1).map((s) => (
-                  <Link key={s.to} to={s.to} onClick={() => setOpen(false)} className="block py-1 pl-4 text-muted-foreground">{s.label}</Link>
-                ))}
-              </div>
-            ))}
+            <SiteNavigation mobile onNavigate={() => setOpen(false)} />
             <a href={site.webmail} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block py-2 font-display text-xl text-accent">Webmail Login</a>
           </div>
         </div>
