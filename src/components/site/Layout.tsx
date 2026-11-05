@@ -90,7 +90,7 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t bg-background xl:hidden">
+        <div className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bg-background xl:hidden">
           <div className="container-z space-y-1 py-4">
             <form onSubmit={submit} role="search" className="mb-3 flex items-center rounded border bg-card px-3">
               <Search className="h-4 w-4 text-muted-foreground" />
