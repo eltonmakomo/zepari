@@ -48,7 +48,7 @@ export function WhatWeDoNext({ current }: { current: string }) {
 
 export function ContactBand({ text, emails }: { text: string; emails: string[] }) {
   return (
-    <section className="bg-ink text-ink-foreground">
+    <section className="bg-band-blue text-ink-foreground">
       <div className="container-z grid gap-8 py-14 md:grid-cols-12 md:items-center">
         <p className="font-display text-2xl leading-snug md:col-span-7 md:text-3xl">{text}</p>
         <div className="flex flex-col gap-3 md:col-span-5 md:items-end">

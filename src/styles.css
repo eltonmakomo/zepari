@@ -180,6 +180,12 @@
     radial-gradient(ellipse 70% 60% at 85% 10%, oklch(0.5 0.13 245 / 55%), transparent 70%),
     linear-gradient(135deg, oklch(0.24 0.07 252) 0%, oklch(0.33 0.1 245) 55%, oklch(0.42 0.11 232) 100%);
 }
+/* Contact band: same deep-blue gradient as the homepage banner */
+@utility bg-band-blue {
+  background:
+    radial-gradient(ellipse 70% 90% at 90% 0%, oklch(0.5 0.13 245 / 55%), transparent 70%),
+    linear-gradient(135deg, oklch(0.24 0.07 252) 0%, oklch(0.33 0.1 245) 55%, oklch(0.36 0.1 240) 100%);
+}
 /* Image overlay for inside-page banners, keeps text readable */
 @utility bg-banner-overlay {
   background: linear-gradient(180deg, oklch(0.22 0.045 245 / 12%) 0%, oklch(0.22 0.045 245 / 25%) 150px, oklch(0.22 0.045 245 / 92%) 280px, var(--ink) 380px);
