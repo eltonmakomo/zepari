@@ -45,7 +45,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 function Logo({ light }: { light?: boolean }) {
   return (
     <Link to="/" className="flex items-center overflow-hidden rounded-xl border-0 outline-none ring-0" aria-label="ZEPARI home">
-      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={1083} height={251} className="h-11 w-auto md:h-12" />
+      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={1083} height={251} className="h-14 w-auto md:h-16" />
     </Link>
   );
 }
@@ -72,7 +72,7 @@ export function SiteHeader() {
         scrolled ? "border-border bg-card shadow-card" : "border-transparent bg-card"
       }`}
     >
-      <div className="container-z flex h-16 items-center justify-between gap-6">
+      <div className="container-z flex h-20 items-center justify-between gap-6">
 
 
         <Logo />
