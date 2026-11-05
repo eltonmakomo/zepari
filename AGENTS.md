@@ -19,3 +19,4 @@
 - Client directory, partner narrative and testimonials are typed source records in `src/content/organization.ts`. Why: reuse verified live-site wording without entering it into pages twice.
 - Publication archives preserve each live study/brief edition and detail lookups resolve original source slugs as well as short aliases. Why: distinct editions remain complete and old links keep working.
 - Read online uses `publicationReadUrl` to open the original free PDF in a new browser tab. Why: readers see the actual document, not an abstract anchor or a fictitious download.
+- Edited portrait images are imported in the shared people records rather than repeated as literal asset URLs. Why: all staff and trustee views stay synchronized and missing images fail early.

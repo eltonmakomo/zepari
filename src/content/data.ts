@@ -6,6 +6,15 @@ import undpLogo from "@/assets/partners/undp.png.asset.json";
 import imcLogo from "@/assets/partners/imc.png.asset.json";
 import afdbLogo from "@/assets/partners/afdb.png.asset.json";
 import acbfLogo from "@/assets/partners/acbf.png.asset.json";
+import gibsonPortrait from "@/assets/people/darker-gibson-chigumira.jpg";
+import ngosiPortrait from "@/assets/people/darker-ngosi-shumba.jpg";
+import erinahPortrait from "@/assets/people/darker-erinah-chipumho.jpg";
+import evangelistaPortrait from "@/assets/people/darker-evangelista-mudzonga.jpg";
+import esnathPortrait from "@/assets/people/darker-esnath-nyamunga.jpg";
+import jesimenPortrait from "@/assets/people/darker-jesimen-chipika.jpg";
+import isaacPortrait from "@/assets/people/darker-isaac-kwesu.jpg";
+import gibsonBoardPortrait from "@/assets/people/darker-gibson-chigumira-board.jpg";
+import corneliusPortrait from "@/assets/people/darker-cornelius-dube.jpg";
 
 export const site = {
   name: "ZEPARI",
@@ -34,15 +43,15 @@ export const themes: Theme[] = [
 ];
 
 export const people: Person[] = [
-  { slug: "gibson-chigumira", name: "Dr. Gibson Chigumira", role: "Executive Director", group: "team", photo: "/__l5e/assets-v1/e7af5978-7c85-4f91-a274-b64d2c64891c/chigumira.png", bio: "Gibson Chigumira has extensive experience in research, including coordinating research studies, editing publications and developing data bases, having been at the helm of the institution since it started operating in 2004. Dr. G. Chigumira has also done work in his individual capacity for civil society organizations such as NANGO, Action AID and ZIMCOD.", themes: ["macro", "trade"] },
-  { slug: "ngosi-shumba", name: "Ngosi Shumba", role: "Finance and Administration Manager", group: "team", photo: "/__l5e/assets-v1/021919bb-51f7-48c7-83ea-3f7aeb810a26/shumba.png", bio: "Ngosi Shumba holds a Bachelor of Accountancy Honours Degree from the University of Zimbabwe (UZ). He is also an Associate member of the Chartered Institute of Secretaries and Administrators (CIS) and holds an MBA in Finance from the University of Wales. He has extensive experience in auditing, accounting and finance." },
-  { slug: "erinah-chipumho", name: "Erinah Chipumho", role: "Senior Research Fellow", group: "team", photo: "/__l5e/assets-v1/b43154e8-6d2e-41c2-b075-5e84a06f8b28/erinah.png", bio: "Erinah Chipumho is an Economist with more than 10 years of experience in economic policy research. She joined ZEPARU in January 2005 as a Research Fellow and rose to the post of Senior Research Fellow in February 2011. She holds a Bachelors and a Master’s degree in Economics obtained from the University of Zimbabwe.", themes: ["macro", "governance"] },
-  { slug: "evangelista-mudzonga", name: "Evangelista Mudzonga", role: "Senior Research Fellow", group: "team", photo: "/__l5e/assets-v1/2506d0bc-3061-40da-8b9f-713b42177c8f/madzonga.png", bio: "Evangelista Mudzonga holds an MBA, MSc Economics and BSc Economics Degrees. She has over 11 years of national, regional and international trade policy analysis, trade negotiations and trade policy implementation experience, particularly on SADC, COMESA and EAC regions.", themes: ["trade", "macro"] },
-  { slug: "esnath-nyamunga", name: "Esnath Nyamunga", role: "Finance and Administration Assistant", group: "team", photo: "/__l5e/assets-v1/020bfa43-8056-4826-a992-3d532ba01add/eSNATH_GIMP2.png", bio: "Supports finance and administrative functions at ZEPARI." },
-  { slug: "jesimen-chipika", name: "Dr. Jesimen Chipika", role: "Chairperson", affiliation: "Reserve Bank of Zimbabwe, Deputy Governor", group: "board", photo: "/__l5e/assets-v1/f40c58aa-b3fd-4406-81eb-cebedefce6f5/jesimen-chipika.png", bio: "Chairperson of the ZEPARI Board of Trustees." },
-  { slug: "isaac-kwesu", name: "Dr. Isaac Kwesu", role: "Trustee", affiliation: "Chamber of Mines", group: "board", photo: "/__l5e/assets-v1/3c6142c6-5d35-40a6-ad2f-454817426140/kwesu.png", bio: "Trustee representing the Chamber of Mines." },
-  { slug: "gibson-chigumira-board", name: "Dr. Gibson Chigumira", role: "Executive Director (Ex Officio)", affiliation: "ZEPARI", group: "board", photo: "/__l5e/assets-v1/f904fec1-c270-4fc1-88da-4decca1aa7c4/chigumira_0.png", bio: "Ex-officio trustee." },
-  { slug: "cornelius-dube", name: "Dr. Cornelius Dube", role: "Trustee", affiliation: "Confederation of Zimbabwe Industries (CZI)", group: "board", photo: "/__l5e/assets-v1/720a894f-f9c9-4636-bdc4-c5c3854e1ae6/Dube_3.png", bio: "Trustee representing the Confederation of Zimbabwe Industries." },
+  { slug: "gibson-chigumira", name: "Dr. Gibson Chigumira", role: "Executive Director", group: "team", photo: gibsonPortrait, bio: "Gibson Chigumira has extensive experience in research, including coordinating research studies, editing publications and developing data bases, having been at the helm of the institution since it started operating in 2004. Dr. G. Chigumira has also done work in his individual capacity for civil society organizations such as NANGO, Action AID and ZIMCOD.", themes: ["macro", "trade"] },
+  { slug: "ngosi-shumba", name: "Ngosi Shumba", role: "Finance and Administration Manager", group: "team", photo: ngosiPortrait, bio: "Ngosi Shumba holds a Bachelor of Accountancy Honours Degree from the University of Zimbabwe (UZ). He is also an Associate member of the Chartered Institute of Secretaries and Administrators (CIS) and holds an MBA in Finance from the University of Wales. He has extensive experience in auditing, accounting and finance." },
+  { slug: "erinah-chipumho", name: "Erinah Chipumho", role: "Senior Research Fellow", group: "team", photo: erinahPortrait, bio: "Erinah Chipumho is an Economist with more than 10 years of experience in economic policy research. She joined ZEPARU in January 2005 as a Research Fellow and rose to the post of Senior Research Fellow in February 2011. She holds a Bachelors and a Master’s degree in Economics obtained from the University of Zimbabwe.", themes: ["macro", "governance"] },
+  { slug: "evangelista-mudzonga", name: "Evangelista Mudzonga", role: "Senior Research Fellow", group: "team", photo: evangelistaPortrait, bio: "Evangelista Mudzonga holds an MBA, MSc Economics and BSc Economics Degrees. She has over 11 years of national, regional and international trade policy analysis, trade negotiations and trade policy implementation experience, particularly on SADC, COMESA and EAC regions.", themes: ["trade", "macro"] },
+  { slug: "esnath-nyamunga", name: "Esnath Nyamunga", role: "Finance and Administration Assistant", group: "team", photo: esnathPortrait, bio: "Supports finance and administrative functions at ZEPARI." },
+  { slug: "jesimen-chipika", name: "Dr. Jesimen Chipika", role: "Chairperson", affiliation: "Reserve Bank of Zimbabwe, Deputy Governor", group: "board", photo: jesimenPortrait, bio: "Chairperson of the ZEPARI Board of Trustees." },
+  { slug: "isaac-kwesu", name: "Dr. Isaac Kwesu", role: "Trustee", affiliation: "Chamber of Mines", group: "board", photo: isaacPortrait, bio: "Trustee representing the Chamber of Mines." },
+  { slug: "gibson-chigumira-board", name: "Dr. Gibson Chigumira", role: "Executive Director (Ex Officio)", affiliation: "ZEPARI", group: "board", photo: gibsonBoardPortrait, bio: "Ex-officio trustee." },
+  { slug: "cornelius-dube", name: "Dr. Cornelius Dube", role: "Trustee", affiliation: "Confederation of Zimbabwe Industries (CZI)", group: "board", photo: corneliusPortrait, bio: "Trustee representing the Confederation of Zimbabwe Industries." },
 ];
 
 // Existing links keep their short slugs; all document content and access come from the live source.
