@@ -72,7 +72,7 @@ export function SiteHeader() {
         scrolled ? "border-border bg-card shadow-card" : "border-transparent bg-card"
       }`}
     >
-      <div className="container-z flex h-20 items-center justify-between gap-6">
+      <div className="container-header flex h-20 items-center justify-between gap-6">
 
 
         <Logo />
