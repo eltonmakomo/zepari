@@ -11,7 +11,7 @@ import { Facebook, Linkedin, Menu, Search, X, Youtube } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { site } from "@/content/data";
 import { NewsletterForm } from "./Newsletter";
-import logo from "@/assets/zepari-logo.jpg.asset.json";
+import logo from "@/assets/zepari-logo.png.asset.json";
 import { SiteNavigation } from "./Navigation";
 import { Button } from "@/components/ui/button";
 
@@ -45,7 +45,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
 function Logo({ light }: { light?: boolean }) {
   return (
     <Link to="/" className="flex items-center overflow-hidden rounded-xl border-0 outline-none ring-0" aria-label="ZEPARI home">
-      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={230} height={49} className="h-10 w-auto md:h-10" />
+      <img src={logo.url} alt="ZEPARI — Zimbabwe Economic Policy Analysis and Research Institute" width={961} height={335} className="h-10 w-auto md:h-10" />
     </Link>
   );
 }
