@@ -72,7 +72,7 @@ export function SiteHeader() {
         scrolled ? "border-border bg-card shadow-card" : "border-transparent bg-card"
       }`}
     >
-      <div className="container-z flex h-20 items-center justify-between gap-6">
+      <div className="container-header flex h-20 items-center justify-between gap-6">
 
 
         <Logo />
@@ -107,8 +107,12 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const isContactPage = Boolean(useMatch({ from: "/contact", shouldThrow: false }));
+  const endsWithContactBand = [
+    Boolean(useMatch({ from: "/internships", shouldThrow: false })),
+    Boolean(useMatch({ from: "/what-we-do/consultancy", shouldThrow: false })),
+  ].some(Boolean);
   return (
-    <footer className={`relative bg-ink text-ink-foreground ${isContactPage ? "mt-0" : "mt-24"}`}>
+    <footer className={`relative bg-ink text-ink-foreground ${isContactPage || endsWithContactBand ? "mt-0" : "mt-24"}`}>
       <div className="pattern-dzimbahwe absolute inset-0 opacity-60" aria-hidden />
       <div className="container-z relative grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
