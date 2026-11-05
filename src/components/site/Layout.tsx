@@ -107,8 +107,13 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const isContactPage = Boolean(useMatch({ from: "/contact", shouldThrow: false }));
+  const endsWithContactBand = [
+    Boolean(useMatch({ from: "/internships", shouldThrow: false })),
+    Boolean(useMatch({ from: "/research", shouldThrow: false })),
+    Boolean(useMatch({ from: "/what-we-do/consultancy", shouldThrow: false })),
+  ].some(Boolean);
   return (
-    <footer className={`relative bg-ink text-ink-foreground ${isContactPage ? "mt-0" : "mt-24"}`}>
+    <footer className={`relative bg-ink text-ink-foreground ${isContactPage || endsWithContactBand ? "mt-0" : "mt-24"}`}>
       <div className="pattern-dzimbahwe absolute inset-0 opacity-60" aria-hidden />
       <div className="container-z relative grid gap-12 py-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
