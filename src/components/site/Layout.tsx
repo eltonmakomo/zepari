@@ -109,7 +109,6 @@ export function SiteFooter() {
   const isContactPage = Boolean(useMatch({ from: "/contact", shouldThrow: false }));
   const endsWithContactBand = [
     Boolean(useMatch({ from: "/internships", shouldThrow: false })),
-    Boolean(useMatch({ from: "/research/", shouldThrow: false })),
     Boolean(useMatch({ from: "/what-we-do/consultancy", shouldThrow: false })),
   ].some(Boolean);
   return (
