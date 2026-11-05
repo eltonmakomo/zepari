@@ -11,3 +11,4 @@
 - [done] Media page: remove big featured video, place it first in the grid
 - [done] Generate and replace inside-page banner images; verify face framing on desktop and mobile.
 - [done] Add the live site's Internships page (top-level menu item, exact live text).
+- [todo] Replace all nine staff/trustee portrait backgrounds with a darker warm gradient; verify Team and Governance images.
